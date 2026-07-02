@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProfilRouteImport } from './routes/profil'
+import { Route as PenginapanRouteImport } from './routes/penginapan'
+import { Route as PaketWisataRouteImport } from './routes/paket-wisata'
+import { Route as DestinasiRouteImport } from './routes/destinasi'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ProfilRoute = ProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PenginapanRoute = PenginapanRouteImport.update({
+  id: '/penginapan',
+  path: '/penginapan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaketWisataRoute = PaketWisataRouteImport.update({
+  id: '/paket-wisata',
+  path: '/paket-wisata',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinasiRoute = DestinasiRouteImport.update({
+  id: '/destinasi',
+  path: '/destinasi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,78 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/destinasi': typeof DestinasiRoute
+  '/paket-wisata': typeof PaketWisataRoute
+  '/penginapan': typeof PenginapanRoute
+  '/profil': typeof ProfilRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/destinasi': typeof DestinasiRoute
+  '/paket-wisata': typeof PaketWisataRoute
+  '/penginapan': typeof PenginapanRoute
+  '/profil': typeof ProfilRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/destinasi': typeof DestinasiRoute
+  '/paket-wisata': typeof PaketWisataRoute
+  '/penginapan': typeof PenginapanRoute
+  '/profil': typeof ProfilRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/destinasi' | '/paket-wisata' | '/penginapan' | '/profil'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/destinasi' | '/paket-wisata' | '/penginapan' | '/profil'
+  id:
+    | '__root__'
+    | '/'
+    | '/destinasi'
+    | '/paket-wisata'
+    | '/penginapan'
+    | '/profil'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DestinasiRoute: typeof DestinasiRoute
+  PaketWisataRoute: typeof PaketWisataRoute
+  PenginapanRoute: typeof PenginapanRoute
+  ProfilRoute: typeof ProfilRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/profil': {
+      id: '/profil'
+      path: '/profil'
+      fullPath: '/profil'
+      preLoaderRoute: typeof ProfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/penginapan': {
+      id: '/penginapan'
+      path: '/penginapan'
+      fullPath: '/penginapan'
+      preLoaderRoute: typeof PenginapanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/paket-wisata': {
+      id: '/paket-wisata'
+      path: '/paket-wisata'
+      fullPath: '/paket-wisata'
+      preLoaderRoute: typeof PaketWisataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinasi': {
+      id: '/destinasi'
+      path: '/destinasi'
+      fullPath: '/destinasi'
+      preLoaderRoute: typeof DestinasiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +127,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DestinasiRoute: DestinasiRoute,
+  PaketWisataRoute: PaketWisataRoute,
+  PenginapanRoute: PenginapanRoute,
+  ProfilRoute: ProfilRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,18 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { useTranslation } from 'react-i18next'
+import PageHeader from '../components/page-header'
 
 export const Route = createFileRoute('/')({ component: Home })
 
 function Home() {
+  const { t } = useTranslation()
+
   return (
-    <div className="page-wrap py-16">
-      <div className="island-shell rounded-2xl p-12 text-center">
-        <h1 className="display-title text-forest text-5xl font-bold tracking-tight">
-          Localive
-        </h1>
-        <p className="text-brown mt-4 text-lg">
-          Edit <code>src/routes/index.tsx</code> to get started.
-        </p>
-      </div>
+    <div className="page-wrap">
+      <PageHeader kicker={t('nav.beranda')} title={t('page.beranda.title')} />
     </div>
   )
 }
