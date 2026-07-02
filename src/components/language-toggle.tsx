@@ -2,22 +2,30 @@ import { useTranslation } from 'react-i18next'
 
 export default function LanguageToggle() {
   const { i18n } = useTranslation()
-
-  const toggle = () => {
-    const next = i18n.language === 'id' ? 'en' : 'id'
-    i18n.changeLanguage(next)
-  }
-
-  const isId = i18n.language === 'id'
+  const lang = i18n.language
 
   return (
-    <button
-      onClick={toggle}
-      className="flex items-center gap-1 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-semibold tracking-wide transition-colors hover:bg-surface-strong"
-    >
-      <span className={isId ? 'text-olive' : 'text-sea-ink-soft'}>ID</span>
-      <span className="text-sea-ink-soft">/</span>
-      <span className={!isId ? 'text-olive' : 'text-sea-ink-soft'}>EN</span>
-    </button>
+    <div className="flex items-center gap-1 rounded-full bg-emerald-50 p-1">
+      <button
+        type="button"
+        onClick={() => i18n.changeLanguage('en')}
+        className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold transition-colors ${
+          lang === 'en' ? 'bg-white text-neutral-700 shadow-sm' : 'text-neutral-400'
+        }`}
+      >
+        <span role="img" aria-label="UK flag">🇬🇧</span>
+        EN
+      </button>
+      <button
+        type="button"
+        onClick={() => i18n.changeLanguage('id')}
+        className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold transition-colors ${
+          lang === 'id' ? 'bg-red-500 text-white shadow-sm' : 'text-neutral-400'
+        }`}
+      >
+        <span role="img" aria-label="Indonesia flag">🇮🇩</span>
+        ID
+      </button>
+    </div>
   )
 }

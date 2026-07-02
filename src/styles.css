@@ -18,29 +18,29 @@
   --lagoon: #8CA70A;
   --lagoon-deep: #6f8a08;
   --palm: #774F2F;
-  --sand: #F0E7D8;
-  --foam: #f5ede0;
-  --surface: rgba(245, 237, 224, 0.74);
-  --surface-strong: rgba(245, 237, 224, 0.9);
+  --sand: #FFFFFF;
+  --foam: #FAFAFA;
+  --surface: rgba(255, 255, 255, 0.74);
+  --surface-strong: rgba(255, 255, 255, 0.9);
   --line: rgba(11, 89, 47, 0.14);
   --inset-glint: rgba(255, 255, 255, 0.82);
   --kicker: rgba(119, 79, 47, 0.9);
-  --bg-base: #F0E7D8;
-  --header-bg: rgba(245, 237, 224, 0.84);
-  --chip-bg: rgba(245, 237, 224, 0.8);
+  --bg-base: #FFFFFF;
+  --header-bg: rgba(255, 255, 255, 0.84);
+  --chip-bg: rgba(255, 255, 255, 0.8);
   --chip-line: rgba(11, 89, 47, 0.18);
-  --link-bg-hover: rgba(245, 237, 224, 0.9);
+  --link-bg-hover: rgba(255, 255, 255, 0.9);
   --hero-a: rgba(140, 167, 10, 0.36);
   --hero-b: rgba(11, 89, 47, 0.2);
 
-  --background: #F0E7D8;
+  --background: #FFFFFF;
   --foreground: #0B592F;
   --card: #ffffff;
   --card-foreground: #0B592F;
   --popover: #ffffff;
   --popover-foreground: #0B592F;
   --primary: #0B592F;
-  --primary-foreground: #F0E7D8;
+  --primary-foreground: #FFFFFF;
   --secondary: #F5EDE0;
   --secondary-foreground: #774F2F;
   --muted: #F5EDE0;
@@ -61,7 +61,7 @@
   --sidebar: #F5EDE0;
   --sidebar-foreground: #0B592F;
   --sidebar-primary: #0B592F;
-  --sidebar-primary-foreground: #F0E7D8;
+  --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #8CA70A;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(11, 89, 47, 0.14);
@@ -187,10 +187,8 @@ body {
   font-family: var(--font-sans);
   background-color: var(--bg-base);
   background:
-    radial-gradient(1100px 620px at -8% -10%, var(--hero-a), transparent 58%),
-    radial-gradient(1050px 620px at 112% -12%, var(--hero-b), transparent 62%),
-    radial-gradient(720px 380px at 50% 115%, rgba(140, 167, 10, 0.08), transparent 68%),
-    linear-gradient(180deg, color-mix(in oklab, var(--sand) 68%, white) 0%, var(--foam) 44%, var(--bg-base) 100%);
+    radial-gradient(1100px 620px at -8% -10%, rgba(140, 167, 10, 0.08), transparent 58%),
+    radial-gradient(1050px 620px at 112% -12%, rgba(11, 89, 47, 0.06), transparent 62%);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -202,11 +200,11 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.28;
+  opacity: 0.15;
   background:
-    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.8), transparent 34%),
-    radial-gradient(circle at 78% 26%, rgba(140, 167, 10, 0.2), transparent 42%),
-    radial-gradient(circle at 42% 82%, rgba(11, 89, 47, 0.14), transparent 36%);
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.9), transparent 34%),
+    radial-gradient(circle at 78% 26%, rgba(140, 167, 10, 0.1), transparent 42%),
+    radial-gradient(circle at 42% 82%, rgba(11, 89, 47, 0.08), transparent 36%);
 }
 
 body::after {
@@ -215,23 +213,25 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: -1;
-  opacity: 0.14;
+  opacity: 0.06;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(circle at 50% 30%, black, transparent 78%);
 }
 
-a {
-  color: var(--lagoon-deep);
-  text-decoration-color: rgba(140, 167, 10, 0.4);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
+@layer base {
+  a {
+    color: var(--lagoon-deep);
+    text-decoration-color: rgba(140, 167, 10, 0.4);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
 
-a:hover {
-  color: #6f8a08;
+  a:hover {
+    color: #6f8a08;
+  }
 }
 
 code {
