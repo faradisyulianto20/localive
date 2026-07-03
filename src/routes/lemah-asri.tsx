@@ -22,7 +22,7 @@ function LemahAsri() {
         <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-900/40 to-transparent" />
         <div className="page-wrap relative z-10 w-full pb-16">
           <Leaf className="h-12 w-12 text-emerald-400" />
-          <h1 className="display-title mt-3 text-4xl font-bold text-white md:text-5xl">
+          <h1 className="display-title mt-3 text-3xl sm:text-4xl md:text-5xl font-bold text-white">
             {data.namaUsaha[lang] ?? data.namaUsaha.id}
           </h1>
           <p className="mt-2 text-lg text-white/80">
@@ -61,24 +61,24 @@ function LemahAsri() {
       </section>
 
       {/* Visi & Misi */}
-      <section className="page-wrap py-16">
+      <section className="page-wrap py-12 md:py-16">
         <div className="grid gap-10 md:grid-cols-2">
-          <div className="feature-card rounded-2xl p-8">
-            <h2 className="display-title text-xl font-bold text-neutral-900">
+          <div className="feature-card rounded-2xl p-6 md:p-8">
+            <h2 className="display-title text-lg md:text-xl font-bold text-neutral-900">
               {t('lemahAsri.visi', 'Visi Usaha')}
             </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-neutral-600">
+            <p className="mt-4 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
               {data.visi[lang] ?? data.visi.id}
             </p>
           </div>
 
-          <div className="feature-card rounded-2xl p-8">
-            <h2 className="display-title text-xl font-bold text-neutral-900">
+          <div className="feature-card rounded-2xl p-6 md:p-8">
+            <h2 className="display-title text-lg md:text-xl font-bold text-neutral-900">
               {t('lemahAsri.misi', 'Misi Usaha')}
             </h2>
             <ul className="mt-4 space-y-2">
               {(data.misi[lang] ?? data.misi.id).split('\n').map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-[15px] leading-relaxed text-neutral-600">
+                <li key={i} className="flex items-start gap-2 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
                   <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-emerald-600" />
                   {item.replace(/^•\s*/, '')}
                 </li>
@@ -89,15 +89,15 @@ function LemahAsri() {
       </section>
 
       {/* Struktur Organisasi */}
-      <section className="bg-emerald-50 py-16">
+      <section className="bg-emerald-50 py-12 md:py-16">
         <div className="page-wrap">
-          <h2 className="display-title text-forest text-center text-3xl font-bold">
+          <h2 className="display-title text-forest text-center text-2xl md:text-3xl lg:text-4xl font-bold">
             {t('lemahAsri.strukturOrganisasi', 'Struktur Organisasi')}
           </h2>
 
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {data.strukturOrganisasi.map((item, i) => (
-              <div key={i} className="feature-card rounded-2xl p-5 text-center">
+              <div key={i} className="feature-card rounded-2xl p-4 md:p-5 text-center">
                 <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">
                   {item.jabatan}
                 </p>
@@ -111,8 +111,8 @@ function LemahAsri() {
       </section>
 
       {/* Track Record */}
-      <section className="page-wrap py-16">
-        <h2 className="display-title text-forest text-center text-3xl font-bold">
+      <section className="page-wrap py-12 md:py-16">
+        <h2 className="display-title text-forest text-center text-2xl md:text-3xl lg:text-4xl font-bold">
           {t('lemahAsri.trackRecord', 'Track Record')}
         </h2>
 

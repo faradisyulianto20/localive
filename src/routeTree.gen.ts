@@ -19,6 +19,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as ArtikelIdRouteImport } from './routes/artikel/$id'
+import { Route as AdminProfilRouteImport } from './routes/admin/profil'
 import { Route as AdminWisataIndexRouteImport } from './routes/admin/wisata/index'
 import { Route as AdminUmkmIndexRouteImport } from './routes/admin/umkm/index'
 import { Route as AdminLemahAsriIndexRouteImport } from './routes/admin/lemah-asri/index'
@@ -80,6 +81,11 @@ const ArtikelIdRoute = ArtikelIdRouteImport.update({
   id: '/$id',
   path: '/$id',
   getParentRoute: () => ArtikelRoute,
+} as any)
+const AdminProfilRoute = AdminProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
+  getParentRoute: () => AdminRoute,
 } as any)
 const AdminWisataIndexRoute = AdminWisataIndexRouteImport.update({
   id: '/wisata/',
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/profil': typeof ProfilRoute
   '/umkm': typeof UmkmRoute
   '/wisata': typeof WisataRoute
+  '/admin/profil': typeof AdminProfilRoute
   '/artikel/$id': typeof ArtikelIdRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/artikel/new': typeof AdminArtikelNewRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/profil': typeof ProfilRoute
   '/umkm': typeof UmkmRoute
   '/wisata': typeof WisataRoute
+  '/admin/profil': typeof AdminProfilRoute
   '/artikel/$id': typeof ArtikelIdRoute
   '/admin': typeof AdminIndexRoute
   '/admin/artikel/new': typeof AdminArtikelNewRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/profil': typeof ProfilRoute
   '/umkm': typeof UmkmRoute
   '/wisata': typeof WisataRoute
+  '/admin/profil': typeof AdminProfilRoute
   '/artikel/$id': typeof ArtikelIdRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/artikel/new': typeof AdminArtikelNewRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/profil'
     | '/umkm'
     | '/wisata'
+    | '/admin/profil'
     | '/artikel/$id'
     | '/admin/'
     | '/admin/artikel/new'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/profil'
     | '/umkm'
     | '/wisata'
+    | '/admin/profil'
     | '/artikel/$id'
     | '/admin'
     | '/admin/artikel/new'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/profil'
     | '/umkm'
     | '/wisata'
+    | '/admin/profil'
     | '/artikel/$id'
     | '/admin/'
     | '/admin/artikel/new'
@@ -360,6 +372,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArtikelIdRouteImport
       parentRoute: typeof ArtikelRoute
     }
+    '/admin/profil': {
+      id: '/admin/profil'
+      path: '/profil'
+      fullPath: '/admin/profil'
+      preLoaderRoute: typeof AdminProfilRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/wisata/': {
       id: '/admin/wisata/'
       path: '/wisata'
@@ -441,6 +460,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminProfilRoute: typeof AdminProfilRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminArtikelNewRoute: typeof AdminArtikelNewRoute
   AdminLemahAsriEditRoute: typeof AdminLemahAsriEditRoute
@@ -456,6 +476,7 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminProfilRoute: AdminProfilRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminArtikelNewRoute: AdminArtikelNewRoute,
   AdminLemahAsriEditRoute: AdminLemahAsriEditRoute,

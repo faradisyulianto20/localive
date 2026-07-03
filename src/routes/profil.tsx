@@ -64,7 +64,7 @@ function Profil() {
           <span className="text-sm font-semibold uppercase tracking-wide text-emerald-400">
             {t('nav.profil')}
           </span>
-          <h1 className="display-title mt-2 text-4xl font-bold text-white md:text-5xl">
+          <h1 className="display-title mt-2 text-3xl sm:text-4xl md:text-5xl font-bold text-white">
             {t('profil.hero.title', 'Desa Tamanan')}
           </h1>
           <p className="mt-3 text-lg text-white/80">
@@ -74,7 +74,7 @@ function Profil() {
       </section>
 
       {/* Definisi Desa */}
-      <section className="page-wrap py-16">
+      <section className="page-wrap py-12 md:py-16">
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
           <div className="overflow-hidden rounded-2xl">
             <img
@@ -87,13 +87,13 @@ function Profil() {
             <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
               {t('profil.definisi.title', 'Definisi Desa')}
             </p>
-            <h2 className="display-title text-forest mt-3 text-3xl font-bold leading-tight md:text-4xl">
+            <h2 className="display-title text-forest mt-3 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
               {t('section.profil.title', 'Desa Tamanan')}
             </h2>
-            <p className="mt-5 text-[15px] leading-relaxed text-neutral-600">
+            <p className="mt-5 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
               {t('section.profil.description', 'Tamanan adalah pedukuhan yang terletak di Kalasan, Sleman, Daerah Istimewa Yogyakarta.')}
             </p>
-            <p className="mt-3 text-[15px] leading-relaxed text-neutral-600">
+            <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
               Tamanan memiliki berbagai potensi yang dikelola oleh Lemah Asri (Lembaga Usaha Tamanan Sadar Wisata) sejak tahun 2021, meliputi event organizer, ekonomi kreatif, dan UMKM.
             </p>
           </div>
@@ -101,15 +101,15 @@ function Profil() {
       </section>
 
       {/* Potensi Desa */}
-      <section className="bg-emerald-50 py-16">
+      <section className="bg-emerald-50 py-12 md:py-16">
         <div className="page-wrap">
           <div className="text-center">
-            <h2 className="display-title text-forest text-3xl font-bold md:text-4xl">
+            <h2 className="display-title text-forest text-2xl md:text-3xl lg:text-4xl font-bold">
               {t('profil.potensi.title', 'Potensi Desa')}
             </h2>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {potensiData.map((item, i) => (
               <div
                 key={i}
@@ -131,14 +131,14 @@ function Profil() {
       </section>
 
       {/* Mitra */}
-      <section className="page-wrap py-16">
+      <section className="page-wrap py-12 md:py-16">
         <div className="text-center">
-          <h2 className="display-title text-forest text-3xl font-bold md:text-4xl">
+          <h2 className="display-title text-forest text-2xl md:text-3xl lg:text-4xl font-bold">
             {t('profil.mitra.title', 'Mitra Kami')}
           </h2>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-6">
+        <div className="mt-10 flex flex-wrap justify-center gap-4 md:gap-6">
           {mitraList.map((mitra, i) => (
             <div
               key={i}

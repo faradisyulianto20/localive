@@ -15,9 +15,9 @@ export default function Footer() {
   const { t } = useTranslation()
 
   return (
-    <footer className="site-footer border-t border-neutral-100 pb-8 pt-16">
+    <footer className="site-footer border-t border-neutral-100 pb-8 pt-12 md:pt-16">
       <div className="page-wrap">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.3fr_0.8fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-[1.3fr_0.8fr_1fr_1fr]">
           <div>
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-neutral-200 text-sm font-medium text-neutral-500">
               Logo

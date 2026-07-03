@@ -24,14 +24,14 @@ export default function HeroSection() {
 						)}
 					</p>
 
-					<h1 className="display-title mt-4 text-4xl font-bold leading-tight text-white md:text-5xl animate-fade-in-up" style={{ animationDelay: '150ms' }}>
+					<h1 className="display-title mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-white animate-fade-in-up" style={{ animationDelay: '150ms' }}>
 						{t(
 							"page.beranda.title",
 							"Rasakan Keindahan dan Keautentikan Pedukuhan Tamanan",
 						)}
 					</h1>
 
-					<p className="mt-5 max-w-lg text-[15px] leading-relaxed text-white/85 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+					<p className="mt-5 max-w-lg text-sm sm:text-[15px] leading-relaxed text-white/85 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
 						{t(
 							"page.beranda.description",
 							"Tamanan adalah pedukuhan di Kalasan, Sleman yang kaya akan potensi wisata, budaya, dan UMKM.",
@@ -41,7 +41,7 @@ export default function HeroSection() {
 					<div className="mt-7 flex flex-wrap items-center gap-3 animate-fade-in-up" style={{ animationDelay: '450ms' }}>
 						<a
 							href="/wisata"
-							className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
+							className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
 						>
 							{t("page.beranda.ctaPrimary", "Pesan Paket Wisata")}
 							<ArrowRight className="h-4 w-4" />

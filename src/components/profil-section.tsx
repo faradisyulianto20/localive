@@ -7,7 +7,7 @@ export default function ProfilSection() {
 	const { ref, inView } = useInView();
 
 	return (
-		<section ref={ref} className={`page-wrap py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
+		<section ref={ref} className={`page-wrap py-12 md:py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
 			<div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
 				<div className="relative overflow-hidden rounded-xl">
 					<img
@@ -20,17 +20,17 @@ export default function ProfilSection() {
 
 				<div>
 					<p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
-						{t("section.profil.kicker", "TENTANG KAMI")}
+						{t("section.profil.kicker", "TENTANG PADUKUHAN TAMANAN")}
 					</p>
 
-					<h2 className="display-title text-forest mt-3 text-3xl font-bold leading-tight md:text-4xl">
-						{t("section.profil.title", "Desa Tamanan")}
+					<h2 className="display-title text-forest mt-3 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+						{t("section.profil.title", "Harmoni Tradisi, Alam, dan  Gotong Royong di Sleman")}
 					</h2>
 
-					<p className="mt-5 text-[15px] leading-relaxed text-neutral-600">
+					<p className="mt-5 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
 						{t(
 							"section.profil.description",
-							"Tamanan adalah pedukuhan yang terletak di Kalasan, Sleman, Daerah Istimewa Yogyakarta.",
+							"Padukuhan Tamanan merupakan kawasan wisata budaya dan edukasi yang berada di Kelurahan Tamanmartani, Kapanewon Kalasan, Kabupaten Sleman. Padukuhan Tamanan menawarkan keindahan budaya, edukasi, dan kearifan lokal yang sudah diwariskan turun temurun. Tempat yang sempurna untuk menggali lebih dalam secuil kekayaan budaya di Sleman.",
 						)}
 					</p>
 

@@ -22,22 +22,22 @@ function UMKM() {
     : umkmData.items.filter((item) => item.category === activeFilter)
 
   return (
-    <div className="page-wrap py-16">
+    <div className="page-wrap py-12 md:py-16">
       <div className="rise-in">
         <span className="island-kicker">{t('nav.umkm')}</span>
-        <h1 className="display-title text-forest mt-2 text-4xl font-bold">
+        <h1 className="display-title text-forest mt-2 text-3xl md:text-4xl font-bold">
           {t('page.umkm.title')}
         </h1>
       </div>
 
       {/* Tabs */}
-      <div className="mt-8 flex flex-wrap gap-2">
+      <div className="mt-8 flex flex-wrap gap-1.5 md:gap-2">
         {tabs.map((tab) => (
           <button
             key={tab.slug}
             type="button"
             onClick={() => setActiveFilter(tab.slug)}
-            className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
+            className={`rounded-full px-4 md:px-5 py-1.5 md:py-2 text-sm font-semibold transition-colors ${
               activeFilter === tab.slug
                 ? 'bg-amber-700 text-white'
                 : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
@@ -50,7 +50,7 @@ function UMKM() {
 
       {/* Grid */}
       {filteredList.length > 0 ? (
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredList.map((item) => (
             <UMKMCard key={item.id} item={item} />
           ))}

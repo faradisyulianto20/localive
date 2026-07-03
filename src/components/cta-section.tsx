@@ -10,32 +10,41 @@ export default function CTASection() {
   const { ref, inView } = useInView()
 
   return (
-    <section ref={ref} className={`relative overflow-hidden py-20 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
+    <section ref={ref} className={`relative overflow-hidden py-12 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
       <div className="absolute inset-0">
         <img
           src="/cta.png"
           alt=""
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/85 to-emerald-950/75" />
+        {/* overlay hitam tipis untuk kesan redup */}
+        <div className="absolute inset-0 bg-black/35" />
       </div>
 
-      <div className="page-wrap relative z-10 text-center">
-        <h2 className="display-title text-3xl font-bold text-white md:text-4xl">
-          {t('section.cta.title', 'Hubungi Kami')}
+      <div className="page-wrap relative z-10 text-left">
+        <h2 className="display-title text-2xl md:text-3xl lg:text-4xl leading-tight text-white">
+          {t('section.cta.titleLight', 'Siap Merasakan Pengalaman')}
+          <br />
+          <span className="font-bold">
+            {t('section.cta.titleBold', 'Autentik di Padukuhan Tamanan?')}
+          </span>
         </h2>
-        <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/80">
-          {t('section.cta.description', 'Punya pertanyaan atau ingin memesan paket wisata? Hubungi kami langsung via WhatsApp')}
+
+        <p className="mt-4 max-w-md text-sm leading-relaxed text-white/80 md:text-base">
+          {t(
+            'section.cta.description',
+            'Bawa institusi dan rombongan Anda untuk merasakan keramahan dan kekayaan budaya kami secara langsung',
+          )}
         </p>
 
         <a
           href={WA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-3 rounded-full bg-green-500 px-8 py-4 text-base font-bold text-white transition-colors hover:bg-green-600"
+          className="mt-8 inline-flex items-center gap-3 rounded-full border-2 border-[#AAF3E1] px-6 py-3 text-sm font-bold bg-[#0F6E56]/30 text-white transition-colors hover:border-[#AAF3E1] hover:bg-[#0F6E56]/10 md:text-base"
         >
-          <MessageCircle className="h-6 w-6" />
-          Hubungi Via WhatsApp
+          <MessageCircle className="h-5 w-5" />
+          {t('section.cta.button', 'Hubungi Kami via WhatsApp')}
         </a>
       </div>
     </section>

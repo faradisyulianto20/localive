@@ -9,16 +9,16 @@ function Artikel() {
   const { t } = useTranslation()
 
   return (
-    <div className="page-wrap py-16">
+    <div className="page-wrap py-12 md:py-16">
       <div className="rise-in">
         <span className="island-kicker">{t('nav.artikel')}</span>
-        <h1 className="display-title text-forest mt-2 text-4xl font-bold">
+        <h1 className="display-title text-forest mt-2 text-3xl md:text-4xl font-bold">
           {t('page.artikel.title')}
         </h1>
       </div>
 
       {artikelData.length > 0 ? (
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {artikelData.map((item) => (
             <ArtikelCard key={item.id} item={item} />
           ))}

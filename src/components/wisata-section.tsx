@@ -1,12 +1,13 @@
-import { ArrowRight, Landmark, Palette, Mountain } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from '#/hooks/use-in-view.ts'
 import wisataData from '#/lib/wisata.json'
+import heroImg from '../../public/hero.png' // sesuaikan path import hero.png kamu
 
-const categoryIcons: Record<string, React.ReactNode> = {
-  destinasi: <Landmark className="h-8 w-8" />,
-  atraksi: <Palette className="h-8 w-8" />,
-  aktivitas: <Mountain className="h-8 w-8" />,
+const categoryImages: Record<string, string> = {
+  destinasi: heroImg,
+  atraksi: heroImg,
+  aktivitas: heroImg,
 }
 
 const categoryDescriptions: Record<string, { id: string; en: string }> = {
@@ -34,36 +35,44 @@ export default function WisataSection() {
     ...cat,
     count: items.filter((i) => i.category === cat.slug).length,
     desc: categoryDescriptions[cat.slug],
+    image: categoryImages[cat.slug],
   }))
 
   return (
-    <section id="wisata" ref={ref} className={`page-wrap py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
+    <section id="wisata" ref={ref} className={`page-wrap py-12 md:py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
           {t('section.wisata.kicker')}
         </p>
-        <h2 className="display-title text-forest mt-2 text-3xl font-bold leading-tight md:text-4xl">
+        <h2 className="display-title text-forest mt-2 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
           {t('section.wisata.title', 'Jelajahi Wisata Tamanan')}
         </h2>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-3">
         {categories.map((cat, index) => (
           <div
             key={cat.slug}
-            className={`rounded-xl border border-neutral-100 bg-white p-6 shadow-sm transition-all duration-500 hover:shadow-md ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}
+            className={`overflow-hidden rounded-xl border border-neutral-100 bg-white shadow-sm transition-all duration-500 hover:shadow-md ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-amber-50 text-amber-700">
-              {categoryIcons[cat.slug]}
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-t-xl">
+              <img
+                src={cat.image}
+                alt={cat.label}
+                className="h-full w-full object-cover"
+              />
             </div>
-            <h3 className="mt-4 text-lg font-bold text-forest">{cat.label}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-              {cat.desc?.[lang] ?? cat.desc?.id}
-            </p>
-            <span className="mt-3 inline-block text-xs font-semibold text-amber-700">
-              {cat.count} Paket Tersedia
-            </span>
+
+            <div className="p-6">
+              <h3 className="text-lg font-bold text-forest">{cat.label}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                {cat.desc?.[lang] ?? cat.desc?.id}
+              </p>
+              <span className="mt-3 inline-block text-xs font-semibold text-amber-700">
+                {cat.count} Paket Tersedia
+              </span>
+            </div>
           </div>
         ))}
       </div>

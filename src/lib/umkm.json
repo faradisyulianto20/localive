@@ -1,394 +1,310 @@
 ﻿{
-    "categories":  [
-                       {
-                           "slug":  "makanan",
-                           "label":  "Makanan"
-                       },
-                       {
-                           "slug":  "produk",
-                           "label":  "Produk"
-                       },
-                       {
-                           "slug":  "jasa",
-                           "label":  "Jasa"
-                       }
-                   ],
-    "waNumber":  "085876270545",
-    "items":  [
-                  {
-                      "id":  "joglo-belimo",
-                      "title":  {
-                                    "id":  "Joglo Belimo",
-                                    "en":  "Joglo Belimo"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual aneka donat dan bakery buatan rumahan. Kontak Ibu Fika di 081210839779.",
-                                          "en":  "Sells various homemade donuts and baked goods. Contact Mrs. Fika at 081210839779."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "lepet-jagung-menuk",
-                      "title":  {
-                                    "id":  "Lepet Jagung Menuk",
-                                    "en":  "Menuk's Corn Lepet"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menyediakan lepet jagung khas buatan Ibu Rohanti. Kontak di 081575274207.",
-                                          "en":  "Provides specialty corn lepet made by Mrs. Rohanti. Contact at 081575274207."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "warung-mama-hana",
-                      "title":  {
-                                    "id":  "Warung Mama Hana",
-                                    "en":  "Mama Hana's Eatery"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menyajikan tahu penyet, mie ayam, dan tempura. Kontak Ibu Ruri di 083841659957.",
-                                          "en":  "Serves tahu penyet, chicken noodles, and tempura. Contact Mrs. Ruri at 083841659957."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "es-teler-bunda-hilya",
-                      "title":  {
-                                    "id":  "Es Teler Bunda Hilya",
-                                    "en":  "Bunda Hilya's Es Teler"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual es teler segar buatan Ibu Badriyah. Kontak di 085747811055.",
-                                          "en":  "Sells fresh es teler made by Mrs. Badriyah. Contact at 085747811055."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "pempek-kajoku",
-                      "title":  {
-                                    "id":  "Pempek Kajoku",
-                                    "en":  "Kajoku Pempek"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual pempek khas buatan Ibu Tasning Rumawati. Kontak di 088983011454.",
-                                          "en":  "Sells specialty pempek made by Mrs. Tasning Rumawati. Contact at 088983011454."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "warung-bu-pairah",
-                      "title":  {
-                                    "id":  "Warung Bu Pairah",
-                                    "en":  "Bu Pairah's Eatery"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menyediakan sego wiwit, bubur sayur, gorengan, dan mie kuning.",
-                                          "en":  "Provides sego wiwit, vegetable porridge, fried snacks, and yellow noodles."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "cilok-jaya",
-                      "title":  {
-                                    "id":  "Cilok Jaya",
-                                    "en":  "Jaya Cilok"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual cilok kacang khas buatan Arin. Kontak di 085848700037.",
-                                          "en":  "Sells specialty peanut cilok made by Arin. Contact at 085848700037."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "tamanan-snack",
-                      "title":  {
-                                    "id":  "Tamanan Snack",
-                                    "en":  "Tamanan Snack"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menyediakan aneka jajanan tradisional: coromawar, semar mendem, apem (Bang Udin), serta tahu bakso, risoles, arem-arem, dan dadar gulung (Bu Sani). Kontak Bu Nurul di 087738770075.",
-                                          "en":  "Provides various traditional snacks: coromawar, semar mendem, apem (Bang Udin), as well as tofu bakso, risoles, arem-arem, and dadar gulung (Bu Sani). Contact Mrs. Nurul at 087738770075."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "kedai-kekinian",
-                      "title":  {
-                                    "id":  "Kedai Kekinian",
-                                    "en":  "Trendy Shop"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual seblak ndeso khas buatan Ilham. Kontak di 083872033524.",
-                                          "en":  "Sells specialty village-style seblak made by Ilham. Contact at 083872033524."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "loena",
-                      "title":  {
-                                    "id":  "Loena",
-                                    "en":  "Loena"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual keripik lidah buaya buatan Bu Hani. Kontak di 081991402883.",
-                                          "en":  "Sells aloe vera chips made by Mrs. Hani. Contact at 081991402883."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "browconis",
-                      "title":  {
-                                    "id":  "Browconis",
-                                    "en":  "Browconis"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual brownies buatan Bu Nopiyanti. Kontak di 082134345104.",
-                                          "en":  "Sells brownies made by Mrs. Nopiyanti. Contact at 082134345104."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "talazza",
-                      "title":  {
-                                    "id":  "Talazza",
-                                    "en":  "Talazza"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual keripik talas buatan Bu Pinarti. Kontak di 082328140944.",
-                                          "en":  "Sells taro chips made by Mrs. Pinarti. Contact at 082328140944."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "peyek-ibu-dwi",
-                      "title":  {
-                                    "id":  "Peyek Ibu Dwi",
-                                    "en":  "Mrs. Dwi's Peyek"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual peyek buatan rumahan khas Ibu Dwi.",
-                                          "en":  "Sells homemade peyek specialty by Mrs. Dwi."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "stick-lidah-buaya-vilova",
-                      "title":  {
-                                    "id":  "Stick Lidah Buaya Vilova",
-                                    "en":  "Vilova Aloe Vera Sticks"
-                                },
-                      "category":  "makanan",
-                      "description":  {
-                                          "id":  "Menjual stick lidah buaya buatan Bu Titi Yulianti. Kontak di 081328171515.",
-                                          "en":  "Sells aloe vera sticks made by Mrs. Titi Yulianti. Contact at 081328171515."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "pupuk-limbah-tamanan",
-                      "title":  {
-                                    "id":  "Pupuk Limbah Tamanan",
-                                    "en":  "Tamanan Waste Fertilizer"
-                                },
-                      "category":  "produk",
-                      "description":  {
-                                          "id":  "Menjual pupuk hasil olahan limbah warga Tamanan. Kontak di 085878347481.",
-                                          "en":  "Sells fertilizer processed from Tamanan residents' waste. Contact at 085878347481."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "karnaminik",
-                      "title":  {
-                                    "id":  "Karnaminik",
-                                    "en":  "Karnaminik"
-                                },
-                      "category":  "produk",
-                      "description":  {
-                                          "id":  "Kerajinan kulit berupa tas kulit dan dompet kulit. Kontak di 085601266849.",
-                                          "en":  "Leather crafts including leather bags and wallets. Contact at 085601266849."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "house-of-amora",
-                      "title":  {
-                                    "id":  "House of Amora",
-                                    "en":  "House of Amora"
-                                },
-                      "category":  "produk",
-                      "description":  {
-                                          "id":  "Kerajinan kulit berupa tas kulit, dompet kulit, ikat pinggang kulit, dan aksesoris. Kontak di 082227042929.",
-                                          "en":  "Leather crafts including leather bags, wallets, belts, and accessories. Contact at 082227042929."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "bekti-ratna-mua",
-                      "title":  {
-                                    "id":  "Bekti Ratna MUA",
-                                    "en":  "Bekti Ratna MUA"
-                                },
-                      "category":  "jasa",
-                      "description":  {
-                                          "id":  "Jasa make up untuk berbagai acara. Kontak di 08126640207.",
-                                          "en":  "Makeup services for various events. Contact at 08126640207."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "laundry-bu-siti",
-                      "title":  {
-                                    "id":  "Laundry Bu Siti",
-                                    "en":  "Mrs. Siti's Laundry"
-                                },
-                      "category":  "jasa",
-                      "description":  {
-                                          "id":  "Jasa laundry Rp8.000/kg, setrika Rp5.000/kg, dan seprei satuan Rp10.000\u201320.000. Kontak di 083841553519.",
-                                          "en":  "Laundry service Rp8,000/kg, ironing Rp5,000/kg, and individual bed sheets Rp10,000\u201320,000. Contact at 083841553519."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "laundry-bu-asih",
-                      "title":  {
-                                    "id":  "Laundry Bu Asih",
-                                    "en":  "Mrs. Asih's Laundry"
-                                },
-                      "category":  "jasa",
-                      "description":  {
-                                          "id":  "Jasa laundry Rp8.000/kg, setrika Rp5.000/kg, dan seprei satuan Rp10.000\u201320.000. Kontak di 083181231264.",
-                                          "en":  "Laundry service Rp8,000/kg, ironing Rp5,000/kg, and individual bed sheets Rp10,000\u201320,000. Contact at 083181231264."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "salon-nadia-totok-aura",
-                      "title":  {
-                                    "id":  "Salon Nadia Totok Aura",
-                                    "en":  "Nadia Totok Aura Salon"
-                                },
-                      "category":  "jasa",
-                      "description":  {
-                                          "id":  "Jasa totok mata/hidung/payudara/perut mulai Rp50.000\u201385.000 per sesi, make up Rp100.000\u2013125.000, serta paket dekor & make up pengantin dan lamaran sesuai budget. Kontak di 081904064255.",
-                                          "en":  "Eye/nose/chest/abdominal totok therapy from Rp50,000\u201385,000 per session, makeup Rp100,000\u2013125,000, and wedding & engagement decor & makeup packages within budget. Contact at 081904064255."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "griya-busana-nurul-kh",
-                      "title":  {
-                                    "id":  "Griya Busana Nurul KH",
-                                    "en":  "Nurul KH Fashion House"
-                                },
-                      "category":  "jasa",
-                      "description":  {
-                                          "id":  "Jasa menjahit busana. Kontak di 087738770075.",
-                                          "en":  "Sewing services. Contact at 087738770075."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "bimbel-triwiji",
-                      "title":  {
-                                    "id":  "Bimbel Triwiji",
-                                    "en":  "Triwiji Tutoring"
-                                },
-                      "category":  "jasa",
-                      "description":  {
-                                          "id":  "Bimbingan belajar bahasa Jawa untuk anak-anak dan pelajar.",
-                                          "en":  "Javanese language tutoring for children and students."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "les-baca-tulis",
-                      "title":  {
-                                    "id":  "Les Baca Tulis",
-                                    "en":  "Reading & Writing Tutoring"
-                                },
-                      "category":  "jasa",
-                      "description":  {
-                                          "id":  "Bimbingan belajar membaca dan menulis untuk anak-anak.",
-                                          "en":  "Reading and writing tutoring for children."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  },
-                  {
-                      "id":  "bimbel-calistung",
-                      "title":  {
-                                    "id":  "Bimbel Calistung",
-                                    "en":  "Calistung Tutoring"
-                                },
-                      "category":  "jasa",
-                      "description":  {
-                                          "id":  "Bimbingan belajar membaca, menulis, dan berhitung untuk anak-anak.",
-                                          "en":  "Reading, writing, and arithmetic tutoring for children."
-                                      },
-                      "image":  "/hero.png",
-                      "mapsUrl":  "",
-                      "waUrl":  "https://wa.me/6285876270545"
-                  }
-              ]
-}
+  "categories": [
+    { "slug": "makanan", "label": "Makanan" },
+    { "slug": "produk", "label": "Produk" },
+    { "slug": "jasa", "label": "Jasa" }
+  ],
+  "waNumber": "085876270545",
+  "items": [
+    {
+      "id": "joglo-belimo",
+      "title": { "id": "Joglo Belimo", "en": "Joglo Belimo" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual aneka donat dan bakery buatan rumahan. Kontak Ibu Fika di 081210839779.",
+        "en": "Sells various homemade donuts and baked goods. Contact Mrs. Fika at 081210839779."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "lepet-jagung-menuk",
+      "title": { "id": "Lepet Jagung Menuk", "en": "Menuk's Corn Lepet" },
+      "category": "makanan",
+      "description": {
+        "id": "Menyediakan lepet jagung khas buatan Ibu Rohanti. Kontak di 081575274207.",
+        "en": "Provides specialty corn lepet made by Mrs. Rohanti. Contact at 081575274207."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "warung-mama-hana",
+      "title": { "id": "Warung Mama Hana", "en": "Mama Hana's Eatery" },
+      "category": "makanan",
+      "description": {
+        "id": "Menyajikan tahu penyet, mie ayam, dan tempura. Kontak Ibu Ruri di 083841659957.",
+        "en": "Serves tahu penyet, chicken noodles, and tempura. Contact Mrs. Ruri at 083841659957."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "es-teler-bunda-hilya",
+      "title": { "id": "Es Teler Bunda Hilya", "en": "Bunda Hilya's Es Teler" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual es teler segar buatan Ibu Badriyah. Kontak di 085747811055.",
+        "en": "Sells fresh es teler made by Mrs. Badriyah. Contact at 085747811055."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "pempek-kajoku",
+      "title": { "id": "Pempek Kajoku", "en": "Kajoku Pempek" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual pempek khas buatan Ibu Tasning Rumawati. Kontak di 088983011454.",
+        "en": "Sells specialty pempek made by Mrs. Tasning Rumawati. Contact at 088983011454."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "warung-bu-pairah",
+      "title": { "id": "Warung Bu Pairah", "en": "Bu Pairah's Eatery" },
+      "category": "makanan",
+      "description": {
+        "id": "Menyediakan sego wiwit, bubur sayur, gorengan, dan mie kuning.",
+        "en": "Provides sego wiwit, vegetable porridge, fried snacks, and yellow noodles."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "cilok-jaya",
+      "title": { "id": "Cilok Jaya", "en": "Jaya Cilok" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual cilok kacang khas buatan Arin. Kontak di 085848700037.",
+        "en": "Sells specialty peanut cilok made by Arin. Contact at 085848700037."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "tamanan-snack",
+      "title": { "id": "Tamanan Snack", "en": "Tamanan Snack" },
+      "category": "makanan",
+      "description": {
+        "id": "Menyediakan aneka jajanan tradisional: coromawar, semar mendem, apem (Bang Udin), serta tahu bakso, risoles, arem-arem, dan dadar gulung (Bu Sani). Kontak Bu Nurul di 087738770075.",
+        "en": "Provides various traditional snacks: coromawar, semar mendem, apem (Bang Udin), as well as tofu bakso, risoles, arem-arem, and dadar gulung (Bu Sani). Contact Mrs. Nurul at 087738770075."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "kedai-kekinian",
+      "title": { "id": "Kedai Kekinian", "en": "Trendy Shop" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual seblak ndeso khas buatan Ilham. Kontak di 083872033524.",
+        "en": "Sells specialty village-style seblak made by Ilham. Contact at 083872033524."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "loena",
+      "title": { "id": "Loena", "en": "Loena" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual keripik lidah buaya buatan Bu Hani. Kontak di 081991402883.",
+        "en": "Sells aloe vera chips made by Mrs. Hani. Contact at 081991402883."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "browconis",
+      "title": { "id": "Browconis", "en": "Browconis" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual brownies buatan Bu Nopiyanti. Kontak di 082134345104.",
+        "en": "Sells brownies made by Mrs. Nopiyanti. Contact at 082134345104."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "talazza",
+      "title": { "id": "Talazza", "en": "Talazza" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual keripik talas buatan Bu Pinarti. Kontak di 082328140944.",
+        "en": "Sells taro chips made by Mrs. Pinarti. Contact at 082328140944."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "peyek-ibu-dwi",
+      "title": { "id": "Peyek Ibu Dwi", "en": "Mrs. Dwi's Peyek" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual peyek buatan rumahan khas Ibu Dwi.",
+        "en": "Sells homemade peyek specialty by Mrs. Dwi."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "stick-lidah-buaya-vilova",
+      "title": { "id": "Stick Lidah Buaya Vilova", "en": "Vilova Aloe Vera Sticks" },
+      "category": "makanan",
+      "description": {
+        "id": "Menjual stick lidah buaya buatan Bu Titi Yulianti. Kontak di 081328171515.",
+        "en": "Sells aloe vera sticks made by Mrs. Titi Yulianti. Contact at 081328171515."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "pupuk-limbah-tamanan",
+      "title": { "id": "Pupuk Limbah Tamanan", "en": "Tamanan Waste Fertilizer" },
+      "category": "produk",
+      "description": {
+        "id": "Menjual pupuk hasil olahan limbah warga Tamanan. Kontak di 085878347481.",
+        "en": "Sells fertilizer processed from Tamanan residents' waste. Contact at 085878347481."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "karnaminik",
+      "title": { "id": "Karnaminik", "en": "Karnaminik" },
+      "category": "produk",
+      "description": {
+        "id": "Kerajinan kulit berupa tas kulit dan dompet kulit. Kontak di 085601266849.",
+        "en": "Leather crafts including leather bags and wallets. Contact at 085601266849."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "house-of-amora",
+      "title": { "id": "House of Amora", "en": "House of Amora" },
+      "category": "produk",
+      "description": {
+        "id": "Kerajinan kulit berupa tas kulit, dompet kulit, ikat pinggang kulit, dan aksesoris. Kontak di 082227042929.",
+        "en": "Leather crafts including leather bags, wallets, belts, and accessories. Contact at 082227042929."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "bekti-ratna-mua",
+      "title": { "id": "Bekti Ratna MUA", "en": "Bekti Ratna MUA" },
+      "category": "jasa",
+      "description": {
+        "id": "Jasa make up untuk berbagai acara. Kontak di 08126640207.",
+        "en": "Makeup services for various events. Contact at 08126640207."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "laundry-bu-siti",
+      "title": { "id": "Laundry Bu Siti", "en": "Mrs. Siti's Laundry" },
+      "category": "jasa",
+      "description": {
+        "id": "Jasa laundry Rp8.000/kg, setrika Rp5.000/kg, dan seprei satuan Rp10.000\u201320.000. Kontak di 083841553519.",
+        "en": "Laundry service Rp8,000/kg, ironing Rp5,000/kg, and individual bed sheets Rp10,000\u201320,000. Contact at 083841553519."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "laundry-bu-asih",
+      "title": { "id": "Laundry Bu Asih", "en": "Mrs. Asih's Laundry" },
+      "category": "jasa",
+      "description": {
+        "id": "Jasa laundry Rp8.000/kg, setrika Rp5.000/kg, dan seprei satuan Rp10.000\u201320.000. Kontak di 083181231264.",
+        "en": "Laundry service Rp8,000/kg, ironing Rp5,000/kg, and individual bed sheets Rp10,000\u201320,000. Contact at 083181231264."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "salon-nadia-totok-aura",
+      "title": { "id": "Salon Nadia Totok Aura", "en": "Nadia Totok Aura Salon" },
+      "category": "jasa",
+      "description": {
+        "id": "Jasa totok mata/hidung/payudara/perut mulai Rp50.000\u201385.000 per sesi, make up Rp100.000\u2013125.000, serta paket dekor & make up pengantin dan lamaran sesuai budget. Kontak di 081904064255.",
+        "en": "Eye/nose/chest/abdominal totok therapy from Rp50,000\u201385,000 per session, makeup Rp100,000\u2013125,000, and wedding & engagement decor & makeup packages within budget. Contact at 081904064255."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "griya-busana-nurul-kh",
+      "title": { "id": "Griya Busana Nurul KH", "en": "Nurul KH Fashion House" },
+      "category": "jasa",
+      "description": {
+        "id": "Jasa menjahit busana. Kontak di 087738770075.",
+        "en": "Sewing services. Contact at 087738770075."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "bimbel-triwiji",
+      "title": { "id": "Bimbel Triwiji", "en": "Triwiji Tutoring" },
+      "category": "jasa",
+      "description": {
+        "id": "Bimbingan belajar bahasa Jawa untuk anak-anak dan pelajar.",
+        "en": "Javanese language tutoring for children and students."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "les-baca-tulis",
+      "title": { "id": "Les Baca Tulis", "en": "Reading & Writing Tutoring" },
+      "category": "jasa",
+      "description": {
+        "id": "Bimbingan belajar membaca dan menulis untuk anak-anak.",
+        "en": "Reading and writing tutoring for children."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    },
+    {
+      "id": "bimbel-calistung",
+      "title": { "id": "Bimbel Calistung", "en": "Calistung Tutoring" },
+      "category": "jasa",
+      "description": {
+        "id": "Bimbingan belajar membaca, menulis, dan berhitung untuk anak-anak.",
+        "en": "Reading, writing, and arithmetic tutoring for children."
+      },
+      "image": "/hero.png",
+      "mapsUrl": "",
+      "waUrl": "https://wa.me/6285876270545"
+    }
+  ]
+}   

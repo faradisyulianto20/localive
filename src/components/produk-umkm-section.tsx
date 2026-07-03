@@ -1,15 +1,40 @@
-import { useRef } from 'react'
+// produk-umkm-section.tsx
+import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from '#/hooks/use-in-view.ts'
 import UMKMCard from './umkm-card'
 import umkmData from '#/lib/umkm.json'
+import type { UMKMItem } from './umkm-card'
+
 
 export default function ProdukUMKMSection() {
   const { t } = useTranslation()
-  const items = umkmData.items.slice(0, 6)
+  const items = (umkmData.items as UMKMItem[]).slice(0, 6)
   const scrollRef = useRef<HTMLDivElement>(null)
   const { ref, inView } = useInView()
+
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(false)
+
+  const updateScrollState = () => {
+    const el = scrollRef.current
+    if (!el) return
+    setCanScrollLeft(el.scrollLeft > 4)
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4)
+  }
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    updateScrollState()
+    el.addEventListener('scroll', updateScrollState, { passive: true })
+    window.addEventListener('resize', updateScrollState)
+    return () => {
+      el.removeEventListener('scroll', updateScrollState)
+      window.removeEventListener('resize', updateScrollState)
+    }
+  }, [items.length])
 
   const scroll = (direction: 'left' | 'right') => {
     if (!scrollRef.current) return
@@ -21,25 +46,35 @@ export default function ProdukUMKMSection() {
   }
 
   return (
-    <section id="umkm" ref={ref} className={`page-wrap py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
+    <section id="umkm" ref={ref} className={`page-wrap py-12 md:py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
           {t('section.umkm.kicker')}
         </p>
-        <h2 className="display-title text-forest mt-2 text-3xl font-bold leading-tight md:text-4xl">
+        <h2 className="display-title text-forest mt-2 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
           {t('section.umkm.title', 'Produk Unggulan UMKM Tamanan')}
         </h2>
       </div>
 
       <div className="relative mt-10">
+        {canScrollLeft && (
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 z-10 -translate-y-1/2 -translate-x-3 md:-translate-x-5 flex h-10 w-10 items-center justify-center rounded-full bg-white text-emerald-900 shadow-md ring-1 ring-black/5 transition-colors hover:bg-emerald-50"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+        )}
+
         <div
           ref={scrollRef}
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2"
         >
           {items.map((item, index) => (
-            <div
+              <div
               key={item.id}
-              className={`snap-start shrink-0 w-[220px] transition-all duration-500 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}
+              className={`snap-start shrink-0 w-60 sm:w-75 transition-all duration-500 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}
               style={{ animationDelay: `${index * 80}ms` }}
             >
               <UMKMCard item={item} />
@@ -47,22 +82,15 @@ export default function ProdukUMKMSection() {
           ))}
         </div>
 
-        <div className="mt-6 flex justify-center gap-3">
-          <button
-            onClick={() => scroll('left')}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-700 text-white transition-colors hover:bg-amber-800"
-            aria-label="Previous"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
+        {canScrollRight && (
           <button
             onClick={() => scroll('right')}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-700 text-white transition-colors hover:bg-amber-800"
+            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 translate-x-3 md:translate-x-5 flex h-10 w-10 items-center justify-center rounded-full bg-white text-emerald-900 shadow-md ring-1 ring-black/5 transition-colors hover:bg-emerald-50"
             aria-label="Next"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
-        </div>
+        )}
       </div>
 
       <div className="mt-10 flex justify-center">
