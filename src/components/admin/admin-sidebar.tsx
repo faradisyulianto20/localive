@@ -26,15 +26,18 @@ export default function AdminSidebar() {
   }
 
   return (
-    <aside className="sticky top-0 flex h-screen w-60 flex-col border-r border-neutral-200 bg-white">
-      <div className="flex h-16 items-center gap-2 border-b border-neutral-100 px-5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-700 text-sm font-bold text-white">
+    <aside className="sticky top-0 flex h-screen w-60 flex-col border-r border-[#EAEAEC] bg-white">
+      <div className="flex h-16 items-center gap-3 border-b border-[#EAEAEC] px-5">
+        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#10B981] text-sm font-bold text-white">
           L
         </div>
-        <span className="text-base font-bold text-neutral-900">Admin</span>
+        <span className="text-lg font-bold text-[#111214]">Admin</span>
       </div>
 
-      <nav className="flex-1 space-y-1 p-3">
+      <nav className="flex-1 space-y-1 px-3 py-4">
+        <p className="px-3 pb-1 text-[11px] font-medium uppercase tracking-wider text-[#9CA0AC]">
+          Menu
+        </p>
         {menu.map((item) => {
           const isActive = matchRoute({ to: item.to })
           const Icon = item.icon
@@ -44,22 +47,22 @@ export default function AdminSidebar() {
               to={item.to}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? 'bg-emerald-50 text-emerald-700'
-                  : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 hover:cursor-pointer'
+                  ? 'bg-[#F3F4F6] text-[#111214]'
+                  : 'text-[#8B8D98] hover:bg-[#F3F4F6] hover:text-[#111214]'
               }`}
             >
-              <Icon className="h-4 w-4" />
+              <Icon className="h-4 w-4 shrink-0" />
               {item.label}
             </Link>
           )
         })}
       </nav>
 
-      <div className="border-t border-neutral-100 p-3">
+      <div className="border-t border-[#EAEAEC] p-3">
         <button
           type="button"
           onClick={handleLogout}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-600 transition-colors hover:bg-red-50 hover:text-red-600 hover:cursor-pointer"
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-[#8B8D98] transition-colors hover:bg-[#F3F4F6] hover:text-[#EF4444]"
         >
           <LogOut className="h-4 w-4" />
           Logout

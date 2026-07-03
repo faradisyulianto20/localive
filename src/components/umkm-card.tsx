@@ -40,8 +40,8 @@ export default function UMKMCard({ item }: UMKMCardProps) {
   const cat = categoryLabel[item.category]
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-neutral-100 shadow-sm transition-shadow hover:shadow-md">
-      <div className="aspect-[4/3] overflow-hidden">
+    <div className="overflow-hidden rounded-xl border border-neutral-100 shadow-sm transition-shadow hover:shadow-md">
+      <div className="aspect-[1/1] overflow-hidden">
         <img
           src={item.image}
           alt={tval(item.title, lang)}
@@ -49,17 +49,17 @@ export default function UMKMCard({ item }: UMKMCardProps) {
         />
       </div>
 
-      <div className="p-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-base font-bold text-neutral-900">
+      <div className="p-3">
+        <div className="flex items-center justify-between gap-1">
+          <h3 className="text-sm font-bold text-neutral-900 line-clamp-1">
             {tval(item.title, lang)}
           </h3>
-          <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white ${categoryColor[item.category]}`}>
+          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold text-white ${categoryColor[item.category]}`}>
             {cat[lang] ?? cat.id}
           </span>
         </div>
 
-        <p className="mt-2 text-sm leading-relaxed text-neutral-600 line-clamp-2">
+        <p className="mt-1.5 text-xs leading-relaxed text-neutral-600 line-clamp-2">
           {tval(item.description, lang)}
         </p>
 
@@ -67,9 +67,9 @@ export default function UMKMCard({ item }: UMKMCardProps) {
           href={item.waUrl ?? (item.noTelp ? `https://wa.me/${item.noTelp.replace(/[^0-9]/g, '')}` : '#')}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-green-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-700"
+          className="mt-2 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-green-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-green-700"
         >
-          <MessageCircle className="h-4 w-4" />
+          <MessageCircle className="h-3 w-3" />
           {t('umkm.hubungi', 'Hubungi WA')}
         </a>
       </div>

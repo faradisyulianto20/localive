@@ -19,9 +19,15 @@ interface ArtikelCardProps {
 }
 
 const categoryColor: Record<string, string> = {
-  berita: 'bg-blue-500',
-  kegiatan: 'bg-green-500',
-  pengumuman: 'bg-orange-500',
+  berita: 'bg-olive',
+  kegiatan: 'bg-forest',
+  pengumuman: 'bg-terracotta',
+}
+
+function stripHtml(html: string) {
+  const div = document.createElement('div')
+  div.innerHTML = html
+  return div.textContent || div.innerText || ''
 }
 
 export default function ArtikelCard({ item }: ArtikelCardProps) {
@@ -37,11 +43,13 @@ export default function ArtikelCard({ item }: ArtikelCardProps) {
     })
   }
 
+  const plainText = stripHtml(item.content[lang] ?? item.content.id)
+
   return (
     <Link
       to="/artikel/$id"
       params={{ id: item.id }}
-      className="group block overflow-hidden rounded-2xl border border-neutral-100 shadow-sm transition-shadow hover:shadow-md"
+      className="group block overflow-hidden rounded-xl border border-neutral-100 shadow-sm transition-shadow hover:shadow-md"
     >
       <div className="aspect-[16/9] overflow-hidden">
         <img
@@ -61,6 +69,10 @@ export default function ArtikelCard({ item }: ArtikelCardProps) {
         <h3 className="mt-2 text-base font-bold text-neutral-900 line-clamp-2 group-hover:text-emerald-700">
           {item.title[lang] ?? item.title.id}
         </h3>
+
+        <p className="mt-1.5 text-xs leading-relaxed text-neutral-500 line-clamp-2">
+          {plainText}
+        </p>
 
         <div className="mt-3 flex items-center gap-4 text-xs text-neutral-500">
           <span className="flex items-center gap-1">

@@ -12,58 +12,43 @@ function Dashboard() {
   const { t } = useTranslation()
 
   const stats = [
-    {
-      label: t('admin.dashboard.totalWisata', 'Total Wisata'),
-      value: wisataData.items.length,
-      icon: Mountain,
-      color: 'bg-amber-100 text-amber-700',
-      link: '/admin/wisata',
-    },
-    {
-      label: t('admin.dashboard.totalUMKM', 'Total UMKM'),
-      value: umkmData.items.length,
-      icon: Store,
-      color: 'bg-blue-100 text-blue-700',
-      link: '/admin/umkm',
-    },
-    {
-      label: t('admin.dashboard.totalArtikel', 'Total Artikel'),
-      value: artikelData.length,
-      icon: FileText,
-      color: 'bg-green-100 text-green-700',
-      link: '/admin/artikel',
-    },
+    { label: t('admin.dashboard.totalWisata', 'Total Wisata'), value: wisataData.items.length, icon: Mountain, link: '/admin/wisata' },
+    { label: t('admin.dashboard.totalUMKM', 'Total UMKM'), value: umkmData.items.length, icon: Store, link: '/admin/umkm' },
+    { label: t('admin.dashboard.totalArtikel', 'Total Artikel'), value: artikelData.length, icon: FileText, link: '/admin/artikel' },
   ]
 
   return (
     <div>
-      <h1 className="display-title text-2xl font-bold text-neutral-900">
+      <h1 className="display-title text-2xl md:text-3xl font-bold text-[#111214]">
         {t('admin.dashboard.title', 'Dashboard')}
       </h1>
+      <p className="mt-1 text-sm text-[#8B8D98]">
+        {t('admin.dashboard.subtitle', 'Kelola konten website Localive')}
+      </p>
 
-      <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3">
         {stats.map((stat, i) => {
           const Icon = stat.icon
           return (
             <Link
               key={i}
               to={stat.link}
-              className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+              className="rounded-2xl border border-[#EAEAEC] bg-white p-6 transition-colors hover:border-[#d4d4d6]"
             >
-              <div className="flex items-center justify-between">
-                <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.color}`}>
-                  <Icon className="h-6 w-6" />
+              <div className="flex items-start justify-between">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#F3F4F6] text-[#8B8D98]">
+                  <Icon className="h-5 w-5" />
                 </div>
-                <span className="text-3xl font-bold text-neutral-900">{stat.value}</span>
+                <span className="text-2xl md:text-3xl font-bold text-[#111214]">{stat.value}</span>
               </div>
-              <p className="mt-3 text-sm font-medium text-neutral-600">{stat.label}</p>
+              <p className="mt-4 text-sm text-[#8B8D98]">{stat.label}</p>
             </Link>
           )
         })}
       </div>
 
-      <div className="mt-10">
-        <h2 className="display-title text-lg font-semibold text-neutral-900">
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-[#111214]">
           {t('admin.dashboard.quickActions', 'Aksi Cepat')}
         </h2>
         <div className="mt-4 flex flex-wrap gap-3">

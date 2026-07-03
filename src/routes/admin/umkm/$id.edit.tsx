@@ -25,7 +25,7 @@ function UMKMEdit() {
     image: item?.image ?? '', noTelp: item?.noTelp ?? '', waUrl: item?.waUrl ?? '', mapsUrl: item?.mapsUrl ?? '',
   })
 
-  if (!item) return <div className="text-neutral-500">UMKM tidak ditemukan</div>
+  if (!item) return <div className="text-sm text-[#8B8D98]">UMKM tidak ditemukan</div>
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -66,13 +66,13 @@ function UMKMEdit() {
 
   return (
     <div className="max-w-2xl">
-      <Card>
-        <CardHeader><CardTitle>{t('admin.umkm.edit', 'Edit UMKM')}</CardTitle></CardHeader>
+      <Card className="shadow-none border-[#EAEAEC] rounded-2xl">
+        <CardHeader><CardTitle className="text-lg font-semibold text-[#111214]">{t('admin.umkm.edit', 'Edit UMKM')}</CardTitle></CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-5">
             <FormField label="Kategori" required error={errors.category}>
               <Select value={form.category} onValueChange={(v) => set('category', v)}>
-                <SelectTrigger><SelectValue placeholder="Pilih kategori" /></SelectTrigger>
+                <SelectTrigger className="rounded-lg border-[#EAEAEC]"><SelectValue placeholder="Pilih kategori" /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="makanan">Makanan</SelectItem>
                   <SelectItem value="produk">Produk</SelectItem>
@@ -83,37 +83,37 @@ function UMKMEdit() {
 
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Nama (Indonesia)" required error={errors.titleId}>
-                <Input value={form.titleId} onChange={(e) => set('titleId', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" value={form.titleId} onChange={(e) => set('titleId', e.target.value)} />
               </FormField>
               <FormField label="Name (English)" required error={errors.titleEn}>
-                <Input value={form.titleEn} onChange={(e) => set('titleEn', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" value={form.titleEn} onChange={(e) => set('titleEn', e.target.value)} />
               </FormField>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Deskripsi (Indonesia)" required error={errors.descId}>
-                <Textarea value={form.descId} onChange={(e) => set('descId', e.target.value)} rows={3} />
+                <Textarea className="rounded-lg border-[#EAEAEC]" value={form.descId} onChange={(e) => set('descId', e.target.value)} rows={3} />
               </FormField>
               <FormField label="Description (English)" required error={errors.descEn}>
-                <Textarea value={form.descEn} onChange={(e) => set('descEn', e.target.value)} rows={3} />
+                <Textarea className="rounded-lg border-[#EAEAEC]" value={form.descEn} onChange={(e) => set('descEn', e.target.value)} rows={3} />
               </FormField>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Gambar (URL)" required error={errors.image}>
-                <Input type="url" value={form.image} onChange={(e) => set('image', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" type="url" value={form.image} onChange={(e) => set('image', e.target.value)} />
               </FormField>
               <FormField label="No Telepon" required error={errors.noTelp}>
-                <Input value={form.noTelp} onChange={(e) => set('noTelp', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" value={form.noTelp} onChange={(e) => set('noTelp', e.target.value)} />
               </FormField>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Link WhatsApp">
-                <Input type="url" value={form.waUrl} onChange={(e) => set('waUrl', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" type="url" value={form.waUrl} onChange={(e) => set('waUrl', e.target.value)} />
               </FormField>
               <FormField label="Link Google Maps">
-                <Input type="url" value={form.mapsUrl} onChange={(e) => set('mapsUrl', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" type="url" value={form.mapsUrl} onChange={(e) => set('mapsUrl', e.target.value)} />
               </FormField>
             </div>
           </CardContent>

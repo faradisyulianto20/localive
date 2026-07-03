@@ -17,28 +17,28 @@ export default function HeroSection() {
 
 			<div className="page-wrap relative z-10 w-full pb-20 pt-24 my-auto">
 				<div className="max-w-2xl">
-					<p className="text-sm font-semibold uppercase tracking-wide text-emerald-400">
+					<p className="text-sm font-semibold uppercase tracking-wide text-emerald-400 animate-fade-in-up">
 						{t(
 							"page.beranda.kicker",
 							"LEMAH ASRI · TAMANAN, KALASAN, SLEMAN",
 						)}
 					</p>
 
-					<h1 className="display-title mt-4 text-4xl font-bold leading-tight text-white md:text-5xl">
+					<h1 className="display-title mt-4 text-4xl font-bold leading-tight text-white md:text-5xl animate-fade-in-up" style={{ animationDelay: '150ms' }}>
 						{t(
 							"page.beranda.title",
 							"Rasakan Keindahan dan Keautentikan Pedukuhan Tamanan",
 						)}
 					</h1>
 
-					<p className="mt-5 max-w-lg text-[15px] leading-relaxed text-white/85">
+					<p className="mt-5 max-w-lg text-[15px] leading-relaxed text-white/85 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
 						{t(
 							"page.beranda.description",
 							"Tamanan adalah pedukuhan di Kalasan, Sleman yang kaya akan potensi wisata, budaya, dan UMKM.",
 						)}
 					</p>
 
-					<div className="mt-7 flex flex-wrap items-center gap-3">
+					<div className="mt-7 flex flex-wrap items-center gap-3 animate-fade-in-up" style={{ animationDelay: '450ms' }}>
 						<a
 							href="/wisata"
 							className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"

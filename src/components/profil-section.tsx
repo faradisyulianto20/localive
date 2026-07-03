@@ -1,18 +1,21 @@
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useInView } from "#/hooks/use-in-view.ts";
 
 export default function ProfilSection() {
 	const { t } = useTranslation();
+	const { ref, inView } = useInView();
 
 	return (
-		<section className="page-wrap py-16">
+		<section ref={ref} className={`page-wrap py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
 			<div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
-				<div className="overflow-hidden rounded-2xl">
+				<div className="relative overflow-hidden rounded-xl">
 					<img
 						src="/hero.png"
 						alt={t("section.profil.title", "Desa Tamanan")}
 						className="h-full w-full object-cover"
 					/>
+					<div className="absolute inset-0 bg-gradient-to-t from-emerald-800/60 via-emerald-800/20 to-transparent" />
 				</div>
 
 				<div>
@@ -33,7 +36,7 @@ export default function ProfilSection() {
 
 					<a
 						href="/profil"
-						className="mt-7 inline-flex items-center gap-2 rounded-full bg-amber-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-amber-800"
+						className="mt-7 inline-flex items-center gap-2 rounded-full border-2 border-amber-700 px-6 py-3 text-sm font-semibold text-amber-700 transition-colors hover:bg-amber-50"
 					>
 						{t("section.profil.cta", "Lihat Profil Lengkap")}
 						<ArrowRight className="h-4 w-4" />

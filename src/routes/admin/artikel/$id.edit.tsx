@@ -25,7 +25,7 @@ function ArtikelEdit() {
     image: item?.image ?? '', category: item?.category ?? '', penulis: item?.penulis ?? '', tanggal: item?.tanggal ?? '',
   })
 
-  if (!item) return <div className="text-neutral-500">Artikel tidak ditemukan</div>
+  if (!item) return <div className="text-sm text-[#8B8D98]">Artikel tidak ditemukan</div>
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -66,16 +66,16 @@ function ArtikelEdit() {
 
   return (
     <div className="max-w-3xl">
-      <Card>
-        <CardHeader><CardTitle>{t('admin.artikel.edit', 'Edit Artikel')}</CardTitle></CardHeader>
+      <Card className="shadow-none border-[#EAEAEC] rounded-2xl">
+        <CardHeader><CardTitle className="text-lg font-semibold text-[#111214]">{t('admin.artikel.edit', 'Edit Artikel')}</CardTitle></CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-5">
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Judul (Indonesia)" required error={errors.titleId}>
-                <Input value={form.titleId} onChange={(e) => set('titleId', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" value={form.titleId} onChange={(e) => set('titleId', e.target.value)} />
               </FormField>
               <FormField label="Title (English)" required error={errors.titleEn}>
-                <Input value={form.titleEn} onChange={(e) => set('titleEn', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" value={form.titleEn} onChange={(e) => set('titleEn', e.target.value)} />
               </FormField>
             </div>
 
@@ -88,11 +88,11 @@ function ArtikelEdit() {
 
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Gambar (URL)" required error={errors.image}>
-                <Input type="url" value={form.image} onChange={(e) => set('image', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" type="url" value={form.image} onChange={(e) => set('image', e.target.value)} />
               </FormField>
               <FormField label="Kategori" required error={errors.category}>
                 <Select value={form.category} onValueChange={(v) => set('category', v)}>
-                  <SelectTrigger><SelectValue placeholder="Pilih" /></SelectTrigger>
+                  <SelectTrigger className="rounded-lg border-[#EAEAEC]"><SelectValue placeholder="Pilih" /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="berita">Berita</SelectItem>
                     <SelectItem value="kegiatan">Kegiatan</SelectItem>
@@ -104,10 +104,10 @@ function ArtikelEdit() {
 
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Penulis" required error={errors.penulis}>
-                <Input value={form.penulis} onChange={(e) => set('penulis', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" value={form.penulis} onChange={(e) => set('penulis', e.target.value)} />
               </FormField>
               <FormField label="Tanggal" required error={errors.tanggal}>
-                <Input type="date" value={form.tanggal} onChange={(e) => set('tanggal', e.target.value)} />
+                <Input className="rounded-lg border-[#EAEAEC]" type="date" value={form.tanggal} onChange={(e) => set('tanggal', e.target.value)} />
               </FormField>
             </div>
           </CardContent>

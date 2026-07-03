@@ -61,15 +61,15 @@ function WisataNew() {
 
   return (
     <div className="max-w-2xl">
-      <Card>
+      <Card className="shadow-none border-[#EAEAEC] rounded-2xl">
         <CardHeader>
-          <CardTitle>{t('admin.wisata.add', 'Tambah Wisata')}</CardTitle>
+          <CardTitle className="text-lg font-semibold text-[#111214]">{t('admin.wisata.add', 'Tambah Wisata')}</CardTitle>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-5">
             <FormField label="Kategori" required error={errors.category}>
               <Select value={form.category} onValueChange={(v) => set('category', v)}>
-                <SelectTrigger><SelectValue placeholder="Pilih kategori" /></SelectTrigger>
+                <SelectTrigger className="rounded-lg border-[#EAEAEC]"><SelectValue placeholder="Pilih kategori" /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="destinasi">Destinasi</SelectItem>
                   <SelectItem value="atraksi">Atraksi</SelectItem>
@@ -80,24 +80,24 @@ function WisataNew() {
 
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Judul (Indonesia)" required error={errors.titleId}>
-                <Input value={form.titleId} onChange={(e) => set('titleId', e.target.value)} placeholder="Masukkan judul..." />
+                <Input className="rounded-lg border-[#EAEAEC]" value={form.titleId} onChange={(e) => set('titleId', e.target.value)} placeholder="Masukkan judul..." />
               </FormField>
               <FormField label="Title (English)" required error={errors.titleEn}>
-                <Input value={form.titleEn} onChange={(e) => set('titleEn', e.target.value)} placeholder="Enter title..." />
+                <Input className="rounded-lg border-[#EAEAEC]" value={form.titleEn} onChange={(e) => set('titleEn', e.target.value)} placeholder="Enter title..." />
               </FormField>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
               <FormField label="Deskripsi (Indonesia)" required error={errors.descId}>
-                <Textarea value={form.descId} onChange={(e) => set('descId', e.target.value)} rows={4} placeholder="Masukkan deskripsi..." />
+                <Textarea className="rounded-lg border-[#EAEAEC]" value={form.descId} onChange={(e) => set('descId', e.target.value)} rows={4} placeholder="Masukkan deskripsi..." />
               </FormField>
               <FormField label="Description (English)" required error={errors.descEn}>
-                <Textarea value={form.descEn} onChange={(e) => set('descEn', e.target.value)} rows={4} placeholder="Enter description..." />
+                <Textarea className="rounded-lg border-[#EAEAEC]" value={form.descEn} onChange={(e) => set('descEn', e.target.value)} rows={4} placeholder="Enter description..." />
               </FormField>
             </div>
 
             <FormField label="Gambar (URL)" required error={errors.image}>
-              <Input type="url" value={form.image} onChange={(e) => set('image', e.target.value)} placeholder="https://..." />
+              <Input className="rounded-lg border-[#EAEAEC]" type="url" value={form.image} onChange={(e) => set('image', e.target.value)} placeholder="https://..." />
             </FormField>
           </CardContent>
           <CardFooter className="gap-3">

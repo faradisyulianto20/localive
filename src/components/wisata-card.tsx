@@ -30,7 +30,7 @@ export default function WisataCard({ item }: WisataCardProps) {
   const cat = categoryLabel[item.category]
 
   return (
-    <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
+    <div className="group relative aspect-[4/3] overflow-hidden rounded-xl">
       <img
         src={item.image}
         alt={tval(item.title, lang)}
