@@ -9,30 +9,61 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WisataRouteImport } from './routes/wisata'
+import { Route as UmkmRouteImport } from './routes/umkm'
 import { Route as ProfilRouteImport } from './routes/profil'
-import { Route as PenginapanRouteImport } from './routes/penginapan'
-import { Route as PaketWisataRouteImport } from './routes/paket-wisata'
-import { Route as DestinasiRouteImport } from './routes/destinasi'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as LemahAsriRouteImport } from './routes/lemah-asri'
+import { Route as ArtikelRouteImport } from './routes/artikel'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as ArtikelIdRouteImport } from './routes/artikel/$id'
+import { Route as AdminWisataIndexRouteImport } from './routes/admin/wisata/index'
+import { Route as AdminUmkmIndexRouteImport } from './routes/admin/umkm/index'
+import { Route as AdminLemahAsriIndexRouteImport } from './routes/admin/lemah-asri/index'
+import { Route as AdminArtikelIndexRouteImport } from './routes/admin/artikel/index'
+import { Route as AdminWisataNewRouteImport } from './routes/admin/wisata/new'
+import { Route as AdminUmkmNewRouteImport } from './routes/admin/umkm/new'
+import { Route as AdminLemahAsriEditRouteImport } from './routes/admin/lemah-asri/edit'
+import { Route as AdminArtikelNewRouteImport } from './routes/admin/artikel/new'
+import { Route as AdminWisataIdEditRouteImport } from './routes/admin/wisata/$id.edit'
+import { Route as AdminUmkmIdEditRouteImport } from './routes/admin/umkm/$id.edit'
+import { Route as AdminArtikelIdEditRouteImport } from './routes/admin/artikel/$id.edit'
 
+const WisataRoute = WisataRouteImport.update({
+  id: '/wisata',
+  path: '/wisata',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UmkmRoute = UmkmRouteImport.update({
+  id: '/umkm',
+  path: '/umkm',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfilRoute = ProfilRouteImport.update({
   id: '/profil',
   path: '/profil',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PenginapanRoute = PenginapanRouteImport.update({
-  id: '/penginapan',
-  path: '/penginapan',
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PaketWisataRoute = PaketWisataRouteImport.update({
-  id: '/paket-wisata',
-  path: '/paket-wisata',
+const LemahAsriRoute = LemahAsriRouteImport.update({
+  id: '/lemah-asri',
+  path: '/lemah-asri',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DestinasiRoute = DestinasiRouteImport.update({
-  id: '/destinasi',
-  path: '/destinasi',
+const ArtikelRoute = ArtikelRouteImport.update({
+  id: '/artikel',
+  path: '/artikel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -40,53 +71,239 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const ArtikelIdRoute = ArtikelIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ArtikelRoute,
+} as any)
+const AdminWisataIndexRoute = AdminWisataIndexRouteImport.update({
+  id: '/wisata/',
+  path: '/wisata/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUmkmIndexRoute = AdminUmkmIndexRouteImport.update({
+  id: '/umkm/',
+  path: '/umkm/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLemahAsriIndexRoute = AdminLemahAsriIndexRouteImport.update({
+  id: '/lemah-asri/',
+  path: '/lemah-asri/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminArtikelIndexRoute = AdminArtikelIndexRouteImport.update({
+  id: '/artikel/',
+  path: '/artikel/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminWisataNewRoute = AdminWisataNewRouteImport.update({
+  id: '/wisata/new',
+  path: '/wisata/new',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUmkmNewRoute = AdminUmkmNewRouteImport.update({
+  id: '/umkm/new',
+  path: '/umkm/new',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLemahAsriEditRoute = AdminLemahAsriEditRouteImport.update({
+  id: '/lemah-asri/edit',
+  path: '/lemah-asri/edit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminArtikelNewRoute = AdminArtikelNewRouteImport.update({
+  id: '/artikel/new',
+  path: '/artikel/new',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminWisataIdEditRoute = AdminWisataIdEditRouteImport.update({
+  id: '/wisata/$id/edit',
+  path: '/wisata/$id/edit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUmkmIdEditRoute = AdminUmkmIdEditRouteImport.update({
+  id: '/umkm/$id/edit',
+  path: '/umkm/$id/edit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminArtikelIdEditRoute = AdminArtikelIdEditRouteImport.update({
+  id: '/artikel/$id/edit',
+  path: '/artikel/$id/edit',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/destinasi': typeof DestinasiRoute
-  '/paket-wisata': typeof PaketWisataRoute
-  '/penginapan': typeof PenginapanRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/artikel': typeof ArtikelRouteWithChildren
+  '/lemah-asri': typeof LemahAsriRoute
+  '/login': typeof LoginRoute
   '/profil': typeof ProfilRoute
+  '/umkm': typeof UmkmRoute
+  '/wisata': typeof WisataRoute
+  '/artikel/$id': typeof ArtikelIdRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/artikel/new': typeof AdminArtikelNewRoute
+  '/admin/lemah-asri/edit': typeof AdminLemahAsriEditRoute
+  '/admin/umkm/new': typeof AdminUmkmNewRoute
+  '/admin/wisata/new': typeof AdminWisataNewRoute
+  '/admin/artikel/': typeof AdminArtikelIndexRoute
+  '/admin/lemah-asri/': typeof AdminLemahAsriIndexRoute
+  '/admin/umkm/': typeof AdminUmkmIndexRoute
+  '/admin/wisata/': typeof AdminWisataIndexRoute
+  '/admin/artikel/$id/edit': typeof AdminArtikelIdEditRoute
+  '/admin/umkm/$id/edit': typeof AdminUmkmIdEditRoute
+  '/admin/wisata/$id/edit': typeof AdminWisataIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/destinasi': typeof DestinasiRoute
-  '/paket-wisata': typeof PaketWisataRoute
-  '/penginapan': typeof PenginapanRoute
+  '/artikel': typeof ArtikelRouteWithChildren
+  '/lemah-asri': typeof LemahAsriRoute
+  '/login': typeof LoginRoute
   '/profil': typeof ProfilRoute
+  '/umkm': typeof UmkmRoute
+  '/wisata': typeof WisataRoute
+  '/artikel/$id': typeof ArtikelIdRoute
+  '/admin': typeof AdminIndexRoute
+  '/admin/artikel/new': typeof AdminArtikelNewRoute
+  '/admin/lemah-asri/edit': typeof AdminLemahAsriEditRoute
+  '/admin/umkm/new': typeof AdminUmkmNewRoute
+  '/admin/wisata/new': typeof AdminWisataNewRoute
+  '/admin/artikel': typeof AdminArtikelIndexRoute
+  '/admin/lemah-asri': typeof AdminLemahAsriIndexRoute
+  '/admin/umkm': typeof AdminUmkmIndexRoute
+  '/admin/wisata': typeof AdminWisataIndexRoute
+  '/admin/artikel/$id/edit': typeof AdminArtikelIdEditRoute
+  '/admin/umkm/$id/edit': typeof AdminUmkmIdEditRoute
+  '/admin/wisata/$id/edit': typeof AdminWisataIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/destinasi': typeof DestinasiRoute
-  '/paket-wisata': typeof PaketWisataRoute
-  '/penginapan': typeof PenginapanRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/artikel': typeof ArtikelRouteWithChildren
+  '/lemah-asri': typeof LemahAsriRoute
+  '/login': typeof LoginRoute
   '/profil': typeof ProfilRoute
+  '/umkm': typeof UmkmRoute
+  '/wisata': typeof WisataRoute
+  '/artikel/$id': typeof ArtikelIdRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/artikel/new': typeof AdminArtikelNewRoute
+  '/admin/lemah-asri/edit': typeof AdminLemahAsriEditRoute
+  '/admin/umkm/new': typeof AdminUmkmNewRoute
+  '/admin/wisata/new': typeof AdminWisataNewRoute
+  '/admin/artikel/': typeof AdminArtikelIndexRoute
+  '/admin/lemah-asri/': typeof AdminLemahAsriIndexRoute
+  '/admin/umkm/': typeof AdminUmkmIndexRoute
+  '/admin/wisata/': typeof AdminWisataIndexRoute
+  '/admin/artikel/$id/edit': typeof AdminArtikelIdEditRoute
+  '/admin/umkm/$id/edit': typeof AdminUmkmIdEditRoute
+  '/admin/wisata/$id/edit': typeof AdminWisataIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/destinasi' | '/paket-wisata' | '/penginapan' | '/profil'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/artikel'
+    | '/lemah-asri'
+    | '/login'
+    | '/profil'
+    | '/umkm'
+    | '/wisata'
+    | '/artikel/$id'
+    | '/admin/'
+    | '/admin/artikel/new'
+    | '/admin/lemah-asri/edit'
+    | '/admin/umkm/new'
+    | '/admin/wisata/new'
+    | '/admin/artikel/'
+    | '/admin/lemah-asri/'
+    | '/admin/umkm/'
+    | '/admin/wisata/'
+    | '/admin/artikel/$id/edit'
+    | '/admin/umkm/$id/edit'
+    | '/admin/wisata/$id/edit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/destinasi' | '/paket-wisata' | '/penginapan' | '/profil'
+  to:
+    | '/'
+    | '/artikel'
+    | '/lemah-asri'
+    | '/login'
+    | '/profil'
+    | '/umkm'
+    | '/wisata'
+    | '/artikel/$id'
+    | '/admin'
+    | '/admin/artikel/new'
+    | '/admin/lemah-asri/edit'
+    | '/admin/umkm/new'
+    | '/admin/wisata/new'
+    | '/admin/artikel'
+    | '/admin/lemah-asri'
+    | '/admin/umkm'
+    | '/admin/wisata'
+    | '/admin/artikel/$id/edit'
+    | '/admin/umkm/$id/edit'
+    | '/admin/wisata/$id/edit'
   id:
     | '__root__'
     | '/'
-    | '/destinasi'
-    | '/paket-wisata'
-    | '/penginapan'
+    | '/admin'
+    | '/artikel'
+    | '/lemah-asri'
+    | '/login'
     | '/profil'
+    | '/umkm'
+    | '/wisata'
+    | '/artikel/$id'
+    | '/admin/'
+    | '/admin/artikel/new'
+    | '/admin/lemah-asri/edit'
+    | '/admin/umkm/new'
+    | '/admin/wisata/new'
+    | '/admin/artikel/'
+    | '/admin/lemah-asri/'
+    | '/admin/umkm/'
+    | '/admin/wisata/'
+    | '/admin/artikel/$id/edit'
+    | '/admin/umkm/$id/edit'
+    | '/admin/wisata/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DestinasiRoute: typeof DestinasiRoute
-  PaketWisataRoute: typeof PaketWisataRoute
-  PenginapanRoute: typeof PenginapanRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  ArtikelRoute: typeof ArtikelRouteWithChildren
+  LemahAsriRoute: typeof LemahAsriRoute
+  LoginRoute: typeof LoginRoute
   ProfilRoute: typeof ProfilRoute
+  UmkmRoute: typeof UmkmRoute
+  WisataRoute: typeof WisataRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wisata': {
+      id: '/wisata'
+      path: '/wisata'
+      fullPath: '/wisata'
+      preLoaderRoute: typeof WisataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/umkm': {
+      id: '/umkm'
+      path: '/umkm'
+      fullPath: '/umkm'
+      preLoaderRoute: typeof UmkmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profil': {
       id: '/profil'
       path: '/profil'
@@ -94,25 +311,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfilRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/penginapan': {
-      id: '/penginapan'
-      path: '/penginapan'
-      fullPath: '/penginapan'
-      preLoaderRoute: typeof PenginapanRouteImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/paket-wisata': {
-      id: '/paket-wisata'
-      path: '/paket-wisata'
-      fullPath: '/paket-wisata'
-      preLoaderRoute: typeof PaketWisataRouteImport
+    '/lemah-asri': {
+      id: '/lemah-asri'
+      path: '/lemah-asri'
+      fullPath: '/lemah-asri'
+      preLoaderRoute: typeof LemahAsriRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/destinasi': {
-      id: '/destinasi'
-      path: '/destinasi'
-      fullPath: '/destinasi'
-      preLoaderRoute: typeof DestinasiRouteImport
+    '/artikel': {
+      id: '/artikel'
+      path: '/artikel'
+      fullPath: '/artikel'
+      preLoaderRoute: typeof ArtikelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -122,15 +346,152 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/artikel/$id': {
+      id: '/artikel/$id'
+      path: '/$id'
+      fullPath: '/artikel/$id'
+      preLoaderRoute: typeof ArtikelIdRouteImport
+      parentRoute: typeof ArtikelRoute
+    }
+    '/admin/wisata/': {
+      id: '/admin/wisata/'
+      path: '/wisata'
+      fullPath: '/admin/wisata/'
+      preLoaderRoute: typeof AdminWisataIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/umkm/': {
+      id: '/admin/umkm/'
+      path: '/umkm'
+      fullPath: '/admin/umkm/'
+      preLoaderRoute: typeof AdminUmkmIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/lemah-asri/': {
+      id: '/admin/lemah-asri/'
+      path: '/lemah-asri'
+      fullPath: '/admin/lemah-asri/'
+      preLoaderRoute: typeof AdminLemahAsriIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/artikel/': {
+      id: '/admin/artikel/'
+      path: '/artikel'
+      fullPath: '/admin/artikel/'
+      preLoaderRoute: typeof AdminArtikelIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/wisata/new': {
+      id: '/admin/wisata/new'
+      path: '/wisata/new'
+      fullPath: '/admin/wisata/new'
+      preLoaderRoute: typeof AdminWisataNewRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/umkm/new': {
+      id: '/admin/umkm/new'
+      path: '/umkm/new'
+      fullPath: '/admin/umkm/new'
+      preLoaderRoute: typeof AdminUmkmNewRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/lemah-asri/edit': {
+      id: '/admin/lemah-asri/edit'
+      path: '/lemah-asri/edit'
+      fullPath: '/admin/lemah-asri/edit'
+      preLoaderRoute: typeof AdminLemahAsriEditRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/artikel/new': {
+      id: '/admin/artikel/new'
+      path: '/artikel/new'
+      fullPath: '/admin/artikel/new'
+      preLoaderRoute: typeof AdminArtikelNewRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/wisata/$id/edit': {
+      id: '/admin/wisata/$id/edit'
+      path: '/wisata/$id/edit'
+      fullPath: '/admin/wisata/$id/edit'
+      preLoaderRoute: typeof AdminWisataIdEditRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/umkm/$id/edit': {
+      id: '/admin/umkm/$id/edit'
+      path: '/umkm/$id/edit'
+      fullPath: '/admin/umkm/$id/edit'
+      preLoaderRoute: typeof AdminUmkmIdEditRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/artikel/$id/edit': {
+      id: '/admin/artikel/$id/edit'
+      path: '/artikel/$id/edit'
+      fullPath: '/admin/artikel/$id/edit'
+      preLoaderRoute: typeof AdminArtikelIdEditRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminArtikelNewRoute: typeof AdminArtikelNewRoute
+  AdminLemahAsriEditRoute: typeof AdminLemahAsriEditRoute
+  AdminUmkmNewRoute: typeof AdminUmkmNewRoute
+  AdminWisataNewRoute: typeof AdminWisataNewRoute
+  AdminArtikelIndexRoute: typeof AdminArtikelIndexRoute
+  AdminLemahAsriIndexRoute: typeof AdminLemahAsriIndexRoute
+  AdminUmkmIndexRoute: typeof AdminUmkmIndexRoute
+  AdminWisataIndexRoute: typeof AdminWisataIndexRoute
+  AdminArtikelIdEditRoute: typeof AdminArtikelIdEditRoute
+  AdminUmkmIdEditRoute: typeof AdminUmkmIdEditRoute
+  AdminWisataIdEditRoute: typeof AdminWisataIdEditRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminIndexRoute: AdminIndexRoute,
+  AdminArtikelNewRoute: AdminArtikelNewRoute,
+  AdminLemahAsriEditRoute: AdminLemahAsriEditRoute,
+  AdminUmkmNewRoute: AdminUmkmNewRoute,
+  AdminWisataNewRoute: AdminWisataNewRoute,
+  AdminArtikelIndexRoute: AdminArtikelIndexRoute,
+  AdminLemahAsriIndexRoute: AdminLemahAsriIndexRoute,
+  AdminUmkmIndexRoute: AdminUmkmIndexRoute,
+  AdminWisataIndexRoute: AdminWisataIndexRoute,
+  AdminArtikelIdEditRoute: AdminArtikelIdEditRoute,
+  AdminUmkmIdEditRoute: AdminUmkmIdEditRoute,
+  AdminWisataIdEditRoute: AdminWisataIdEditRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface ArtikelRouteChildren {
+  ArtikelIdRoute: typeof ArtikelIdRoute
+}
+
+const ArtikelRouteChildren: ArtikelRouteChildren = {
+  ArtikelIdRoute: ArtikelIdRoute,
+}
+
+const ArtikelRouteWithChildren =
+  ArtikelRoute._addFileChildren(ArtikelRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DestinasiRoute: DestinasiRoute,
-  PaketWisataRoute: PaketWisataRoute,
-  PenginapanRoute: PenginapanRoute,
+  AdminRoute: AdminRouteWithChildren,
+  ArtikelRoute: ArtikelRouteWithChildren,
+  LemahAsriRoute: LemahAsriRoute,
+  LoginRoute: LoginRoute,
   ProfilRoute: ProfilRoute,
+  UmkmRoute: UmkmRoute,
+  WisataRoute: WisataRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

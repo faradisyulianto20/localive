@@ -1,0 +1,53 @@
+[
+  {
+    "id": "selamat-datang-di-tamanan",
+    "title": {
+      "id": "Selamat Datang di Pedukuhan Tamanan",
+      "en": "Welcome to Tamanan Hamlet"
+    },
+    "content": {
+      "id": "<p>Selamat datang di Pedukuhan Tamanan, sebuah destinasi wisata berbasis masyarakat yang dikelola oleh Lemah Asri. Kami dengan bangga mempersembahkan keindahan alam, budaya, dan keramahan warga Tamanan kepada seluruh pengunjung.</p><p>Tamanan terletak di Kalasan, Sleman, Daerah Istimewa Yogyakarta. Dengan berbagai potensi yang dimiliki, kami terus berkembang menjadi desa wisata yang berkelanjutan.</p>",
+      "en": "<p>Welcome to Tamanan Hamlet, a community-based tourism destination managed by Lemah Asri. We proudly present the natural beauty, culture, and hospitality of Tamanan residents to all visitors.</p><p>Tamanan is located in Kalasan, Sleman, Special Region of Yogyakarta. With its various potentials, we continue to develop into a sustainable tourism village.</p>"
+    },
+    "image": "/hero.png",
+    "category": "berita",
+    "penulis": "Admin Lemah Asri",
+    "tanggal": "2026-07-01",
+    "createdAt": "2026-07-01T00:00:00Z",
+    "updatedAt": "2026-07-01T00:00:00Z"
+  },
+  {
+    "id": "potensi-wisata-tamanan",
+    "title": {
+      "id": "Potensi Wisata Tamanan yang Wajib Dikunjungi",
+      "en": "Tamanan Tourism Potentials You Must Visit"
+    },
+    "content": {
+      "id": "<p>Pedukuhan Tamanan memiliki berbagai potensi wisata yang menarik untuk dikunjungi. Mulai dari destinasi budaya, atraksi seni, hingga aktivitas alam yang seru.</p><h2>Destinasi Budaya</h2><p>Kawasan cagar budaya dan sanggar seni yang masih lestari menjadi daya tarik utama Tamanan.</p><h2>Atraksi Seni</h2><p>Pertunjukan macapat, gejok lesung, hadroh, dan karawitan yang memukau.</p><h2>Aktivitas Alam</h2><p>Bertani, beternak, jelajah desa, dan outbond yang cocok untuk segala usia.</p>",
+      "en": "<p>Tamanan Hamlet has various tourism potentials worth visiting. From cultural destinations, art attractions, to exciting nature activities.</p><h2>Cultural Destinations</h2><p>Cultural heritage areas and art studios that are still preserved are Tamanan's main attraction.</p><h2>Art Attractions</h2><p>Captivating performances of macapat, gejok lesung, hadroh, and karawitan.</p><h2>Nature Activities</h2><p>Farming, animal husbandry, village exploration, and outbound suitable for all ages.</p>"
+    },
+    "image": "/hero.png",
+    "category": "kegiatan",
+    "penulis": "Admin Lemah Asri",
+    "tanggal": "2026-07-01",
+    "createdAt": "2026-07-01T00:00:00Z",
+    "updatedAt": "2026-07-01T00:00:00Z"
+  },
+  {
+    "id": "umkm-tamanan",
+    "title": {
+      "id": "UMKM Tamanan Siap Mendunia",
+      "en": "Tamanan UMKM Ready to Go Global"
+    },
+    "content": {
+      "id": "<p>UMKM di Pedukuhan Tamanan terus berkembang dengan berbagai produk unggulan. Mulai dari kuliner tradisional, kerajinan tangan, hingga jasa kreatif.</p><p>Dengan dukungan Lemah Asri, para pelaku UMKM di Tamanan semakin berdaya dan mampu memasarkan produknya ke pasar yang lebih luas.</p>",
+      "en": "<p>UMKM in Tamanan Hamlet continues to grow with various superior products. From traditional culinary, handicrafts, to creative services.</p><p>With the support of Lemah Asri, UMKM actors in Tamanan are increasingly empowered and able to market their products to a wider market.</p>"
+    },
+    "image": "/hero.png",
+    "category": "berita",
+    "penulis": "Admin Lemah Asri",
+    "tanggal": "2026-06-28",
+    "createdAt": "2026-06-28T00:00:00Z",
+    "updatedAt": "2026-06-28T00:00:00Z"
+  }
+]

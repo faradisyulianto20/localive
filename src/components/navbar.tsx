@@ -5,9 +5,10 @@ import LanguageToggle from "./language-toggle";
 const links = [
 	{ to: "/", label: "nav.beranda" },
 	{ to: "/profil", label: "nav.profil" },
-	{ to: "/destinasi", label: "nav.destinasi" },
-	{ to: "/paket-wisata", label: "nav.paketWisata" },
-	{ to: "/penginapan", label: "nav.penginapan" },
+	{ to: "/wisata", label: "nav.wisata" },
+	{ to: "/umkm", label: "nav.umkm" },
+	{ to: "/artikel", label: "nav.artikel" },
+	{ to: "/lemah-asri", label: "nav.lemahAsri" },
 ] as const;
 
 export default function Navbar() {
@@ -17,7 +18,6 @@ export default function Navbar() {
 	return (
 		<header className="sticky top-0 z-50">
 			<nav className="flex h-20 w-full items-center justify-between rounded-none rounded-b-3xl bg-white px-8 shadow-[0_20px_45px_-18px_rgba(0,0,0,0.18)]">
-				{/* Logo */}
 				<Link
 					to="/"
 					className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200 text-sm font-medium text-neutral-500"
@@ -25,7 +25,6 @@ export default function Navbar() {
 					Logo
 				</Link>
 
-				{/* Nav links */}
 				<ul className="hidden items-center gap-9 md:flex">
 					{links.map((link) => {
 						const isActive = matchRoute({ to: link.to });

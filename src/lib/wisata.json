@@ -1,0 +1,213 @@
+﻿{
+    "categories":  [
+                       {
+                           "slug":  "destinasi",
+                           "label":  "Destinasi"
+                       },
+                       {
+                           "slug":  "atraksi",
+                           "label":  "Atraksi"
+                       },
+                       {
+                           "slug":  "aktivitas",
+                           "label":  "Aktivitas"
+                       }
+                   ],
+    "items":  [
+                  {
+                      "id":  "destinasi-cagar-budaya-ndokteran",
+                      "category":  "destinasi",
+                      "title":  {
+                                    "id":  "Cagar Budaya Ndokteran",
+                                    "en":  "Ndokteran Cultural Heritage"
+                                },
+                      "description":  {
+                                          "id":  "Kawasan cagar budaya bersejarah di Kampung Prenggan yang menyimpan jejak arsitektur dan tata ruang khas Kotagede, menjadi saksi bisu perkembangan kawasan dari masa ke masa.",
+                                          "en":  "A historic cultural heritage area in Prenggan Village preserving architectural traces and spatial layout typical of Kotagede, silently witnessing the area's development through the ages."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "destinasi-kandang-kelompok",
+                      "category":  "destinasi",
+                      "title":  {
+                                    "id":  "Kandang Kelompok",
+                                    "en":  "Communal Livestock Pen"
+                                },
+                      "description":  {
+                                          "id":  "Area peternakan komunal warga yang menjadi contoh pengelolaan ternak secara gotong royong, sekaligus menjadi tempat wisatawan belajar langsung tentang kehidupan agraris desa.",
+                                          "en":  "A community livestock area exemplifying mutual cooperation in animal husbandry, while also serving as a place for tourists to learn about village agrarian life."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "destinasi-sanggar-budaya",
+                      "category":  "destinasi",
+                      "title":  {
+                                    "id":  "Sanggar Budaya",
+                                    "en":  "Cultural Studio"
+                                },
+                      "description":  {
+                                          "id":  "Pusat kegiatan seni dan budaya warga Prenggan, tempat berlangsungnya latihan tari, karawitan, dan berbagai kesenian tradisional yang terus dilestarikan lintas generasi.",
+                                          "en":  "A center for arts and cultural activities for Prenggan residents, hosting dance rehearsals, gamelan, and various traditional arts preserved across generations."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "atraksi-macapat-triwiji",
+                      "category":  "atraksi",
+                      "title":  {
+                                    "id":  "Macapat Triwiji",
+                                    "en":  "Macapat Triwiji"
+                                },
+                      "description":  {
+                                          "id":  "Pertunjukan tembang macapat yang dilantunkan dengan penuh penghayatan, mengangkat nilai-nilai filosofi Jawa melalui syair dan lagu tradisional.",
+                                          "en":  "A traditional Javanese poetic performance delivered with deep emotion, highlighting Javanese philosophical values through verse and traditional song."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "atraksi-gejok-lesung",
+                      "category":  "atraksi",
+                      "title":  {
+                                    "id":  "Gejok Lesung",
+                                    "en":  "Gejok Lesung"
+                                },
+                      "description":  {
+                                          "id":  "Kesenian musik tradisional yang dimainkan dengan menumbuk alu pada lesung secara berirama, menghasilkan alunan musik khas pedesaan Jawa yang meriah.",
+                                          "en":  "A traditional musical art played by rhythmically pounding a mortar with a pestle, producing lively Javanese countryside melodies."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "atraksi-hadroh",
+                      "category":  "atraksi",
+                      "title":  {
+                                    "id":  "Hadroh",
+                                    "en":  "Hadroh"
+                                },
+                      "description":  {
+                                          "id":  "Kesenian musik bernuansa islami yang dimainkan dengan rebana dan syair pujian, menjadi bagian dari tradisi keagamaan dan kebudayaan warga setempat.",
+                                          "en":  "An Islamic-influenced musical art performed with tambourines and praise verses, forming part of the local community's religious and cultural traditions."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "atraksi-karawitan",
+                      "category":  "atraksi",
+                      "title":  {
+                                    "id":  "Karawitan",
+                                    "en":  "Karawitan"
+                                },
+                      "description":  {
+                                          "id":  "Pertunjukan musik gamelan Jawa yang dimainkan secara ansambel, menghadirkan harmoni instrumen tradisional yang sarat makna budaya.",
+                                          "en":  "A Javanese gamelan ensemble performance presenting a harmony of traditional instruments rich with cultural meaning."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "aktivitas-bertani",
+                      "category":  "aktivitas",
+                      "title":  {
+                                    "id":  "Bertani",
+                                    "en":  "Farming"
+                                },
+                      "description":  {
+                                          "id":  "Rasakan pengalaman langsung turun ke sawah bersama petani lokal, mulai dari menanam hingga memanen hasil bumi khas pedesaan.",
+                                          "en":  "Experience firsthand going into the rice fields with local farmers, from planting to harvesting typical rural produce."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "aktivitas-beternak",
+                      "category":  "aktivitas",
+                      "title":  {
+                                    "id":  "Beternak",
+                                    "en":  "Livestock Farming"
+                                },
+                      "description":  {
+                                          "id":  "Ikut serta dalam kegiatan memberi pakan dan merawat hewan ternak bersama warga, mengenal lebih dekat kehidupan agraris masyarakat Prenggan.",
+                                          "en":  "Participate in feeding and caring for livestock with residents, getting to know the agrarian life of the Prenggan community more closely."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "aktivitas-gamelan",
+                      "category":  "aktivitas",
+                      "title":  {
+                                    "id":  "Gamelan",
+                                    "en":  "Gamelan"
+                                },
+                      "description":  {
+                                          "id":  "Belajar memainkan alat musik gamelan bersama para seniman lokal, mengenal notasi dan filosofi di balik setiap instrumen.",
+                                          "en":  "Learn to play gamelan instruments with local artists, discovering the notation and philosophy behind each instrument."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "aktivitas-dolanan-anak",
+                      "category":  "aktivitas",
+                      "title":  {
+                                    "id":  "Dolanan Anak",
+                                    "en":  "Children's Traditional Games"
+                                },
+                      "description":  {
+                                          "id":  "Bermain permainan tradisional khas Jawa bersama anak-anak setempat, menghidupkan kembali kegembiraan dolanan masa lalu.",
+                                          "en":  "Play traditional Javanese games with local children, reviving the joy of pastimes from days gone by."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "aktivitas-outbond",
+                      "category":  "aktivitas",
+                      "title":  {
+                                    "id":  "Outbond",
+                                    "en":  "Outbound"
+                                },
+                      "description":  {
+                                          "id":  "Kegiatan permainan kelompok di ruang terbuka yang memacu kerja sama tim dan keseruan, cocok untuk rombongan keluarga maupun instansi.",
+                                          "en":  "Outdoor group activities that boost teamwork and fun, suitable for family and corporate groups."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "aktivitas-jelajah-desa-sepeda",
+                      "category":  "aktivitas",
+                      "title":  {
+                                    "id":  "Jelajah Desa Sepeda",
+                                    "en":  "Village Cycling Tour"
+                                },
+                      "description":  {
+                                          "id":  "Berkeliling menyusuri gang-gang dan sudut kampung menggunakan sepeda, menikmati suasana asri sekaligus mengenal kehidupan sehari-hari warga.",
+                                          "en":  "Cycle through village alleys and corners, enjoying the scenic atmosphere while getting to know residents' daily lives."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "aktivitas-jelajah-desa-gerobak-sapi",
+                      "category":  "aktivitas",
+                      "title":  {
+                                    "id":  "Jelajah Desa Gerobak Sapi",
+                                    "en":  "Village Tour by Ox Cart"
+                                },
+                      "description":  {
+                                          "id":  "Pengalaman unik berkeliling desa menaiki gerobak sapi tradisional, menghadirkan nostalgia transportasi khas pedesaan Jawa tempo dulu.",
+                                          "en":  "A unique experience of touring the village on a traditional ox cart, evoking nostalgia for classic Javanese rural transportation."
+                                      },
+                      "image":  "/hero.png"
+                  },
+                  {
+                      "id":  "aktivitas-membuat-olahan-pangan-lokal",
+                      "category":  "aktivitas",
+                      "title":  {
+                                    "id":  "Membuat Olahan Pangan Lokal",
+                                    "en":  "Making Local Food Products"
+                                },
+                      "description":  {
+                                          "id":  "Praktik langsung mengolah bahan pangan khas daerah bersama warga, mulai dari bahan mentah hingga menjadi sajian kuliner tradisional yang siap dinikmati.",
+                                          "en":  "Hands-on practice processing local ingredients with residents, from raw materials to ready-to-enjoy traditional culinary dishes."
+                                      },
+                      "image":  "/hero.png"
+                  }
+              ]
+}

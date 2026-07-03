@@ -1,0 +1,114 @@
+{
+  "categories": [
+    { "slug": "destinasi", "label": "Destinasi" },
+    { "slug": "atraksi", "label": "Atraksi" },
+    { "slug": "aktivitas", "label": "Aktivitas" }
+  ],
+  "items": [
+    {
+      "id": "destinasi-cagar-budaya-ndokteran",
+      "category": "destinasi",
+      "title": "Cagar Budaya Ndokteran",
+      "description": "Kawasan cagar budaya bersejarah di Kampung Prenggan yang menyimpan jejak arsitektur dan tata ruang khas Kotagede, menjadi saksi bisu perkembangan kawasan dari masa ke masa.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "destinasi-kandang-kelompok",
+      "category": "destinasi",
+      "title": "Kandang Kelompok",
+      "description": "Area peternakan komunal warga yang menjadi contoh pengelolaan ternak secara gotong royong, sekaligus menjadi tempat wisatawan belajar langsung tentang kehidupan agraris desa.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "destinasi-sanggar-budaya",
+      "category": "destinasi",
+      "title": "Sanggar Budaya",
+      "description": "Pusat kegiatan seni dan budaya warga Prenggan, tempat berlangsungnya latihan tari, karawitan, dan berbagai kesenian tradisional yang terus dilestarikan lintas generasi.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "atraksi-macapat-triwiji",
+      "category": "atraksi",
+      "title": "Macapat Triwiji",
+      "description": "Pertunjukan tembang macapat yang dilantunkan dengan penuh penghayatan, mengangkat nilai-nilai filosofi Jawa melalui syair dan lagu tradisional.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "atraksi-gejok-lesung",
+      "category": "atraksi",
+      "title": "Gejok Lesung",
+      "description": "Kesenian musik tradisional yang dimainkan dengan menumbuk alu pada lesung secara berirama, menghasilkan alunan musik khas pedesaan Jawa yang meriah.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "atraksi-hadroh",
+      "category": "atraksi",
+      "title": "Hadroh",
+      "description": "Kesenian musik bernuansa islami yang dimainkan dengan rebana dan syair pujian, menjadi bagian dari tradisi keagamaan dan kebudayaan warga setempat.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "atraksi-karawitan",
+      "category": "atraksi",
+      "title": "Karawitan",
+      "description": "Pertunjukan musik gamelan Jawa yang dimainkan secara ansambel, menghadirkan harmoni instrumen tradisional yang sarat makna budaya.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "aktivitas-bertani",
+      "category": "aktivitas",
+      "title": "Bertani",
+      "description": "Rasakan pengalaman langsung turun ke sawah bersama petani lokal, mulai dari menanam hingga memanen hasil bumi khas pedesaan.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "aktivitas-beternak",
+      "category": "aktivitas",
+      "title": "Beternak",
+      "description": "Ikut serta dalam kegiatan memberi pakan dan merawat hewan ternak bersama warga, mengenal lebih dekat kehidupan agraris masyarakat Prenggan.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "aktivitas-gamelan",
+      "category": "aktivitas",
+      "title": "Gamelan",
+      "description": "Belajar memainkan alat musik gamelan bersama para seniman lokal, mengenal notasi dan filosofi di balik setiap instrumen.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "aktivitas-dolanan-anak",
+      "category": "aktivitas",
+      "title": "Dolanan Anak",
+      "description": "Bermain permainan tradisional khas Jawa bersama anak-anak setempat, menghidupkan kembali kegembiraan dolanan masa lalu.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "aktivitas-outbond",
+      "category": "aktivitas",
+      "title": "Outbond",
+      "description": "Kegiatan permainan kelompok di ruang terbuka yang memacu kerja sama tim dan keseruan, cocok untuk rombongan keluarga maupun instansi.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "aktivitas-jelajah-desa-sepeda",
+      "category": "aktivitas",
+      "title": "Jelajah Desa Sepeda",
+      "description": "Berkeliling menyusuri gang-gang dan sudut kampung menggunakan sepeda, menikmati suasana asri sekaligus mengenal kehidupan sehari-hari warga.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "aktivitas-jelajah-desa-gerobak-sapi",
+      "category": "aktivitas",
+      "title": "Jelajah Desa Gerobak Sapi",
+      "description": "Pengalaman unik berkeliling desa menaiki gerobak sapi tradisional, menghadirkan nostalgia transportasi khas pedesaan Jawa tempo dulu.",
+      "image": "/hero.png"
+    },
+    {
+      "id": "aktivitas-membuat-olahan-pangan-lokal",
+      "category": "aktivitas",
+      "title": "Membuat Olahan Pangan Lokal",
+      "description": "Praktik langsung mengolah bahan pangan khas daerah bersama warga, mulai dari bahan mentah hingga menjadi sajian kuliner tradisional yang siap dinikmati.",
+      "image": "/hero.png"
+    }
+  ]
+}

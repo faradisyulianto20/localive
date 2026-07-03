@@ -1,0 +1,46 @@
+{
+  "namaUsaha": {
+    "id": "LEMAH ASRI (Lembaga Usaha Tamanan Sadar Wisata)",
+    "en": "LEMAH ASRI (Tamanan Tourism Awareness Business Institute)"
+  },
+  "pemilik": "Atas Nama Anggota Lemah Asri",
+  "tahunBerdiri": "09 September 2021",
+  "lokasi": "Tamanan, Tamanmartani, Kalasan, Sleman, Daerah Istimewa Yogyakarta",
+  "noTelp": "0882005012212",
+  "email": "tamanan.media@gmail.com",
+  "instagram": "Tamanan.Media",
+  "youtube": "Tamanan TV",
+  "visi": {
+    "id": "Menjadikan Tamanan sebagai Pedukuhan berbasis wisata untuk meningkatkan perekonomian masyarakat",
+    "en": "Making Tamanan a tourism-based hamlet to improve the community's economy"
+  },
+  "misi": {
+    "id": "• Mensupport Pedukuhan Tamanan menjadi dusun wisata\n• Membantu mengembangkan pemberdayaan, budaya, ekonomi dan sumber daya manusia dan sumber daya alam",
+    "en": "• Support Tamanan Hamlet to become a tourism village\n• Help develop empowerment, culture, economy and human resources and natural resources"
+  },
+  "strukturOrganisasi": [
+    { "jabatan": "CHIEF EXECUTIVE OFFICER", "nama": "YUSUF BUDIONO" },
+    { "jabatan": "CHIEF OPERATING OFFICER", "nama": "RINTO HAKIM PAMUNGKAS" },
+    { "jabatan": "FINANCE ADMINISTRATION OFFICER", "nama": "MUHAMMAD ANDIKA RONALDO" },
+    { "jabatan": "MARKETING OFFICER", "nama": "HABIBI DIKI SETIAWAN" },
+    { "jabatan": "PRODUCT OFFICER", "nama": "MURNI AGENG SAPUTRA" },
+    { "jabatan": "GENERAL OFFICER", "nama": "NURCAHYONO" }
+  ],
+  "trackRecord": [
+    "Tuan Tuangga Agung",
+    "PKG Lowokwaru malang",
+    "Orderlies training",
+    "Live in Bem KM Universitas Gadjah Mada",
+    "Outing class Omah Tahfidz habibie",
+    "Partnership RS Bethesda Yogyakarta",
+    "Partnership Bengkel sapi Kalijeruk",
+    "Partnership GENBI",
+    "Partnership DEM UGM",
+    "Partnership BEM FEB UGM",
+    "Studi banding UMKM dan Bumdes Balerejo Kaliangkrik",
+    "Studi tiru desa Tegalgondo Klaten",
+    "Outing Class Smk muhammadiyah Delanggu Klaten",
+    "Studi tiru Dusun Karangmojo Sleman"
+  ],
+  "updatedAt": "2026-07-01T00:00:00Z"
+}
