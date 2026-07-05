@@ -22,14 +22,20 @@ import { Route as ArtikelIdRouteImport } from './routes/artikel/$id'
 import { Route as AdminProfilRouteImport } from './routes/admin/profil'
 import { Route as AdminWisataIndexRouteImport } from './routes/admin/wisata/index'
 import { Route as AdminUmkmIndexRouteImport } from './routes/admin/umkm/index'
+import { Route as AdminPotensiDesaIndexRouteImport } from './routes/admin/potensi-desa/index'
+import { Route as AdminMitraIndexRouteImport } from './routes/admin/mitra/index'
 import { Route as AdminLemahAsriIndexRouteImport } from './routes/admin/lemah-asri/index'
 import { Route as AdminArtikelIndexRouteImport } from './routes/admin/artikel/index'
 import { Route as AdminWisataNewRouteImport } from './routes/admin/wisata/new'
 import { Route as AdminUmkmNewRouteImport } from './routes/admin/umkm/new'
+import { Route as AdminPotensiDesaNewRouteImport } from './routes/admin/potensi-desa/new'
+import { Route as AdminMitraNewRouteImport } from './routes/admin/mitra/new'
 import { Route as AdminLemahAsriEditRouteImport } from './routes/admin/lemah-asri/edit'
 import { Route as AdminArtikelNewRouteImport } from './routes/admin/artikel/new'
 import { Route as AdminWisataIdEditRouteImport } from './routes/admin/wisata/$id.edit'
 import { Route as AdminUmkmIdEditRouteImport } from './routes/admin/umkm/$id.edit'
+import { Route as AdminPotensiDesaIdEditRouteImport } from './routes/admin/potensi-desa/$id.edit'
+import { Route as AdminMitraIdEditRouteImport } from './routes/admin/mitra/$id.edit'
 import { Route as AdminArtikelIdEditRouteImport } from './routes/admin/artikel/$id.edit'
 
 const WisataRoute = WisataRouteImport.update({
@@ -97,6 +103,16 @@ const AdminUmkmIndexRoute = AdminUmkmIndexRouteImport.update({
   path: '/umkm/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminPotensiDesaIndexRoute = AdminPotensiDesaIndexRouteImport.update({
+  id: '/potensi-desa/',
+  path: '/potensi-desa/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMitraIndexRoute = AdminMitraIndexRouteImport.update({
+  id: '/mitra/',
+  path: '/mitra/',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminLemahAsriIndexRoute = AdminLemahAsriIndexRouteImport.update({
   id: '/lemah-asri/',
   path: '/lemah-asri/',
@@ -115,6 +131,16 @@ const AdminWisataNewRoute = AdminWisataNewRouteImport.update({
 const AdminUmkmNewRoute = AdminUmkmNewRouteImport.update({
   id: '/umkm/new',
   path: '/umkm/new',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPotensiDesaNewRoute = AdminPotensiDesaNewRouteImport.update({
+  id: '/potensi-desa/new',
+  path: '/potensi-desa/new',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMitraNewRoute = AdminMitraNewRouteImport.update({
+  id: '/mitra/new',
+  path: '/mitra/new',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminLemahAsriEditRoute = AdminLemahAsriEditRouteImport.update({
@@ -137,6 +163,16 @@ const AdminUmkmIdEditRoute = AdminUmkmIdEditRouteImport.update({
   path: '/umkm/$id/edit',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminPotensiDesaIdEditRoute = AdminPotensiDesaIdEditRouteImport.update({
+  id: '/potensi-desa/$id/edit',
+  path: '/potensi-desa/$id/edit',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMitraIdEditRoute = AdminMitraIdEditRouteImport.update({
+  id: '/mitra/$id/edit',
+  path: '/mitra/$id/edit',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminArtikelIdEditRoute = AdminArtikelIdEditRouteImport.update({
   id: '/artikel/$id/edit',
   path: '/artikel/$id/edit',
@@ -157,13 +193,19 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/admin/artikel/new': typeof AdminArtikelNewRoute
   '/admin/lemah-asri/edit': typeof AdminLemahAsriEditRoute
+  '/admin/mitra/new': typeof AdminMitraNewRoute
+  '/admin/potensi-desa/new': typeof AdminPotensiDesaNewRoute
   '/admin/umkm/new': typeof AdminUmkmNewRoute
   '/admin/wisata/new': typeof AdminWisataNewRoute
   '/admin/artikel/': typeof AdminArtikelIndexRoute
   '/admin/lemah-asri/': typeof AdminLemahAsriIndexRoute
+  '/admin/mitra/': typeof AdminMitraIndexRoute
+  '/admin/potensi-desa/': typeof AdminPotensiDesaIndexRoute
   '/admin/umkm/': typeof AdminUmkmIndexRoute
   '/admin/wisata/': typeof AdminWisataIndexRoute
   '/admin/artikel/$id/edit': typeof AdminArtikelIdEditRoute
+  '/admin/mitra/$id/edit': typeof AdminMitraIdEditRoute
+  '/admin/potensi-desa/$id/edit': typeof AdminPotensiDesaIdEditRoute
   '/admin/umkm/$id/edit': typeof AdminUmkmIdEditRoute
   '/admin/wisata/$id/edit': typeof AdminWisataIdEditRoute
 }
@@ -180,13 +222,19 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/admin/artikel/new': typeof AdminArtikelNewRoute
   '/admin/lemah-asri/edit': typeof AdminLemahAsriEditRoute
+  '/admin/mitra/new': typeof AdminMitraNewRoute
+  '/admin/potensi-desa/new': typeof AdminPotensiDesaNewRoute
   '/admin/umkm/new': typeof AdminUmkmNewRoute
   '/admin/wisata/new': typeof AdminWisataNewRoute
   '/admin/artikel': typeof AdminArtikelIndexRoute
   '/admin/lemah-asri': typeof AdminLemahAsriIndexRoute
+  '/admin/mitra': typeof AdminMitraIndexRoute
+  '/admin/potensi-desa': typeof AdminPotensiDesaIndexRoute
   '/admin/umkm': typeof AdminUmkmIndexRoute
   '/admin/wisata': typeof AdminWisataIndexRoute
   '/admin/artikel/$id/edit': typeof AdminArtikelIdEditRoute
+  '/admin/mitra/$id/edit': typeof AdminMitraIdEditRoute
+  '/admin/potensi-desa/$id/edit': typeof AdminPotensiDesaIdEditRoute
   '/admin/umkm/$id/edit': typeof AdminUmkmIdEditRoute
   '/admin/wisata/$id/edit': typeof AdminWisataIdEditRoute
 }
@@ -205,13 +253,19 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/admin/artikel/new': typeof AdminArtikelNewRoute
   '/admin/lemah-asri/edit': typeof AdminLemahAsriEditRoute
+  '/admin/mitra/new': typeof AdminMitraNewRoute
+  '/admin/potensi-desa/new': typeof AdminPotensiDesaNewRoute
   '/admin/umkm/new': typeof AdminUmkmNewRoute
   '/admin/wisata/new': typeof AdminWisataNewRoute
   '/admin/artikel/': typeof AdminArtikelIndexRoute
   '/admin/lemah-asri/': typeof AdminLemahAsriIndexRoute
+  '/admin/mitra/': typeof AdminMitraIndexRoute
+  '/admin/potensi-desa/': typeof AdminPotensiDesaIndexRoute
   '/admin/umkm/': typeof AdminUmkmIndexRoute
   '/admin/wisata/': typeof AdminWisataIndexRoute
   '/admin/artikel/$id/edit': typeof AdminArtikelIdEditRoute
+  '/admin/mitra/$id/edit': typeof AdminMitraIdEditRoute
+  '/admin/potensi-desa/$id/edit': typeof AdminPotensiDesaIdEditRoute
   '/admin/umkm/$id/edit': typeof AdminUmkmIdEditRoute
   '/admin/wisata/$id/edit': typeof AdminWisataIdEditRoute
 }
@@ -231,13 +285,19 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/artikel/new'
     | '/admin/lemah-asri/edit'
+    | '/admin/mitra/new'
+    | '/admin/potensi-desa/new'
     | '/admin/umkm/new'
     | '/admin/wisata/new'
     | '/admin/artikel/'
     | '/admin/lemah-asri/'
+    | '/admin/mitra/'
+    | '/admin/potensi-desa/'
     | '/admin/umkm/'
     | '/admin/wisata/'
     | '/admin/artikel/$id/edit'
+    | '/admin/mitra/$id/edit'
+    | '/admin/potensi-desa/$id/edit'
     | '/admin/umkm/$id/edit'
     | '/admin/wisata/$id/edit'
   fileRoutesByTo: FileRoutesByTo
@@ -254,13 +314,19 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin/artikel/new'
     | '/admin/lemah-asri/edit'
+    | '/admin/mitra/new'
+    | '/admin/potensi-desa/new'
     | '/admin/umkm/new'
     | '/admin/wisata/new'
     | '/admin/artikel'
     | '/admin/lemah-asri'
+    | '/admin/mitra'
+    | '/admin/potensi-desa'
     | '/admin/umkm'
     | '/admin/wisata'
     | '/admin/artikel/$id/edit'
+    | '/admin/mitra/$id/edit'
+    | '/admin/potensi-desa/$id/edit'
     | '/admin/umkm/$id/edit'
     | '/admin/wisata/$id/edit'
   id:
@@ -278,13 +344,19 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/admin/artikel/new'
     | '/admin/lemah-asri/edit'
+    | '/admin/mitra/new'
+    | '/admin/potensi-desa/new'
     | '/admin/umkm/new'
     | '/admin/wisata/new'
     | '/admin/artikel/'
     | '/admin/lemah-asri/'
+    | '/admin/mitra/'
+    | '/admin/potensi-desa/'
     | '/admin/umkm/'
     | '/admin/wisata/'
     | '/admin/artikel/$id/edit'
+    | '/admin/mitra/$id/edit'
+    | '/admin/potensi-desa/$id/edit'
     | '/admin/umkm/$id/edit'
     | '/admin/wisata/$id/edit'
   fileRoutesById: FileRoutesById
@@ -393,6 +465,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUmkmIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/potensi-desa/': {
+      id: '/admin/potensi-desa/'
+      path: '/potensi-desa'
+      fullPath: '/admin/potensi-desa/'
+      preLoaderRoute: typeof AdminPotensiDesaIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/mitra/': {
+      id: '/admin/mitra/'
+      path: '/mitra'
+      fullPath: '/admin/mitra/'
+      preLoaderRoute: typeof AdminMitraIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/lemah-asri/': {
       id: '/admin/lemah-asri/'
       path: '/lemah-asri'
@@ -419,6 +505,20 @@ declare module '@tanstack/react-router' {
       path: '/umkm/new'
       fullPath: '/admin/umkm/new'
       preLoaderRoute: typeof AdminUmkmNewRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/potensi-desa/new': {
+      id: '/admin/potensi-desa/new'
+      path: '/potensi-desa/new'
+      fullPath: '/admin/potensi-desa/new'
+      preLoaderRoute: typeof AdminPotensiDesaNewRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/mitra/new': {
+      id: '/admin/mitra/new'
+      path: '/mitra/new'
+      fullPath: '/admin/mitra/new'
+      preLoaderRoute: typeof AdminMitraNewRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/lemah-asri/edit': {
@@ -449,6 +549,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUmkmIdEditRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/potensi-desa/$id/edit': {
+      id: '/admin/potensi-desa/$id/edit'
+      path: '/potensi-desa/$id/edit'
+      fullPath: '/admin/potensi-desa/$id/edit'
+      preLoaderRoute: typeof AdminPotensiDesaIdEditRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/mitra/$id/edit': {
+      id: '/admin/mitra/$id/edit'
+      path: '/mitra/$id/edit'
+      fullPath: '/admin/mitra/$id/edit'
+      preLoaderRoute: typeof AdminMitraIdEditRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/artikel/$id/edit': {
       id: '/admin/artikel/$id/edit'
       path: '/artikel/$id/edit'
@@ -464,13 +578,19 @@ interface AdminRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   AdminArtikelNewRoute: typeof AdminArtikelNewRoute
   AdminLemahAsriEditRoute: typeof AdminLemahAsriEditRoute
+  AdminMitraNewRoute: typeof AdminMitraNewRoute
+  AdminPotensiDesaNewRoute: typeof AdminPotensiDesaNewRoute
   AdminUmkmNewRoute: typeof AdminUmkmNewRoute
   AdminWisataNewRoute: typeof AdminWisataNewRoute
   AdminArtikelIndexRoute: typeof AdminArtikelIndexRoute
   AdminLemahAsriIndexRoute: typeof AdminLemahAsriIndexRoute
+  AdminMitraIndexRoute: typeof AdminMitraIndexRoute
+  AdminPotensiDesaIndexRoute: typeof AdminPotensiDesaIndexRoute
   AdminUmkmIndexRoute: typeof AdminUmkmIndexRoute
   AdminWisataIndexRoute: typeof AdminWisataIndexRoute
   AdminArtikelIdEditRoute: typeof AdminArtikelIdEditRoute
+  AdminMitraIdEditRoute: typeof AdminMitraIdEditRoute
+  AdminPotensiDesaIdEditRoute: typeof AdminPotensiDesaIdEditRoute
   AdminUmkmIdEditRoute: typeof AdminUmkmIdEditRoute
   AdminWisataIdEditRoute: typeof AdminWisataIdEditRoute
 }
@@ -480,13 +600,19 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   AdminArtikelNewRoute: AdminArtikelNewRoute,
   AdminLemahAsriEditRoute: AdminLemahAsriEditRoute,
+  AdminMitraNewRoute: AdminMitraNewRoute,
+  AdminPotensiDesaNewRoute: AdminPotensiDesaNewRoute,
   AdminUmkmNewRoute: AdminUmkmNewRoute,
   AdminWisataNewRoute: AdminWisataNewRoute,
   AdminArtikelIndexRoute: AdminArtikelIndexRoute,
   AdminLemahAsriIndexRoute: AdminLemahAsriIndexRoute,
+  AdminMitraIndexRoute: AdminMitraIndexRoute,
+  AdminPotensiDesaIndexRoute: AdminPotensiDesaIndexRoute,
   AdminUmkmIndexRoute: AdminUmkmIndexRoute,
   AdminWisataIndexRoute: AdminWisataIndexRoute,
   AdminArtikelIdEditRoute: AdminArtikelIdEditRoute,
+  AdminMitraIdEditRoute: AdminMitraIdEditRoute,
+  AdminPotensiDesaIdEditRoute: AdminPotensiDesaIdEditRoute,
   AdminUmkmIdEditRoute: AdminUmkmIdEditRoute,
   AdminWisataIdEditRoute: AdminWisataIdEditRoute,
 }

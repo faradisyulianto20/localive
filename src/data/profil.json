@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "badge": { "id": "Profil Desa", "en": "Village Profile" },
+    "title": { "id": "Desa Tamanan", "en": "Tamanan Village" },
+    "subtitle": { "id": "Pedukuhan dengan segudang potensi", "en": "A hamlet with abundant potential" }
+  },
+
+  "intro": {
+    "eyebrow": { "id": "Definisi Desa", "en": "Village Definition" },
+    "heading": { "id": "Desa Tamanan", "en": "Tamanan Village" },
+    "description": [
+      {
+        "id": "Tamanan adalah pedukuhan yang terletak di Kalasan, Sleman, Daerah Istimewa Yogyakarta.",
+        "en": "Tamanan is a hamlet located in Kalasan, Sleman, Special Region of Yogyakarta."
+      },
+      {
+        "id": "Tamanan memiliki berbagai potensi yang dikelola oleh Lemah Asri (Lembaga Usaha Tamanan Sadar Wisata) sejak tahun 2021, meliputi event organizer, ekonomi kreatif, dan UMKM.",
+        "en": "Tamanan has various potentials managed by Lemah Asri (Tamanan Tourism-Aware Business Institute) since 2021, covering event organizing, creative economy, and SMEs."
+      }
+    ]
+  },
+
+  "potensiDesa": {
+    "eyebrow": { "id": "Inovasi Lokal", "en": "Local Innovation" },
+    "heading": { "id": "Potensi Desa", "en": "Village Potentials" },
+    "items": [
+      {
+        "id": "budaya",
+        "icon": "landmark",
+        "image": "/hero.png",
+        "badge": null,
+        "color": "amber",
+        "title": { "id": "Budaya", "en": "Culture" },
+        "description": { "id": "Kesenian tradisional yang lestari", "en": "Preserved traditional arts" }
+      },
+      {
+        "id": "wisata",
+        "icon": "tree-pine",
+        "image": "/hero.png",
+        "badge": null,
+        "color": "emerald",
+        "title": { "id": "Wisata", "en": "Tourism" },
+        "description": { "id": "Destinasi dan atraksi menarik", "en": "Attractive destinations and activities" }
+      },
+      {
+        "id": "umkm",
+        "icon": "shopping-bag",
+        "image": "/hero.png",
+        "badge": null,
+        "color": "blue",
+        "title": { "id": "UMKM", "en": "SMEs" },
+        "description": { "id": "Produk unggulan warga", "en": "Residents' superior products" }
+      },
+      {
+        "id": "sdm",
+        "icon": "users",
+        "image": "/hero.png",
+        "badge": null,
+        "color": "purple",
+        "title": { "id": "SDM", "en": "Human Resources" },
+        "description": { "id": "Sumber daya manusia berkualitas", "en": "Quality human resources" }
+      }
+    ]
+  },
+
+  "updatedAt": "2026-07-01T00:00:00Z",
+
+  "mitra": {
+    "heading": { "id": "Mitra Kami", "en": "Our Partners" },
+    "items": [
+      { "id": "rs-bethesda", "nama": "RS Bethesda Yogyakarta", "logo": "/ugm.png", "url": null },
+      { "id": "genbi", "nama": "GENBI", "logo": "/ugm.png", "url": null },
+      { "id": "dem-ugm", "nama": "DEM UGM", "logo": "/ugm.png", "url": null },
+      { "id": "bem-feb-ugm", "nama": "BEM FEB UGM", "logo": "/ugm.png", "url": null },
+      { "id": "bengkel-sapi", "nama": "Bengkel Sapi Kalijeruk", "logo": "/ugm.png", "url": null }
+    ]
+  }
+}

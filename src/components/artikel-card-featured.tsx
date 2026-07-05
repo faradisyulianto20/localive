@@ -39,9 +39,9 @@ export default function ArtikelCardFeatured({ item }: ArtikelCardFeaturedProps) 
     <Link
       to="/artikel/$id"
       params={{ id: item.id }}
-      className="group block overflow-hidden rounded-xl bg-white"
+      className="group block cursor-pointer overflow-hidden rounded-lg bg-background transition-all duration-300 hover:shadow-md"
     >
-      <div className="aspect-16/6 w-full overflow-hidden rounded-lg">
+      <div className="aspect-video w-full overflow-hidden rounded-lg">
         <img
           src={item.image}
           alt={item.title[lang] ?? item.title.id}
@@ -50,19 +50,19 @@ export default function ArtikelCardFeatured({ item }: ArtikelCardFeaturedProps) 
       </div>
 
       <div className="p-5">
-        <span className={`inline-block w-fit rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white ${categoryColor[item.category] ?? 'bg-neutral-500'}`}>
+        <span className={`inline-block w-fit rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white ${categoryColor[item.category] ?? 'bg-muted-foreground'}`}>
           {item.category}
         </span>
 
-        <h3 className="mt-2 text-lg font-bold leading-snug text-neutral-900 line-clamp-2 group-hover:text-emerald-700 md:text-xl">
+        <h3 className="mt-2 text-lg font-bold leading-snug text-foreground line-clamp-2 group-hover:text-forest md:text-xl">
           {item.title[lang] ?? item.title.id}
         </h3>
 
-        <p className="mt-1.5 text-sm leading-relaxed text-neutral-500 line-clamp-2">
+        <p className="mt-1.5 text-sm leading-relaxed text-gray-600 line-clamp-2">
           {plainText}
         </p>
 
-        <div className="mt-3 flex items-center gap-4 text-xs text-neutral-500">
+        <div className="mt-3 flex items-center gap-4 text-xs text-gray-600">
           <span className="flex items-center gap-1">
             <User className="h-3.5 w-3.5" />
             {item.penulis}

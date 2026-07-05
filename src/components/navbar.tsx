@@ -1,7 +1,7 @@
-import { Link, useMatchRoute } from "@tanstack/react-router";
-import { useTranslation } from "react-i18next";
-import { useState, useEffect } from "react";
+import { Link, useMatchRoute, useLocation } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import LanguageToggle from "./language-toggle";
 
 const links = [
@@ -16,6 +16,7 @@ const links = [
 export default function Navbar() {
   const { t } = useTranslation();
   const matchRoute = useMatchRoute();
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -40,22 +41,25 @@ export default function Navbar() {
 			>
 				<Link
 					to="/"
-					className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-200 text-sm font-medium text-neutral-500"
+					className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground transition-all duration-300"
 				>
 					Logo
 				</Link>
 
 				<ul className="hidden items-center gap-9 md:flex">
 					{links.map((link) => {
-						const isActive = matchRoute({ to: link.to });
+						const isActive =
+							link.to === '/artikel'
+								? matchRoute({ to: '/artikel' }) || matchRoute({ to: '/artikel/$id' }) || location.pathname.startsWith('/artikel')
+								: matchRoute({ to: link.to });
 						return (
 							<li key={link.to}>
 								<Link
 									to={link.to}
-									className={`text-[15px] font-semibold transition-colors ${
+									className={`text-[15px] font-semibold transition-all duration-300 cursor-pointer ${
 										isActive
-											? "text-amber-700 underline decoration-2 underline-offset-[6px]"
-											: "text-forest hover:text-amber-700"
+											? "text-terracotta underline decoration-2 underline-offset-[6px]"
+											: "text-forest hover:text-terracotta"
 									}`}
 								>
 									{t(link.label)}
@@ -70,7 +74,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex md:hidden items-center justify-center h-10 w-10 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors"
+            className="flex md:hidden cursor-pointer items-center justify-center h-10 w-10 rounded-lg text-muted-foreground hover:bg-muted transition-all duration-300"
             aria-label={mobileOpen ? "Tutup menu" : "Buka menu"}
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -90,12 +94,12 @@ export default function Navbar() {
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between px-5 h-16 border-b border-neutral-100">
+        <div className="flex items-center justify-between px-5 h-16 border-b border-border">
           <span className="text-lg font-bold text-forest">Menu</span>
           <button
             type="button"
             onClick={() => setMobileOpen(false)}
-            className="flex items-center justify-center h-9 w-9 rounded-lg text-neutral-500 hover:bg-neutral-100"
+            className="flex cursor-pointer items-center justify-center h-9 w-9 rounded-lg text-muted-foreground hover:bg-muted transition-all duration-300"
           >
             <X className="h-5 w-5" />
           </button>
@@ -104,16 +108,19 @@ export default function Navbar() {
         <nav className="px-4 py-6">
           <ul className="space-y-1">
             {links.map((link) => {
-              const isActive = matchRoute({ to: link.to });
+              const isActive =
+                link.to === '/artikel'
+                  ? matchRoute({ to: '/artikel' }) || matchRoute({ to: '/artikel/$id' }) || location.pathname.startsWith('/artikel')
+                  : matchRoute({ to: link.to });
               return (
                 <li key={link.to}>
                   <Link
                     to={link.to}
                     onClick={() => setMobileOpen(false)}
-                    className={`block rounded-lg px-4 py-3 text-[15px] font-semibold transition-colors ${
+                    className={`block rounded-lg px-4 py-3 text-[15px] font-semibold transition-all duration-300 cursor-pointer ${
                       isActive
-                        ? "bg-amber-50 text-amber-700"
-                        : "text-neutral-700 hover:bg-neutral-50 hover:text-amber-700"
+                        ? "bg-terracotta/10 text-terracotta"
+                        : "text-muted-foreground hover:bg-muted hover:text-terracotta"
                     }`}
                   >
                     {t(link.label)}

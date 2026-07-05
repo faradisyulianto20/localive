@@ -26,14 +26,14 @@ export default function ArtikelSection({ items }: ArtikelSectionProps) {
           <h2 className="display-title text-forest text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
             {t('section.artikel.title', 'Artikel & Berita')}
           </h2>
-          <p className="mt-2 text-sm text-neutral-500">
+          <p className="mt-2 text-sm text-gray-600">
             {t('section.artikel.subtitle', 'Informasi terbaru seputar Tamanan dan Lemah Asri')}
           </p>
         </div>
 
         <a
           href="/artikel"
-          className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-amber-700/60 px-6 py-3 text-sm font-semibold text-amber-700 transition-colors hover:bg-amber-50"
+          className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brown/60 px-6 py-3 text-sm font-semibold text-brown cursor-pointer transition-all duration-300 hover:bg-muted"
         >
           {t('nav.artikel')}
           <ArrowRight className="h-4 w-4" />
@@ -59,7 +59,7 @@ export default function ArtikelSection({ items }: ArtikelSectionProps) {
           <h3 className="display-title text-forest text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
             {t('section.artikel.featuredTitle', 'Tumbuhkan Wawasanmu')}
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-neutral-500">
+          <p className="mt-2 text-sm leading-relaxed text-gray-600">
             {t(
               'section.artikel.featuredSubtitle',
               'Simak informasi, kreasi warga, dan pencapaian Padukuhan Tamanan untuk terus berkembang bersama.'

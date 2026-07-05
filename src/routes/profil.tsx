@@ -1,154 +1,190 @@
+import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
-import { Landmark, ShoppingBag, Users, TreePine } from 'lucide-react'
+import { Building2 } from 'lucide-react'
+import profilData from '#/data/profil.json'
 
 export const Route = createFileRoute('/profil')({ component: Profil })
 
-const potensiData = [
-  {
-    icon: <Landmark className="h-6 w-6" />,
-    titleKey: 'profil.potensi.budaya',
-    descKey: 'profil.potensi.budaya.desc',
-    fallbackTitle: 'Budaya',
-    fallbackDesc: 'Kesenian tradisional yang lestari',
-    color: 'bg-amber-100 text-amber-700',
-  },
-  {
-    icon: <TreePine className="h-6 w-6" />,
-    titleKey: 'profil.potensi.wisata',
-    descKey: 'profil.potensi.wisata.desc',
-    fallbackTitle: 'Wisata',
-    fallbackDesc: 'Destinasi dan atraksi menarik',
-    color: 'bg-emerald-100 text-emerald-700',
-  },
-  {
-    icon: <ShoppingBag className="h-6 w-6" />,
-    titleKey: 'profil.potensi.umkm',
-    descKey: 'profil.potensi.umkm.desc',
-    fallbackTitle: 'UMKM',
-    fallbackDesc: 'Produk unggulan warga',
-    color: 'bg-blue-100 text-blue-700',
-  },
-  {
-    icon: <Users className="h-6 w-6" />,
-    titleKey: 'profil.potensi.sdm',
-    descKey: 'profil.potensi.sdm.desc',
-    fallbackTitle: 'SDM',
-    fallbackDesc: 'Sumber daya manusia berkualitas',
-    color: 'bg-purple-100 text-purple-700',
-  },
-]
-
-const mitraList = [
-  'RS Bethesda Yogyakarta',
-  'GENBI',
-  'DEM UGM',
-  'BEM FEB UGM',
-  'Bengkel Sapi Kalijeruk',
-]
+type LocalizedText = { id: string; en: string }
+type PotensiItem = {
+  id: string
+  icon: string | null
+  image: string | null
+  badge: LocalizedText | null
+  color: string
+  title: LocalizedText
+  description: LocalizedText
+}
+type MitraItem = { id: string; nama: string; logo: string | null; url: string | null }
 
 function Profil() {
-  const { t } = useTranslation()
+  const { i18n } = useTranslation()
+  const lang = i18n.language as 'id' | 'en'
+  const data = profilData
+  const potensiItems = data.potensiDesa.items as PotensiItem[]
+  const [activeId, setActiveId] = useState<string | null>(potensiItems[0]?.id ?? null)
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative flex items-end min-h-[50vh] overflow-hidden -mt-20">
+      {/* Hero — centered content following the reference layout */}
+      <section className="relative flex items-center justify-center min-h-[50vh] overflow-hidden -mt-20 text-center">
         <img
           src="/hero.png"
-          alt="Desa Tamanan"
+          alt={data.hero.title[lang] ?? data.hero.title.id}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        <div className="page-wrap relative z-10 w-full pb-16">
-          <span className="text-sm font-semibold uppercase tracking-wide text-emerald-400">
-            {t('nav.profil')}
+        <div className="absolute inset-0 bg-gradient-to-t from-forest/70 via-forest/20 to-transparent" />
+        <div className="page-wrap relative z-10 flex flex-col items-center rise-in">
+          <span className="inline-block rounded-full bg-terracotta px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white">
+            {data.hero.badge[lang] ?? data.hero.badge.id}
           </span>
-          <h1 className="display-title mt-2 text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            {t('profil.hero.title', 'Desa Tamanan')}
+          <h1 className="display-title mt-4 max-w-3xl text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+            {data.hero.title[lang] ?? data.hero.title.id}
           </h1>
-          <p className="mt-3 text-lg text-white/80">
-            {t('profil.hero.tagline', 'Pedukuhan dengan segudang potensi')}
+          <p className="mt-3 max-w-xl text-lg text-white/80">
+            {data.hero.subtitle[lang] ?? data.hero.subtitle.id}
           </p>
         </div>
       </section>
 
-      {/* Definisi Desa */}
-      <section className="page-wrap py-12 md:py-16">
-        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
-          <div className="overflow-hidden rounded-2xl">
-            <img
-              src="/hero.png"
-              alt="Desa Tamanan"
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
-              {t('profil.definisi.title', 'Definisi Desa')}
+      {/* Intro — centered heading + paragraph, following the reference layout */}
+      <section className="rise-in page-wrap py-12 md:py-16" style={{ animationDelay: '100ms' }}>
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-wide text-brown">
+            {data.intro.eyebrow[lang] ?? data.intro.eyebrow.id}
+          </p>
+          <h2 className="display-title text-forest mt-3 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+            {data.intro.heading[lang] ?? data.intro.heading.id}
+          </h2>
+          {data.intro.description.map((paragraph, i) => (
+            <p key={i} className="mt-4 text-sm sm:text-[15px] leading-relaxed text-brown/80">
+              {paragraph[lang] ?? paragraph.id}
             </p>
-            <h2 className="display-title text-forest mt-3 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
-              {t('section.profil.title', 'Desa Tamanan')}
-            </h2>
-            <p className="mt-5 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
-              {t('section.profil.description', 'Tamanan adalah pedukuhan yang terletak di Kalasan, Sleman, Daerah Istimewa Yogyakarta.')}
-            </p>
-            <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
-              Tamanan memiliki berbagai potensi yang dikelola oleh Lemah Asri (Lembaga Usaha Tamanan Sadar Wisata) sejak tahun 2021, meliputi event organizer, ekonomi kreatif, dan UMKM.
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Potensi Desa */}
-      <section className="bg-emerald-50 py-12 md:py-16">
-        <div className="page-wrap">
-          <div className="text-center">
-            <h2 className="display-title text-forest text-2xl md:text-3xl lg:text-4xl font-bold">
-              {t('profil.potensi.title', 'Potensi Desa')}
+      <section className="relative overflow-hidden py-16">
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-olive/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-olive/10 to-transparent" />
+        <div className="page-wrap relative z-10">
+          <div className="rise-in text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brown">
+              {data.potensiDesa.eyebrow[lang] ?? data.potensiDesa.eyebrow.id}
+            </p>
+            <h2 className="display-title text-forest mt-2 text-2xl md:text-3xl lg:text-4xl font-bold">
+              {data.potensiDesa.heading[lang] ?? data.potensiDesa.heading.id}
             </h2>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {potensiData.map((item, i) => (
-              <div
-                key={i}
-                className="feature-card rounded-2xl p-6 text-center transition-transform hover:-translate-y-1"
-              >
-                <div className={`mx-auto flex h-14 w-14 items-center justify-center rounded-xl ${item.color}`}>
-                  {item.icon}
+          <div className="rise-in mt-10 flex flex-col gap-4 md:h-96 md:flex-row" style={{ animationDelay: '100ms' }}>
+            {potensiItems.map((item) => {
+              const isActive = activeId === item.id
+              return (
+                <div
+                  key={item.id}
+                  onMouseEnter={() => setActiveId(item.id)}
+                  className={`relative isolate flex h-64 flex-col items-start overflow-hidden rounded-2xl border-2 bg-forest/50 p-5 text-left transition-all duration-500 ease-out cursor-pointer md:h-full ${
+                    isActive
+                      ? 'md:flex-[3] justify-end border-olive shadow-xl'
+                      : 'md:flex-[1] justify-start border-transparent'
+                  }`}
+                >
+                  {/* Image layer — faint by default, revealed when this card is active */}
+                  <img
+                    src={item.image ?? '/hero.png'}
+                    alt={item.title[lang] ?? item.title.id}
+                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out ${
+                      isActive ? 'opacity-100' : 'opacity-10'
+                    }`}
+                  />
+
+                  {/* gradient hijau dari bawah ke atas */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-t from-forest/95 via-forest/40 to-transparent transition-opacity duration-500 ${
+                      isActive ? 'opacity-60' : 'opacity-100'
+                    }`}
+                  />
+
+                  <div className="relative z-10">
+                    {item.badge && (
+                      <span className="mb-2 inline-block rounded-full bg-olive px-3 py-1 text-xs font-semibold text-white">
+                        {item.badge[lang] ?? item.badge.id}
+                      </span>
+                    )}
+                    <h3 className="text-2xl font-bold text-white transition-all duration-500">
+                      {item.title[lang] ?? item.title.id}
+                    </h3>
+                    <p className="mt-2 text-sm text-white/80">
+                      {item.description[lang] ?? item.description.id}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-forest mt-4 text-lg font-bold">
-                  {t(item.titleKey, item.fallbackTitle)}
-                </h3>
-                <p className="mt-2 text-sm text-neutral-600">
-                  {t(item.descKey, item.fallbackDesc)}
-                </p>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Mitra */}
-      <section className="page-wrap py-12 md:py-16">
+      {/* Mitra — single large auto-scrolling row */}
+      <section className="rise-in page-wrap overflow-hidden py-12 md:py-16" style={{ animationDelay: '200ms' }}>
         <div className="text-center">
           <h2 className="display-title text-forest text-2xl md:text-3xl lg:text-4xl font-bold">
-            {t('profil.mitra.title', 'Mitra Kami')}
+            {data.mitra.heading[lang] ?? data.mitra.heading.id}
           </h2>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4 md:gap-6">
-          {mitraList.map((mitra, i) => (
-            <div
-              key={i}
-              className="feature-card flex items-center rounded-2xl px-8 py-5 font-semibold text-neutral-700"
-            >
-              {mitra}
-            </div>
-          ))}
+        <div className="mt-10 marquee-row">
+          <div className="marquee-track marquee-left">
+            {[...(data.mitra.items as MitraItem[]), ...(data.mitra.items as MitraItem[])].map((mitra, i) => (
+              <MitraLogo key={`${mitra.id}-${i}`} mitra={mitra} />
+            ))}
+          </div>
         </div>
+
+        <style>{`
+          .marquee-row {
+            overflow: hidden;
+            width: 100%;
+          }
+          .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 4rem;
+            align-items: center;
+            animation-duration: 30s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+          }
+          .marquee-row:hover .marquee-track {
+            animation-play-state: paused;
+          }
+          .marquee-left {
+            animation-name: marquee-left;
+          }
+          @keyframes marquee-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+        `}</style>
       </section>
+    </div>
+  )
+}
+
+function MitraLogo({ mitra }: { mitra: MitraItem }) {
+  return (
+    <div className="flex w-48 shrink-0 flex-col items-center gap-3">
+      {mitra.logo ? (
+        <img src={mitra.logo} alt={mitra.nama} className="h-20 w-full object-contain" />
+      ) : (
+        <Building2 className="h-16 w-16 text-brown/60" />
+      )}
+      <span className="block max-w-[12rem] truncate text-center text-sm font-medium text-brown" title={mitra.nama}>
+        {mitra.nama}
+      </span>
     </div>
   )
 }

@@ -21,20 +21,20 @@ export default function LemahAsriSection() {
           className="h-full w-full object-cover"
         />
         {/* gradient hijau ke transparent di sisi kanan */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-emerald-800/70" />
+		<div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-forest/70" />
       </div>
 
       <div className="page-wrap relative z-10 py-12 md:py-16">
-        <div className="max-w-lg rounded-xl bg-white p-6 md:p-8 shadow-xl">
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-700">
+		<div className="max-w-lg rounded-lg bg-background p-6 md:p-8 shadow-xl">
+		  <span className="text-xs font-semibold uppercase tracking-widest text-brown">
             {t('section.lemahAsri.eyebrow', 'Lembaga Masyarakat')}
           </span>
 
-          <h2 className="display-title mt-2 text-2xl md:text-3xl lg:text-4xl font-bold text-emerald-900">
+		  <h2 className="display-title mt-2 text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
             {t('section.lemahAsri.title', 'Mengenal LEMAH ASRI')}
           </h2>
 
-          <p className="mt-4 text-sm leading-relaxed text-neutral-600">
+		  <p className="mt-4 text-sm leading-relaxed text-gray-600">
             {t(
               'section.lemahAsri.description',
               'Lembaga Usaha Tamanan Sadar Wisata (LEMAH ASRI) merupakan payung besar yang menaungi seluruh inisiatif pemberdayaan di Tamanan, mengelola potensi  yang ada di Padukuhan Tamanan',
@@ -44,11 +44,11 @@ export default function LemahAsriSection() {
           <ul className="mt-6 space-y-3">
             {POINTS.map(({ icon: Icon, key, label }) => (
               <li key={key}>
-                <div className="flex items-center gap-3 rounded-full bg-emerald-50 py-2 pl-2 pr-5">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-800">
-                    <Icon className="h-4 w-4 text-white" />
-                  </span>
-                  <span className="text-sm font-medium text-emerald-900">
+				<div className="flex items-center gap-3 rounded-full bg-muted py-2 pl-2 pr-5">
+				  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest">
+				    <Icon className="h-4 w-4 text-white" />
+				  </span>
+				  <span className="text-sm font-medium text-foreground">
                     {t(`section.lemahAsri.points.${key}`, label)}
                   </span>
                 </div>
@@ -58,7 +58,7 @@ export default function LemahAsriSection() {
 
           <a
             href="/lemah-asri"
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-amber-700 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-amber-800"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brown px-6 py-3.5 text-sm font-semibold text-white cursor-pointer transition-all duration-300 hover:bg-brown/80"
           >
             {t('section.lemahAsri.cta', 'Kenali LEMAH ASRI')}
             <ArrowRight className="h-4 w-4" />

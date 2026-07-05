@@ -49,9 +49,9 @@ export default function ArtikelCard({ item }: ArtikelCardProps) {
     <Link
       to="/artikel/$id"
       params={{ id: item.id }}
-      className="group block overflow-hidden rounded-xl border border-neutral-100 shadow-sm transition-shadow hover:shadow-md"
+      className="group block cursor-pointer overflow-hidden rounded-lg border border-border shadow-sm transition-all duration-300 hover:shadow-md"
     >
-      <div className="aspect-[16/9] overflow-hidden">
+      <div className="aspect-[4/3] overflow-hidden rounded-lg">
         <img
           src={item.image}
           alt={item.title[lang] ?? item.title.id}
@@ -61,20 +61,20 @@ export default function ArtikelCard({ item }: ArtikelCardProps) {
 
       <div className="p-4">
         <div className="flex items-center gap-2">
-          <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white ${categoryColor[item.category] ?? 'bg-neutral-500'}`}>
+          <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold text-white ${categoryColor[item.category] ?? 'bg-muted-foreground'}`}>
             {item.category}
           </span>
         </div>
 
-        <h3 className="mt-2 text-base font-bold text-neutral-900 line-clamp-2 group-hover:text-emerald-700">
+        <h3 className="mt-2 text-base font-bold text-foreground line-clamp-2 group-hover:text-forest">
           {item.title[lang] ?? item.title.id}
         </h3>
 
-        <p className="mt-1.5 text-xs leading-relaxed text-neutral-500 line-clamp-2">
+        <p className="mt-1.5 text-xs leading-relaxed text-gray-600 line-clamp-2">
           {plainText}
         </p>
 
-        <div className="mt-3 flex items-center gap-4 text-xs text-neutral-500">
+        <div className="mt-3 flex items-center gap-4 text-xs text-gray-600">
           <span className="flex items-center gap-1">
             <Calendar className="h-3.5 w-3.5" />
             {formatDate(item.tanggal)}

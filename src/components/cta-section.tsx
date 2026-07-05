@@ -18,7 +18,7 @@ export default function CTASection() {
           className="h-full w-full object-cover"
         />
         {/* overlay hitam tipis untuk kesan redup */}
-        <div className="absolute inset-0 bg-black/35" />
+		<div className="absolute inset-0 bg-forest/35" />
       </div>
 
       <div className="page-wrap relative z-10 text-left">
@@ -41,7 +41,7 @@ export default function CTASection() {
           href={WA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-3 rounded-full border-2 border-[#AAF3E1] px-6 py-3 text-sm font-bold bg-[#0F6E56]/30 text-white transition-colors hover:border-[#AAF3E1] hover:bg-[#0F6E56]/10 md:text-base"
+          className="mt-8 inline-flex items-center gap-3 rounded-full border-2 border-olive/60 px-6 py-3 text-sm font-bold bg-forest/30 text-white cursor-pointer transition-all duration-300 hover:border-olive hover:bg-forest/10 md:text-base"
         >
           <MessageCircle className="h-5 w-5" />
           {t('section.cta.button', 'Hubungi Kami via WhatsApp')}

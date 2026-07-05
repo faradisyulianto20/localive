@@ -12,12 +12,12 @@ export default function HeroSection() {
 				className="absolute inset-0 h-full w-full object-cover"
 			/>
 
-			<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-			<div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
+			<div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-forest/20 to-transparent" />
+			<div className="absolute inset-0 bg-gradient-to-r from-forest/50 via-transparent to-transparent" />
 
 			<div className="page-wrap relative z-10 w-full pb-20 pt-24 my-auto">
 				<div className="max-w-2xl">
-					<p className="text-sm font-semibold uppercase tracking-wide text-emerald-400 animate-fade-in-up">
+					<p className="text-sm font-semibold uppercase tracking-wide text-olive animate-fade-in-up">
 						{t(
 							"page.beranda.kicker",
 							"LEMAH ASRI · TAMANAN, KALASAN, SLEMAN",
@@ -41,7 +41,7 @@ export default function HeroSection() {
 					<div className="mt-7 flex flex-wrap items-center gap-3 animate-fade-in-up" style={{ animationDelay: '450ms' }}>
 						<a
 							href="/wisata"
-							className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
+							className="inline-flex items-center gap-2 rounded-full bg-forest border-2 border-white/20 px-5 sm:px-6 py-2.5 sm:py-3 text-sm font-semibold text-white cursor-pointer transition-all duration-300 hover:bg-forest/80"
 						>
 							{t("page.beranda.ctaPrimary", "Pesan Paket Wisata")}
 							<ArrowRight className="h-4 w-4" />
@@ -50,7 +50,7 @@ export default function HeroSection() {
 							href="https://wa.me/6285876270545"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 rounded-full border border-white/70 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+							className="inline-flex items-center gap-2 rounded-full border border-white/70 px-6 py-3 text-sm font-semibold text-white cursor-pointer transition-all duration-300 hover:bg-white/10"
 						>
 							<MessageCircle className="h-4 w-4" />
 							{t("page.beranda.ctaSecondary", "Hubungi Kami")}

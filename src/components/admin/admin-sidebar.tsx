@@ -1,24 +1,45 @@
 import { Link, useMatchRoute } from '@tanstack/react-router'
+import { useState } from 'react'
 import {
   LayoutDashboard,
   Mountain,
   Store,
   FileText,
   Leaf,
-  UserCircle,
+  Lamp,
+  Handshake,
+  Lock,
+  LogOut,
 } from 'lucide-react'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import { Label } from '../ui/label'
 
-const menu = [
+const mainMenu = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/admin/wisata', label: 'Wisata', icon: Mountain },
   { to: '/admin/umkm', label: 'UMKM', icon: Store },
   { to: '/admin/artikel', label: 'Artikel', icon: FileText },
   { to: '/admin/lemah-asri', label: 'Lemah Asri', icon: Leaf },
-  { to: '/admin/profil', label: 'Profil', icon: UserCircle },
 ]
+
+const profilMenu = [
+  { to: '/admin/potensi-desa', label: 'Potensi Desa', icon: Lamp },
+  { to: '/admin/mitra', label: 'Mitra', icon: Handshake },
+]
+
+const allMenu = [...mainMenu, ...profilMenu]
 
 export default function AdminSidebar() {
   const matchRoute = useMatchRoute()
+  const [showPasswordModal, setShowPasswordModal] = useState(false)
+
+  const handleLogout = () => {
+    localStorage.removeItem('admin_token')
+    window.location.href = '/login'
+  }
+
+  const isActive = (to: string) => matchRoute({ to })
 
   return (
     <>
@@ -34,15 +55,35 @@ export default function AdminSidebar() {
           <p className="px-3 pb-1 text-[11px] font-medium uppercase tracking-wider text-[#9CA0AC]">
             Menu
           </p>
-          {menu.map((item) => {
-            const isActive = matchRoute({ to: item.to })
+          {mainMenu.map((item) => {
             const Icon = item.icon
             return (
               <Link
                 key={item.to}
                 to={item.to}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                  isActive
+                className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
+                  isActive(item.to)
+                    ? 'bg-[#F3F4F6] text-[#111214]'
+                    : 'text-[#8B8D98] hover:bg-[#F3F4F6] hover:text-[#111214]'
+                }`}
+              >
+                <Icon className="h-4 w-4 shrink-0" />
+                {item.label}
+              </Link>
+            )
+          })}
+
+          <p className="mt-4 px-3 pb-1 text-[11px] font-medium uppercase tracking-wider text-[#9CA0AC]">
+            Profil Desa
+          </p>
+          {profilMenu.map((item) => {
+            const Icon = item.icon
+            return (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors cursor-pointer pl-10 ${
+                  isActive(item.to)
                     ? 'bg-[#F3F4F6] text-[#111214]'
                     : 'text-[#8B8D98] hover:bg-[#F3F4F6] hover:text-[#111214]'
                 }`}
@@ -53,19 +94,37 @@ export default function AdminSidebar() {
             )
           })}
         </nav>
+
+        <div className="border-t border-[#EAEAEC] p-3 space-y-1">
+          <button
+            type="button"
+            onClick={() => setShowPasswordModal(true)}
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-[#8B8D98] hover:bg-[#F3F4F6] hover:text-[#111214] transition-colors cursor-pointer"
+          >
+            <Lock className="h-4 w-4 shrink-0" />
+            Change Password
+          </button>
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
+          >
+            <LogOut className="h-4 w-4 shrink-0" />
+            Logout
+          </button>
+        </div>
       </aside>
 
       <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-[#EAEAEC] bg-white md:hidden">
         <div className="flex items-center justify-around px-2 py-1">
-          {menu.map((item) => {
-            const isActive = matchRoute({ to: item.to })
+          {allMenu.map((item) => {
             const Icon = item.icon
             return (
               <Link
                 key={item.to}
                 to={item.to}
-                className={`flex flex-col items-center gap-0.5 rounded-lg px-2 py-2 text-[11px] font-medium transition-colors min-w-0 flex-1 ${
-                  isActive
+                className={`flex flex-col items-center gap-0.5 rounded-lg px-2 py-2 text-[11px] font-medium transition-colors min-w-0 flex-1 cursor-pointer ${
+                  isActive(item.to)
                     ? 'text-[#111214]'
                     : 'text-[#8B8D98] hover:text-[#111214]'
                 }`}
@@ -77,6 +136,123 @@ export default function AdminSidebar() {
           })}
         </div>
       </nav>
+
+      {showPasswordModal && (
+        <ChangePasswordModal onClose={() => setShowPasswordModal(false)} />
+      )}
     </>
+  )
+}
+
+function ChangePasswordModal({ onClose }: { onClose: () => void }) {
+  const [currentPassword, setCurrentPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [showPasswords, setShowPasswords] = useState(false)
+  const [message, setMessage] = useState('')
+  const [messageType, setMessageType] = useState<'success' | 'error'>('success')
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setMessage('')
+
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      setMessage('Semua field harus diisi')
+      setMessageType('error')
+      return
+    }
+
+    if (newPassword !== confirmPassword) {
+      setMessage('Password baru tidak cocok')
+      setMessageType('error')
+      return
+    }
+
+    if (newPassword.length < 6) {
+      setMessage('Password baru minimal 6 karakter')
+      setMessageType('error')
+      return
+    }
+
+    setMessage('Password berhasil diubah (simulasi)')
+    setMessageType('success')
+    setCurrentPassword('')
+    setNewPassword('')
+    setConfirmPassword('')
+    setTimeout(onClose, 1500)
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl mx-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h2 className="text-lg font-bold text-[#111214] mb-4">Ganti Password</h2>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <Label htmlFor="modal-current-password">Password Saat Ini</Label>
+            <Input
+              id="modal-current-password"
+              type={showPasswords ? 'text' : 'password'}
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              className="mt-1.5 rounded-lg border-[#EAEAEC]"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="modal-new-password">Password Baru</Label>
+            <Input
+              id="modal-new-password"
+              type={showPasswords ? 'text' : 'password'}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="mt-1.5 rounded-lg border-[#EAEAEC]"
+            />
+          </div>
+
+          <div>
+            <Label htmlFor="modal-confirm-password">Konfirmasi Password Baru</Label>
+            <Input
+              id="modal-confirm-password"
+              type={showPasswords ? 'text' : 'password'}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="mt-1.5 rounded-lg border-[#EAEAEC]"
+            />
+          </div>
+
+          <label className="flex items-center gap-2 text-sm text-neutral-600 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={showPasswords}
+              onChange={() => setShowPasswords(!showPasswords)}
+              className="rounded cursor-pointer"
+            />
+            Tampilkan password
+          </label>
+
+          {message && (
+            <p className={`text-sm font-medium ${messageType === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+              {message}
+            </p>
+          )}
+
+          <div className="flex gap-3 pt-2">
+            <Button type="submit" className="flex-1 cursor-pointer">
+              Simpan Password
+            </Button>
+            <Button type="button" variant="outline" onClick={onClose} className="cursor-pointer">
+              Batal
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
   )
 }
