@@ -14,6 +14,8 @@ import {
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 import { Label } from '../ui/label'
+import { useAuth } from '../../hooks/use-auth'
+import { api, csrf, ApiError } from '../../lib/api'
 
 const mainMenu = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
@@ -32,10 +34,11 @@ const allMenu = [...mainMenu, ...profilMenu]
 
 export default function AdminSidebar() {
   const matchRoute = useMatchRoute()
+  const { logout } = useAuth()
   const [showPasswordModal, setShowPasswordModal] = useState(false)
 
-  const handleLogout = () => {
-    localStorage.removeItem('admin_token')
+  const handleLogout = async () => {
+    await logout()
     window.location.href = '/login'
   }
 
@@ -151,8 +154,9 @@ function ChangePasswordModal({ onClose }: { onClose: () => void }) {
   const [showPasswords, setShowPasswords] = useState(false)
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState<'success' | 'error'>('success')
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setMessage('')
 
@@ -174,12 +178,30 @@ function ChangePasswordModal({ onClose }: { onClose: () => void }) {
       return
     }
 
-    setMessage('Password berhasil diubah (simulasi)')
-    setMessageType('success')
-    setCurrentPassword('')
-    setNewPassword('')
-    setConfirmPassword('')
-    setTimeout(onClose, 1500)
+    setLoading(true)
+    try {
+      await csrf()
+      await api.post('/change-password', {
+        current_password: currentPassword,
+        new_password: newPassword,
+        new_password_confirmation: confirmPassword,
+      })
+      setMessage('Password berhasil diubah')
+      setMessageType('success')
+      setCurrentPassword('')
+      setNewPassword('')
+      setConfirmPassword('')
+      setTimeout(onClose, 1500)
+    } catch (err) {
+      if (err instanceof ApiError) {
+        setMessage(err.message || 'Gagal mengubah password')
+      } else {
+        setMessage('Gagal mengubah password')
+      }
+      setMessageType('error')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

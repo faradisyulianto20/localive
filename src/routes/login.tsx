@@ -4,13 +4,15 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '../components/ui/button'
 import { Input } from '../components/ui/input'
 import { Label } from '../components/ui/label'
+import { useAuth } from '../hooks/use-auth'
 
 export const Route = createFileRoute('/login')({ component: Login })
 
 function Login() {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const [username, setUsername] = useState('')
+  const { login } = useAuth()
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -19,31 +21,20 @@ function Login() {
     e.preventDefault()
     setError('')
 
-    if (!username || !password) {
-      setError(t('page.login.error', 'Username atau password salah'))
+    if (!email || !password) {
+      setError(t('page.login.error', 'Email dan password wajib diisi'))
       return
     }
 
     setLoading(true)
-
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 500))
-
-    if (username === 'admin' && password === 'admin123') {
-      localStorage.setItem(
-        'admin_token',
-        JSON.stringify({
-          token: 'authenticated',
-          username: 'admin',
-          loginAt: new Date().toISOString(),
-        }),
-      )
+    try {
+      await login(email, password)
       navigate({ to: '/admin' })
-    } else {
-      setError(t('page.login.error', 'Username atau password salah'))
+    } catch (err) {
+      setError(t('page.login.error', 'Email atau password salah'))
+    } finally {
+      setLoading(false)
     }
-
-    setLoading(false)
   }
 
   return (
@@ -61,15 +52,15 @@ function Login() {
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div>
-              <Label htmlFor="username">{t('page.login.username', 'Username')}</Label>
+              <Label htmlFor="email">{t('page.login.email', 'Email')}</Label>
               <Input
-                id="username"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="mt-1.5"
-                placeholder="admin"
-                autoComplete="username"
+                placeholder="admin@localive.id"
+                autoComplete="email"
               />
             </div>
 
@@ -86,9 +77,7 @@ function Login() {
               />
             </div>
 
-            {error && (
-              <p className="text-sm font-medium text-red-600">{error}</p>
-            )}
+            {error && <p className="text-sm font-medium text-red-600">{error}</p>}
 
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? '...' : t('page.login.submit', 'Masuk')}
