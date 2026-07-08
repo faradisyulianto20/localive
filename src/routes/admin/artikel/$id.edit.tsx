@@ -1,31 +1,99 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
 import { Button } from '../../../components/ui/button'
 import { Input } from '../../../components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../components/ui/select'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../../../components/ui/card'
 import FormField from '../../../components/admin/form-field'
 import TipTapEditor from '../../../components/admin/tiptap-editor'
-import { updateArtikel } from '../../../server/functions/artikel'
-import artikelData from '#/data/artikel.json'
+import { api } from '../../../lib/api'
 
 export const Route = createFileRoute('/admin/artikel/$id/edit')({ component: ArtikelEdit })
 
+interface Category {
+  id: number
+  name: { id: string; en: string }
+}
+
+interface ArticleItem {
+  id: number
+  category_id: number
+  title: { id: string; en: string }
+  content: { id: string; en: string }
+  image_url: string | null
+  date: string
+  author?: { name: string }
+}
+
 function ArtikelEdit() {
   const { id } = Route.useParams()
-  const { t } = useTranslation()
   const navigate = useNavigate()
-  const item = artikelData.find((i) => i.id === id)
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [loading, setLoading] = useState(false)
-  const [form, setForm] = useState({
-    titleId: item?.title.id ?? '', titleEn: item?.title.en ?? '',
-    contentId: item?.content.id ?? '', contentEn: item?.content.en ?? '',
-    image: item?.image ?? '', category: item?.category ?? '', penulis: item?.penulis ?? '', tanggal: item?.tanggal ?? '',
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['article', id],
+    queryFn: () => api.get<{ data: ArticleItem }>(`/articles/${id}`),
   })
 
+  const { data: categoriesData } = useQuery({
+    queryKey: ['article-categories'],
+    queryFn: () => api.get<{ data: Category[] }>('/article-categories'),
+  })
+
+  const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [file, setFile] = useState<File | null>(null)
+  const [removeImage, setRemoveImage] = useState(false)
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
+  const [form, setForm] = useState({
+    titleId: '', titleEn: '',
+    contentId: '', contentEn: '',
+    categoryId: '', date: '',
+  })
+  const [editorKey, setEditorKey] = useState(0)
+
+  const item = data?.data
+  const categories = categoriesData?.data ?? []
+
+  useEffect(() => {
+    if (item) {
+      setForm({
+        titleId: item.title.id,
+        titleEn: item.title.en,
+        contentId: item.content.id,
+        contentEn: item.content.en,
+        categoryId: String(item.category_id),
+        date: item.date.slice(0, 10),
+      })
+      setEditorKey((k) => k + 1)
+      if (item.image_url) {
+        setImagePreview(item.image_url)
+        setRemoveImage(false)
+      }
+    }
+  }, [item])
+
+  if (isLoading || !categoriesData) {
+    return (
+      <div className="flex justify-center py-20">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-500 border-t-transparent" />
+      </div>
+    )
+  }
+
   if (!item) return <div className="text-sm text-[#8B8D98]">Artikel tidak ditemukan</div>
+
+  const handleRemoveImage = () => {
+    setRemoveImage(true)
+    setImagePreview(null)
+    setFile(null)
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0] ?? null
+    setFile(f)
+    if (f) setImagePreview(URL.createObjectURL(f))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,26 +103,23 @@ function ArtikelEdit() {
     if (!form.titleEn) errs.titleEn = 'Wajib'
     if (!form.contentId) errs.contentId = 'Wajib'
     if (!form.contentEn) errs.contentEn = 'Wajib'
-    if (!form.image) errs.image = 'Wajib'
-    if (!form.category) errs.category = 'Wajib'
-    if (!form.penulis) errs.penulis = 'Wajib'
-    if (!form.tanggal) errs.tanggal = 'Wajib'
+    if (!form.categoryId) errs.categoryId = 'Wajib'
+    if (!form.date) errs.date = 'Wajib'
     if (Object.keys(errs).length > 0) { setErrors(errs); return }
+
     setLoading(true)
     try {
-      await updateArtikel({
-        data: {
-          id,
-          data: {
-            title: { id: form.titleId, en: form.titleEn },
-            content: { id: form.contentId, en: form.contentEn },
-            image: form.image,
-            category: form.category as 'berita' | 'kegiatan' | 'pengumuman',
-            penulis: form.penulis,
-            tanggal: form.tanggal,
-          },
-        },
-      })
+      const fd = new FormData()
+      fd.append('category_id', form.categoryId)
+      fd.append('title[id]', form.titleId)
+      fd.append('title[en]', form.titleEn)
+      fd.append('content[id]', form.contentId)
+      fd.append('content[en]', form.contentEn)
+      fd.append('date', form.date)
+      if (file) fd.append('image', file)
+      if (removeImage) fd.append('remove_image', '1')
+
+      await api.upload(`/articles/${id}`, fd, 'PATCH')
       navigate({ to: '/admin/artikel' })
     } catch {
       setErrors({ form: 'Gagal menyimpan. Coba lagi.' })
@@ -67,7 +132,7 @@ function ArtikelEdit() {
   return (
     <div className="max-w-3xl">
       <Card className="shadow-none border-[#EAEAEC] rounded-2xl">
-        <CardHeader><CardTitle className="text-lg font-semibold text-[#111214]">{t('admin.artikel.edit', 'Edit Artikel')}</CardTitle></CardHeader>
+        <CardHeader><CardTitle className="text-lg font-semibold text-[#111214]">Edit Artikel</CardTitle></CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className="space-y-5">
             <div className="grid gap-4 md:grid-cols-2">
@@ -80,36 +145,47 @@ function ArtikelEdit() {
             </div>
 
             <FormField label="Isi (Indonesia)" required error={errors.contentId}>
-              <TipTapEditor value={form.contentId} onChange={(v) => set('contentId', v)} />
+              <TipTapEditor key={`id-${editorKey}`} value={form.contentId} onChange={(v) => set('contentId', v)} />
             </FormField>
             <FormField label="Content (English)" required error={errors.contentEn}>
-              <TipTapEditor value={form.contentEn} onChange={(v) => set('contentEn', v)} />
+              <TipTapEditor key={`en-${editorKey}`} value={form.contentEn} onChange={(v) => set('contentEn', v)} />
             </FormField>
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <FormField label="Gambar (URL)" required error={errors.image}>
-                <Input className="rounded-lg border-[#EAEAEC]" type="url" value={form.image} onChange={(e) => set('image', e.target.value)} />
-              </FormField>
-              <FormField label="Kategori" required error={errors.category}>
-                <Select value={form.category} onValueChange={(v) => set('category', v)}>
+            <div className="grid gap-4 md:grid-cols-3">
+              <FormField label="Kategori" required error={errors.categoryId}>
+                <Select key={item.id} defaultValue={String(item.category_id)} onValueChange={(v) => set('categoryId', v)}>
                   <SelectTrigger className="rounded-lg border-[#EAEAEC]"><SelectValue placeholder="Pilih" /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="berita">Berita</SelectItem>
-                    <SelectItem value="kegiatan">Kegiatan</SelectItem>
-                    <SelectItem value="pengumuman">Pengumuman</SelectItem>
+                    {categories.map((cat) => (
+                      <SelectItem key={cat.id} value={String(cat.id)}>{cat.name.id}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </FormField>
+              <FormField label="Tanggal" required error={errors.date}>
+                <Input className="rounded-lg border-[#EAEAEC]" type="date" value={form.date} onChange={(e) => set('date', e.target.value)} />
+              </FormField>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2">
-              <FormField label="Penulis" required error={errors.penulis}>
-                <Input className="rounded-lg border-[#EAEAEC]" value={form.penulis} onChange={(e) => set('penulis', e.target.value)} />
-              </FormField>
-              <FormField label="Tanggal" required error={errors.tanggal}>
-                <Input className="rounded-lg border-[#EAEAEC]" type="date" value={form.tanggal} onChange={(e) => set('tanggal', e.target.value)} />
-              </FormField>
-            </div>
+            {item.author && (
+              <p className="text-sm text-[#8B8D98]">Penulis: {item.author.name}</p>
+            )}
+
+            <FormField label="Gambar">
+              {!removeImage && imagePreview && (
+                <div className="mb-2 flex items-start gap-3">
+                  <img src={imagePreview} alt="Current" className="h-32 w-32 rounded-lg object-cover" />
+                  <Button type="button" variant="ghost" size="sm" onClick={handleRemoveImage} className="text-red-600 h-8">Hapus</Button>
+                </div>
+              )}
+              {!removeImage && (
+                <>
+                  <Input type="file" accept="image/jpeg,image/png,image/webp" onChange={handleFileChange} className="rounded-lg border-[#EAEAEC]" />
+                  <p className="mt-1 text-xs text-[#8B8D98]">Kosongkan jika tidak ingin mengubah gambar</p>
+                </>
+              )}
+              {removeImage && <p className="text-sm text-amber-600">Gambar akan dihapus saat disimpan.</p>}
+            </FormField>
           </CardContent>
           <CardFooter className="gap-3">
             <Button type="submit" disabled={loading}>{loading ? '...' : 'Simpan'}</Button>

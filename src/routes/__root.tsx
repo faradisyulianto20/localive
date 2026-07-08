@@ -12,6 +12,7 @@ import { MessageCircle } from 'lucide-react'
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
+import { AuthProvider } from '../hooks/use-auth'
 
 import '../lib/i18n'
 import appCss from '../styles.css?url'
@@ -25,23 +26,11 @@ interface MyRouterContext {
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   head: () => ({
     meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'Localive',
-      },
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { title: 'Localive' },
     ],
-    links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
-    ],
+    links: [{ rel: 'stylesheet', href: appCss }],
   }),
   shellComponent: RootDocument,
 })
@@ -59,36 +48,32 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        {showShell && <Navbar />}
-        <main>{children}</main>
-        {showShell && <Footer />}
+        <AuthProvider>
+          {showShell && <Navbar />}
+          <main>{children}</main>
+          {showShell && <Footer />}
 
-        {/* Floating WhatsApp Button */}
-        {showShell && (
-          <a
-            href="https://wa.me/6285876270545"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-all hover:bg-green-600 hover:scale-110 hover:shadow-xl"
-            aria-label="Chat via WhatsApp"
-          >
-            <MessageCircle className="h-7 w-7" />
-          </a>
-        )}
+          {showShell && (
+            <a
+              href="https://wa.me/6285876270545"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-all hover:bg-green-600 hover:scale-110 hover:shadow-xl"
+              aria-label="Chat via WhatsApp"
+            >
+              <MessageCircle className="h-7 w-7" />
+            </a>
+          )}
 
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-            TanStackQueryDevtools,
-          ]}
-        />
-        <Scripts />
+          <TanStackDevtools
+            config={{ position: 'bottom-right' }}
+            plugins={[
+              { name: 'Tanstack Router', render: <TanStackRouterDevtoolsPanel /> },
+              TanStackQueryDevtools,
+            ]}
+          />
+          <Scripts />
+        </AuthProvider>
       </body>
     </html>
   )
