@@ -32,17 +32,18 @@ async function request<T = unknown>(endpoint: string, options: RequestOptions = 
   }
 
   const xsrfToken = getCookie('XSRF-TOKEN')
+  const isFormData = body instanceof FormData
 
   const res = await fetch(url, {
     ...init,
     credentials: 'include',
     headers: {
       Accept: 'application/json',
-      ...(body ? { 'Content-Type': 'application/json' } : {}),
+      ...(!isFormData && body ? { 'Content-Type': 'application/json' } : {}),
       ...(xsrfToken ? { 'X-XSRF-TOKEN': xsrfToken } : {}),
       ...headers,
     },
-    ...(body ? { body: JSON.stringify(body) } : {}),
+    body: isFormData ? body : (body ? JSON.stringify(body) : undefined),
   })
 
   if (res.status === 204) return undefined as T
@@ -74,4 +75,6 @@ export const api = {
   put: <T>(endpoint: string, body?: unknown, opts?: RequestOptions) =>
     request<T>(endpoint, { ...opts, method: 'PUT', body }),
   delete: <T>(endpoint: string, opts?: RequestOptions) => request<T>(endpoint, { ...opts, method: 'DELETE' }),
+  upload: <T>(endpoint: string, formData: FormData, method: 'POST' | 'PATCH' = 'POST') =>
+    request<T>(endpoint, { method, body: formData }),
 }
