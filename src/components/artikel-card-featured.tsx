@@ -2,6 +2,7 @@
 import { Link } from '@tanstack/react-router'
 import { Calendar, User } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { SafeImage } from './ui/safe-image'
 import type { ArtikelItem } from './artikel-card-list'
 
 interface ArtikelCardFeaturedProps {
@@ -42,7 +43,7 @@ export default function ArtikelCardFeatured({ item }: ArtikelCardFeaturedProps) 
       className="group block cursor-pointer overflow-hidden rounded-lg bg-background transition-all duration-300 hover:shadow-md"
     >
       <div className="aspect-video w-full overflow-hidden rounded-lg">
-        <img
+        <SafeImage
           src={item.image}
           alt={item.title[lang] ?? item.title.id}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"

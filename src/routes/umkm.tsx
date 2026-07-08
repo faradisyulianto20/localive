@@ -1,4 +1,3 @@
-// wisata... eh, umkm.tsx (route file)
 import { useState, useEffect } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
@@ -6,6 +5,8 @@ import { LayoutGrid, UtensilsCrossed, Package, Wrench } from 'lucide-react'
 import UMKMCard from '../components/umkm-card'
 import Pagination from '../components/pagination'
 import umkmData from '#/lib/umkm.json'
+import { fetchUmkmList } from '../lib/api-endpoints'
+import type { UMKMItem } from '../lib/api-transformers'
 
 export const Route = createFileRoute('/umkm')({ component: UMKM })
 
@@ -22,10 +23,17 @@ function UMKM() {
   const [currentPage, setCurrentPage] = useState(1)
   const ITEMS_PER_PAGE = 8
   const activeIndex = tabs.findIndex((tab) => tab.slug === activeFilter)
+  const [items, setItems] = useState<UMKMItem[]>(umkmData.items as any)
+
+  useEffect(() => {
+    fetchUmkmList()
+      .then(setItems)
+      .catch(() => {})
+  }, [])
 
   const filteredList = activeFilter === 'all'
-    ? umkmData.items
-    : umkmData.items.filter((item) => item.category === activeFilter)
+    ? items
+    : items.filter((item) => item.category === activeFilter)
 
   const paginatedItems = filteredList.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
   const totalPages = Math.ceil(filteredList.length / ITEMS_PER_PAGE)
@@ -43,10 +51,8 @@ function UMKM() {
         </h1>
       </div>
 
-      {/* Segmented Filter */}
       <div className="rise-in mt-8 flex justify-center" style={{ animationDelay: '100ms' }}>
         <div className="relative grid grid-cols-4 rounded-full bg-cream p-1 gap-1 w-full max-w-xs sm:max-w-sm">
-          {/* Sliding indicator */}
           <div
             className="absolute top-1 bottom-1 rounded-full bg-terracotta shadow-sm transition-transform duration-300 ease-out"
             style={{
@@ -55,7 +61,6 @@ function UMKM() {
               left: '2px',
             }}
           />
-
           {tabs.map((tab) => {
             const Icon = tab.icon
             const isActive = activeFilter === tab.slug
@@ -80,7 +85,6 @@ function UMKM() {
         </div>
       </div>
 
-      {/* Grid */}
       {filteredList.length > 0 ? (
         <>
           <div className="rise-in mt-8 grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3" style={{ animationDelay: '200ms' }}>

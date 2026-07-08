@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { SafeImage } from './ui/safe-image'
 
 export interface WisataItem {
   id: string
@@ -32,7 +33,7 @@ export default function WisataCard({ item }: WisataCardProps) {
 
   return (
     <div className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer">
-      <img
+      <SafeImage
         src={item.image}
         alt={tval(item.title, lang)}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"

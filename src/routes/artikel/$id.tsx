@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
 import { ArrowLeft, Calendar, User, Share2, Link2, ChevronRight, Check } from 'lucide-react'
 import artikelData from '#/data/artikel.json'
+import { fetchArticles } from '../../lib/api-endpoints'
+import { SafeImage } from '../../components/ui/safe-image'
+import type { ArtikelItem } from '../../lib/api-transformers'
 
 export const Route = createFileRoute('/artikel/$id')({ component: ArtikelDetail })
 
@@ -19,10 +22,33 @@ function ArtikelDetail() {
   const { i18n, t } = useTranslation()
   const lang = i18n.language as 'id' | 'en'
   const [copied, setCopied] = useState(false)
+  const [article, setArticle] = useState<ArtikelItem | undefined>(
+    () => artikelData.find((a) => a.id === id) as any,
+  )
+  const [allArticles, setAllArticles] = useState<ArtikelItem[]>(artikelData as any)
+  const contentRef = useRef<HTMLDivElement>(null)
 
-  const artikel = artikelData.find((a) => a.id === id)
+  useEffect(() => {
+    fetchArticles().then((items) => {
+      setAllArticles(items)
+      setArticle(items.find((a) => a.id === id))
+    }).catch(() => {})
+  }, [id])
 
-  if (!artikel) {
+  useEffect(() => {
+    const container = contentRef.current
+    if (!container) return
+    const imgs = container.querySelectorAll<HTMLImageElement>('img')
+    imgs.forEach((img) => {
+      img.addEventListener('error', function handler() {
+        if (this.src !== '/placeholder-img-not-found.jpg') {
+          this.src = '/placeholder-img-not-found.jpg'
+        }
+      })
+    })
+  }, [article?.content])
+
+  if (!article) {
     return (
       <div className="page-wrap py-16 text-center">
         <p className="text-muted-foreground">
@@ -48,20 +74,15 @@ function ArtikelDetail() {
     })
   }
 
-  // Other articles for the "Related Stories" sidebar
-  const related = artikelData.filter((a) => a.id !== artikel.id).slice(0, 3)
+  const related = allArticles.filter((a) => a.id !== article.id).slice(0, 3)
 
   const handleShare = async () => {
     const shareData = {
-      title: artikel.title[lang] ?? artikel.title.id,
+      title: article.title[lang] ?? article.title.id,
       url: window.location.href,
     }
     if (navigator.share) {
-      try {
-        await navigator.share(shareData)
-      } catch {
-        // user cancelled the native share sheet — nothing to do
-      }
+      try { await navigator.share(shareData) } catch { /* ignore */ }
     } else {
       handleCopyLink()
     }
@@ -72,14 +93,11 @@ function ArtikelDetail() {
       await navigator.clipboard.writeText(window.location.href)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-    } catch {
-      // clipboard unavailable — ignore silently
-    }
+    } catch { /* ignore */ }
   }
 
   return (
     <div className="page-wrap py-10 md:py-12">
-      {/* Breadcrumb */}
       <nav className="animate-fade-in-up flex flex-wrap items-center gap-1.5 text-xs text-gray-600">
         <Link to="/" className="hover:text-forest cursor-pointer transition-all duration-300">
           {t('nav.home', 'Home')}
@@ -90,55 +108,51 @@ function ArtikelDetail() {
         </Link>
         <ChevronRight className="h-3.5 w-3.5" />
         <span className="max-w-[220px] truncate text-gray-600">
-          {artikel.title[lang] ?? artikel.title.id}
+          {article.title[lang] ?? article.title.id}
         </span>
       </nav>
 
-      {/* Hero image — gradient overlay + category tag + title */}
       <div className="animate-fade-in-up relative mt-4 overflow-hidden rounded-2xl" style={{ animationDelay: '100ms' }}>
-        <img
-          src={artikel.image}
-          alt={artikel.title[lang] ?? artikel.title.id}
+        <SafeImage
+          src={article.image}
+          alt={article.title[lang] ?? article.title.id}
           className="aspect-[16/8] w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/30 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6 md:p-10">
           <span
             className={`inline-block rounded-full px-3 py-1 text-xs font-semibold text-white ${
-              categoryColor[artikel.category] ?? 'bg-muted-foreground'
+              categoryColor[article.category] ?? 'bg-muted-foreground'
             }`}
           >
-            {artikel.category}
+            {article.category}
           </span>
           <h1 className="display-title mt-3 text-2xl font-bold leading-tight text-white sm:text-3xl md:text-4xl">
-            {artikel.title[lang] ?? artikel.title.id}
+            {article.title[lang] ?? article.title.id}
           </h1>
         </div>
       </div>
 
-      {/* Meta info */}
       <div className="animate-fade-in-up mt-5 flex flex-wrap items-center gap-4 border-b border-border pb-5 text-sm text-gray-600" style={{ animationDelay: '100ms' }}>
         <span className="flex items-center gap-1.5">
           <Calendar className="h-4 w-4" />
-          {formatDate(artikel.tanggal)}
+          {formatDate(article.tanggal)}
         </span>
         <span className="flex items-center gap-1.5">
           <User className="h-4 w-4" />
-          {artikel.penulis}
+          {article.penulis}
         </span>
       </div>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-3">
-        {/* Main content */}
         <article className="animate-fade-in-up lg:col-span-2" style={{ animationDelay: '100ms' }}>
           <div
+            ref={contentRef}
             className="prose prose-forest prose-lg max-w-none prose-headings:font-bold prose-headings:text-forest"
             dangerouslySetInnerHTML={{
-              __html: artikel.content[lang] ?? artikel.content.id,
+              __html: article.content[lang] ?? article.content.id,
             }}
           />
-
-          {/* Share */}
           <div className="mt-10 flex items-center gap-3 border-t border-border pt-6">
             <span className="text-sm font-medium text-gray-600">
               {t('artikel.share', 'Bagikan')}:
@@ -167,13 +181,11 @@ function ArtikelDetail() {
           </div>
         </article>
 
-        {/* Sidebar — Related Stories */}
         <aside className="animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           <div className="feature-card rounded-2xl p-6">
             <h2 className="display-title text-lg font-bold text-forest">
               {t('artikel.related', 'Artikel Lainnya')}
             </h2>
-
             <div className="mt-5 space-y-4">
               {related.map((item) => (
                 <Link
@@ -182,7 +194,7 @@ function ArtikelDetail() {
                   params={{ id: item.id }}
                   className="group flex items-start gap-3 cursor-pointer transition-all duration-300"
                 >
-                  <img
+                  <SafeImage
                     src={item.image}
                     alt={item.title[lang] ?? item.title.id}
                     className="h-16 w-16 shrink-0 rounded-lg object-cover transition-all duration-300"
@@ -200,7 +212,6 @@ function ArtikelDetail() {
                   </div>
                 </Link>
               ))}
-
               {related.length === 0 && (
                 <p className="text-sm text-gray-600">
                   {t('artikel.noRelated', 'Belum ada artikel lainnya.')}

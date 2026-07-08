@@ -1,21 +1,28 @@
-// produk-umkm-section.tsx
 import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from '#/hooks/use-in-view.ts'
 import UMKMCard from './umkm-card'
+import { fetchUmkmList, fetchUmkmCategories } from '../lib/api-endpoints'
 import umkmData from '#/lib/umkm.json'
 import type { UMKMItem } from './umkm-card'
 
-
 export default function ProdukUMKMSection() {
   const { t } = useTranslation()
-  const items = (umkmData.items as UMKMItem[]).slice(0, 6)
+  const [items, setItems] = useState<UMKMItem[]>((umkmData.items as UMKMItem[]).slice(0, 6))
   const scrollRef = useRef<HTMLDivElement>(null)
   const { ref, inView } = useInView()
 
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
+
+  useEffect(() => {
+    fetchUmkmList()
+      .then((list) => {
+        if (list.length > 0) setItems(list.slice(0, 6))
+      })
+      .catch(() => {})
+  }, [])
 
   const updateScrollState = () => {
     const el = scrollRef.current

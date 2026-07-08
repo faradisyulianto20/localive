@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Calendar, User } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { SafeImage } from './ui/safe-image'
 
 export interface ArtikelItem {
   id: string
@@ -52,7 +53,7 @@ export default function ArtikelCard({ item }: ArtikelCardProps) {
       className="group block cursor-pointer overflow-hidden rounded-lg border border-border shadow-sm transition-all duration-300 hover:shadow-md"
     >
       <div className="aspect-[4/3] overflow-hidden rounded-lg">
-        <img
+        <SafeImage
           src={item.image}
           alt={item.title[lang] ?? item.title.id}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
