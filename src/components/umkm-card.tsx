@@ -1,6 +1,7 @@
 // umkm-card.tsx
 import { MessageCircle, MapPin, UtensilsCrossed, Package, Wrench } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { SafeImage } from './ui/safe-image'
 
 export interface UMKMItem {
   id: string
@@ -43,7 +44,7 @@ export default function UMKMCard({ item }: UMKMCardProps) {
 
   return (
     <div className="group relative aspect-[4/3] overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer">
-      <img
+      <SafeImage
         src={item.image}
         alt={tval(item.title, lang)}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from '#/hooks/use-in-view.ts'
+import { fetchTourCategories, fetchWisataList } from '../lib/api-endpoints'
 import wisataData from '#/lib/wisata.json'
-import heroImg from '../../public/hero.png' // sesuaikan path import hero.png kamu
+import heroImg from '../../public/hero.png'
 
 const categoryImages: Record<string, string> = {
   destinasi: heroImg,
@@ -25,18 +27,44 @@ const categoryDescriptions: Record<string, { id: string; en: string }> = {
   },
 }
 
+interface CategoryItem {
+  slug: string
+  label: string
+  count: number
+  desc: { id: string; en: string }
+  image: string
+}
+
 export default function WisataSection() {
   const { i18n, t } = useTranslation()
   const lang = i18n.language as 'id' | 'en'
-  const items = wisataData.items
   const { ref, inView } = useInView()
+  const [categories, setCategories] = useState<CategoryItem[]>(() =>
+    wisataData.categories.map((cat) => ({
+      ...cat,
+      count: wisataData.items.filter((i) => i.category === cat.slug).length,
+      desc: categoryDescriptions[cat.slug],
+      image: categoryImages[cat.slug],
+    }))
+  )
 
-  const categories = wisataData.categories.map((cat) => ({
-    ...cat,
-    count: items.filter((i) => i.category === cat.slug).length,
-    desc: categoryDescriptions[cat.slug],
-    image: categoryImages[cat.slug],
-  }))
+  useEffect(() => {
+    Promise.all([
+      fetchTourCategories(),
+      fetchWisataList(),
+    ])
+      .then(([tourCats, wisataItems]) => {
+        const cats: CategoryItem[] = tourCats.map((tc: any) => ({
+          slug: tc.slug,
+          label: tc.name?.id || tc.slug,
+          count: wisataItems.filter((i) => i.category === tc.slug).length,
+          desc: categoryDescriptions[tc.slug] || { id: tc.name?.id || '', en: tc.name?.en || '' },
+          image: categoryImages[tc.slug] || heroImg,
+        }))
+        if (cats.length > 0) setCategories(cats)
+      })
+      .catch(() => {})
+  }, [])
 
   return (
     <section id="wisata" ref={ref} className={`page-wrap py-12 md:py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
@@ -56,22 +84,18 @@ export default function WisataSection() {
             className={`group relative aspect-[4/5] md:aspect-[4/4.5] overflow-hidden rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}
             style={{ animationDelay: `${index * 100}ms` }}
           >
-            {/* Gambar penuh */}
             <img
               src={cat.image}
               alt={cat.label}
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
-            {/* Overlay gelap tipis, menguat saat hover agar teks tetap terbaca */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent transition-opacity duration-300 group-hover:from-black/85 group-hover:via-black/20" />
 
-            {/* Label kategori saat default (belum hover), posisinya naik & fade-out saat hover */}
             <div className="absolute inset-x-0 bottom-0 p-5 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-2">
               <h3 className="text-lg md:text-xl font-bold text-white">{t('wisata.filter.' + cat.slug)}</h3>
             </div>
 
-            {/* Panel detail: slide-up dari bawah saat hover */}
             <div className="absolute inset-x-0 bottom-0 translate-y-full bg-white p-5 transition-transform duration-400 ease-out group-hover:translate-y-0">
               <h3 className="text-lg font-bold text-forest">{t('wisata.filter.' + cat.slug)}</h3>
               <p className="mt-2 text-sm leading-relaxed text-brown/80 line-clamp-3">
