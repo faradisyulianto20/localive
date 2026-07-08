@@ -25,6 +25,7 @@ import { Route as AdminUmkmIndexRouteImport } from './routes/admin/umkm/index'
 import { Route as AdminPotensiDesaIndexRouteImport } from './routes/admin/potensi-desa/index'
 import { Route as AdminMitraIndexRouteImport } from './routes/admin/mitra/index'
 import { Route as AdminLemahAsriIndexRouteImport } from './routes/admin/lemah-asri/index'
+import { Route as AdminKategoriIndexRouteImport } from './routes/admin/kategori/index'
 import { Route as AdminArtikelIndexRouteImport } from './routes/admin/artikel/index'
 import { Route as AdminAdminsIndexRouteImport } from './routes/admin/admins/index'
 import { Route as AdminWisataNewRouteImport } from './routes/admin/wisata/new'
@@ -119,6 +120,11 @@ const AdminMitraIndexRoute = AdminMitraIndexRouteImport.update({
 const AdminLemahAsriIndexRoute = AdminLemahAsriIndexRouteImport.update({
   id: '/lemah-asri/',
   path: '/lemah-asri/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminKategoriIndexRoute = AdminKategoriIndexRouteImport.update({
+  id: '/kategori/',
+  path: '/kategori/',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminArtikelIndexRoute = AdminArtikelIndexRouteImport.update({
@@ -218,6 +224,7 @@ export interface FileRoutesByFullPath {
   '/admin/wisata/new': typeof AdminWisataNewRoute
   '/admin/admins/': typeof AdminAdminsIndexRoute
   '/admin/artikel/': typeof AdminArtikelIndexRoute
+  '/admin/kategori/': typeof AdminKategoriIndexRoute
   '/admin/lemah-asri/': typeof AdminLemahAsriIndexRoute
   '/admin/mitra/': typeof AdminMitraIndexRoute
   '/admin/potensi-desa/': typeof AdminPotensiDesaIndexRoute
@@ -250,6 +257,7 @@ export interface FileRoutesByTo {
   '/admin/wisata/new': typeof AdminWisataNewRoute
   '/admin/admins': typeof AdminAdminsIndexRoute
   '/admin/artikel': typeof AdminArtikelIndexRoute
+  '/admin/kategori': typeof AdminKategoriIndexRoute
   '/admin/lemah-asri': typeof AdminLemahAsriIndexRoute
   '/admin/mitra': typeof AdminMitraIndexRoute
   '/admin/potensi-desa': typeof AdminPotensiDesaIndexRoute
@@ -284,6 +292,7 @@ export interface FileRoutesById {
   '/admin/wisata/new': typeof AdminWisataNewRoute
   '/admin/admins/': typeof AdminAdminsIndexRoute
   '/admin/artikel/': typeof AdminArtikelIndexRoute
+  '/admin/kategori/': typeof AdminKategoriIndexRoute
   '/admin/lemah-asri/': typeof AdminLemahAsriIndexRoute
   '/admin/mitra/': typeof AdminMitraIndexRoute
   '/admin/potensi-desa/': typeof AdminPotensiDesaIndexRoute
@@ -319,6 +328,7 @@ export interface FileRouteTypes {
     | '/admin/wisata/new'
     | '/admin/admins/'
     | '/admin/artikel/'
+    | '/admin/kategori/'
     | '/admin/lemah-asri/'
     | '/admin/mitra/'
     | '/admin/potensi-desa/'
@@ -351,6 +361,7 @@ export interface FileRouteTypes {
     | '/admin/wisata/new'
     | '/admin/admins'
     | '/admin/artikel'
+    | '/admin/kategori'
     | '/admin/lemah-asri'
     | '/admin/mitra'
     | '/admin/potensi-desa'
@@ -384,6 +395,7 @@ export interface FileRouteTypes {
     | '/admin/wisata/new'
     | '/admin/admins/'
     | '/admin/artikel/'
+    | '/admin/kategori/'
     | '/admin/lemah-asri/'
     | '/admin/mitra/'
     | '/admin/potensi-desa/'
@@ -522,6 +534,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLemahAsriIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/kategori/': {
+      id: '/admin/kategori/'
+      path: '/kategori'
+      fullPath: '/admin/kategori/'
+      preLoaderRoute: typeof AdminKategoriIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/artikel/': {
       id: '/admin/artikel/'
       path: '/artikel'
@@ -642,6 +661,7 @@ interface AdminRouteChildren {
   AdminWisataNewRoute: typeof AdminWisataNewRoute
   AdminAdminsIndexRoute: typeof AdminAdminsIndexRoute
   AdminArtikelIndexRoute: typeof AdminArtikelIndexRoute
+  AdminKategoriIndexRoute: typeof AdminKategoriIndexRoute
   AdminLemahAsriIndexRoute: typeof AdminLemahAsriIndexRoute
   AdminMitraIndexRoute: typeof AdminMitraIndexRoute
   AdminPotensiDesaIndexRoute: typeof AdminPotensiDesaIndexRoute
@@ -667,6 +687,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminWisataNewRoute: AdminWisataNewRoute,
   AdminAdminsIndexRoute: AdminAdminsIndexRoute,
   AdminArtikelIndexRoute: AdminArtikelIndexRoute,
+  AdminKategoriIndexRoute: AdminKategoriIndexRoute,
   AdminLemahAsriIndexRoute: AdminLemahAsriIndexRoute,
   AdminMitraIndexRoute: AdminMitraIndexRoute,
   AdminPotensiDesaIndexRoute: AdminPotensiDesaIndexRoute,

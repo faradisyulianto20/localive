@@ -11,6 +11,7 @@ import {
   Lock,
   LogOut,
   Shield,
+  Tags,
 } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
@@ -31,6 +32,10 @@ const adminOnlyMenu = [
   { to: '/admin/admins', label: 'Admin', icon: Shield },
 ]
 
+const kategoriMenu = [
+  { to: '/admin/kategori', label: 'Kategori', icon: Tags },
+]
+
 const profilMenu = [
   { to: '/admin/potensi-desa', label: 'Potensi Desa', icon: Lamp },
   { to: '/admin/mitra', label: 'Mitra', icon: Handshake },
@@ -42,8 +47,8 @@ export default function AdminSidebar() {
   const [showPasswordModal, setShowPasswordModal] = useState(false)
 
   const mainMenu = useMemo(() => {
-    if (user?.role === 'super_admin') return [...baseMainMenu, ...adminOnlyMenu]
-    return baseMainMenu
+    if (user?.role === 'super_admin') return [...baseMainMenu, ...adminOnlyMenu, ...kategoriMenu]
+    return [...baseMainMenu, ...kategoriMenu]
   }, [user])
 
   const allMenu = useMemo(() => [...mainMenu, ...profilMenu], [mainMenu])
