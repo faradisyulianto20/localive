@@ -10,6 +10,7 @@ import {
   Handshake,
   Lock,
   LogOut,
+  Shield,
 } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
@@ -23,6 +24,7 @@ const mainMenu = [
   { to: '/admin/umkm', label: 'UMKM', icon: Store },
   { to: '/admin/artikel', label: 'Artikel', icon: FileText },
   { to: '/admin/lemah-asri', label: 'Lemah Asri', icon: Leaf },
+  { to: '/admin/admins', label: 'Admin', icon: Shield },
 ]
 
 const profilMenu = [
