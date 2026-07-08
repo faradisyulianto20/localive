@@ -17,13 +17,17 @@ import { Input } from '../ui/input'
 import { Label } from '../ui/label'
 import { useAuth } from '../../hooks/use-auth'
 import { api, csrf, ApiError } from '../../lib/api'
+import { useMemo } from 'react'
 
-const mainMenu = [
+const baseMainMenu = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/admin/wisata', label: 'Wisata', icon: Mountain },
   { to: '/admin/umkm', label: 'UMKM', icon: Store },
   { to: '/admin/artikel', label: 'Artikel', icon: FileText },
   { to: '/admin/lemah-asri', label: 'Lemah Asri', icon: Leaf },
+]
+
+const adminOnlyMenu = [
   { to: '/admin/admins', label: 'Admin', icon: Shield },
 ]
 
@@ -32,12 +36,17 @@ const profilMenu = [
   { to: '/admin/mitra', label: 'Mitra', icon: Handshake },
 ]
 
-const allMenu = [...mainMenu, ...profilMenu]
-
 export default function AdminSidebar() {
   const matchRoute = useMatchRoute()
-  const { logout } = useAuth()
+  const { user, logout } = useAuth()
   const [showPasswordModal, setShowPasswordModal] = useState(false)
+
+  const mainMenu = useMemo(() => {
+    if (user?.role === 'super_admin') return [...baseMainMenu, ...adminOnlyMenu]
+    return baseMainMenu
+  }, [user])
+
+  const allMenu = useMemo(() => [...mainMenu, ...profilMenu], [mainMenu])
 
   const handleLogout = async () => {
     await logout()
