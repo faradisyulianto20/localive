@@ -14,3 +14,18 @@ todos.json
 
 # Local Netlify folder
 .netlify
+
+# opencode
+.opencode/
+
+# development docs / planning
+plan/
+plans/
+plan.md
+rombak.md
+structure/
+
+# editor
+.vscode/
+.cursorrules
+.cta.json

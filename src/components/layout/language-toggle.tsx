@@ -13,7 +13,7 @@ export default function LanguageToggle() {
           lang === 'en' ? 'bg-background text-brown shadow-sm' : 'text-muted-foreground hover:bg-olive/10'
         }`}
       >
-        <img src="/uk-logo.svg" alt="English" className="h-4 w-4" />
+        <img src="/logos/uk-logo.svg" alt="English" className="h-4 w-4" />
         EN
       </button>
       <button
@@ -23,7 +23,7 @@ export default function LanguageToggle() {
           lang === 'id' ? 'bg-terracotta text-white shadow-sm' : 'text-muted-foreground hover:bg-olive/10'
         }`}
       >
-        <img src="/in-logo.svg" alt="Indonesia" className="h-4 w-4" />
+        <img src="/logos/in-logo.svg" alt="Indonesia" className="h-4 w-4" />
         ID
       </button>
     </div>

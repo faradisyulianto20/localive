@@ -108,7 +108,7 @@ function LemahAsri() {
     <div>
       <section className="relative flex items-end min-h-[80vh] overflow-hidden -mt-20">
         <img
-          src="/hero.png"
+          src="/images/hero.png"
           alt="Lemah Asri"
           className="absolute inset-0 h-full w-full object-cover"
         />

@@ -49,7 +49,9 @@ export async function fetchTourCategories(): Promise<any[]> {
 
 export async function fetchUmkmList(): Promise<UMKMItem[]> {
   const json = await apiGet<any>('/api/umkm')
-  return (json.data || []).map(transformUmkm)
+  return (json.data || [])
+    .filter((item: any) => item.status === 'published')
+    .map(transformUmkm)
 }
 
 export async function fetchUmkmCategories(): Promise<any[]> {

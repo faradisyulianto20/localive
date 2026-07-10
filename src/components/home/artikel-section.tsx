@@ -2,9 +2,9 @@
 import { useTranslation } from 'react-i18next'
 import { ArrowRight } from 'lucide-react'
 import { useInView } from '#/hooks/use-in-view.ts'
-import ArtikelCardList from './artikel-card-list.tsx'
-import ArtikelCardFeatured from './artikel-card-featured.tsx'
-import type { ArtikelItem } from './artikel-card-list.tsx'
+import ArtikelCardList from '../artikel/artikel-card-list'
+import ArtikelCardFeatured from '../artikel/artikel-card-featured'
+import type { ArtikelItem } from '../artikel/artikel-card-list'
 
 interface ArtikelSectionProps {
   items: ArtikelItem[]

@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next'
 import { MessageCircle } from 'lucide-react'
 
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
-import Navbar from '../components/navbar'
-import Footer from '../components/footer'
+import Navbar from '../components/layout/navbar'
+import Footer from '../components/layout/footer'
 import { AuthProvider } from '../hooks/use-auth'
 
 import '../lib/i18n'

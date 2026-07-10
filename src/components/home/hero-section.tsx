@@ -7,12 +7,11 @@ export default function HeroSection() {
 	return (
 		<section className="relative flex min-h-screen items-end overflow-hidden -mt-20">
 			<img
-				src="/hero.png"
+				src="/images/hero.png"
 				alt="Tamanan"
 				className="absolute inset-0 h-full w-full object-cover"
 			/>
 
-			<div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-forest/20 to-transparent" />
 			<div className="absolute inset-0 bg-gradient-to-r from-forest/50 via-transparent to-transparent" />
 
 			<div className="page-wrap relative z-10 w-full pb-20 pt-24 my-auto">

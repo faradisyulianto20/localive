@@ -1,7 +1,8 @@
-export function SafeImage({ src, alt = '', fallback = '/placeholder-img-not-found.jpg', className, ...props }: React.ImgHTMLAttributes<HTMLImageElement> & { fallback?: string }) {
+export function SafeImage({ src, alt = '', fallback = '/images/placeholder-img-not-found.jpg', className, ...props }: React.ImgHTMLAttributes<HTMLImageElement> & { fallback?: string }) {
+  const safeSrc = src || fallback
   return (
     <img
-      src={src}
+      src={safeSrc}
       alt={alt}
       className={className}
       loading="lazy"

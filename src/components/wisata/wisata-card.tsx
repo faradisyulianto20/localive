@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { SafeImage } from './ui/safe-image'
+import { SafeImage } from '../ui/safe-image'
 
 export interface WisataItem {
   id: string
@@ -14,6 +14,7 @@ export interface WisataItem {
 
 interface WisataCardProps {
   item: WisataItem
+  onClick?: () => void
 }
 
 const categoryLabel: Record<string, { id: string; en: string }> = {
@@ -26,13 +27,13 @@ function tval(v: string | { id: string; en: string }, lang: string) {
   return typeof v === 'string' ? v : v[lang as 'id' | 'en'] || v.id
 }
 
-export default function WisataCard({ item }: WisataCardProps) {
+export default function WisataCard({ item, onClick }: WisataCardProps) {
   const { i18n, t } = useTranslation()
-  const lang = i18n.language
+  const lang = i18n.language as 'id' | 'en'
   const cat = categoryLabel[item.category]
 
   return (
-    <div className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer">
+    <div className="group relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer" onClick={onClick}>
       <SafeImage
         src={item.image}
         alt={tval(item.title, lang)}

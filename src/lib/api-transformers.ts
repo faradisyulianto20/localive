@@ -15,7 +15,7 @@ export function transformArtikel(be: any): ArtikelItem {
     id: String(be.id),
     title: be.title || { id: '', en: '' },
     content: be.content || { id: '', en: '' },
-    image: be.image_url || '/placeholder-img-not-found.jpg',
+    image: be.image_url || '/images/placeholder-img-not-found.jpg',
     category: be.category?.slug || 'berita-desa',
     penulis: be.author?.name || 'Admin',
     tanggal: be.date || '',
@@ -38,7 +38,7 @@ export function transformWisata(be: any): WisataItem {
     category: be.category?.slug || '',
     title: be.title || { id: '', en: '' },
     description: be.description || { id: '', en: '' },
-    image: be.image_url || '/placeholder-img-not-found.jpg',
+    image: be.image_url || '/images/placeholder-img-not-found.jpg',
   }
 }
 
@@ -56,13 +56,13 @@ export interface UMKMItem {
 export function transformUmkm(be: any): UMKMItem {
   return {
     id: String(be.id),
-    category: be.category?.slug || '',
+    category: (be.category?.slug || be.category || '').toLowerCase(),
     title: be.title || { id: '', en: '' },
     description: be.description || { id: '', en: '' },
-    image: be.image_url || '/placeholder-img-not-found.jpg',
-    noTelp: '',
-    waUrl: '',
-    mapsUrl: be.maps_link || '',
+    image: be.image_url || be.image || '/images/placeholder-img-not-found.jpg',
+    noTelp: be.no_telp || be.noTelp || '',
+    waUrl: be.wa_url || be.waUrl || '',
+    mapsUrl: be.maps_link || be.mapsUrl || '',
   }
 }
 
@@ -76,7 +76,7 @@ export interface PartnerItem {
 export function transformPartner(be: any): PartnerItem {
   return {
     id: String(be.id),
-    logo: be.logo_url || '/placeholder-img-not-found.jpg',
+    logo: be.logo_url || '/images/placeholder-img-not-found.jpg',
     nama: be.name?.id || be.name?.en || '',
     url: null,
   }
@@ -95,7 +95,7 @@ export interface PotensiDesaItem {
 export function transformPotensi(be: any): PotensiDesaItem {
   return {
     id: String(be.id),
-    image: be.image_url || '/placeholder-img-not-found.jpg',
+    image: be.image_url || '/images/placeholder-img-not-found.jpg',
     title: be.title || { id: '', en: '' },
     description: be.description || { id: '', en: '' },
     badge: null,

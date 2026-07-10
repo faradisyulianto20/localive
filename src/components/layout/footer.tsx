@@ -19,9 +19,9 @@ export default function Footer() {
       <div className="page-wrap">
         <div className="grid grid-cols-1 gap-8 md:gap-10 md:grid-cols-[1.3fr_0.8fr_1fr_1fr]">
           <div>
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cream text-sm font-medium text-gray-600">
-              Logo
-            </div>
+            <p className="text-2xl font-extrabold tracking-tight text-forest">
+              localive
+            </p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-gray-600">
               {t(
                 'footer.description',

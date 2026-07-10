@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import artikelData from '#/data/artikel.json'
 import { fetchArticles } from '../lib/api-endpoints'
 import type { ArtikelItem } from '../lib/api-transformers'
-import ArtikelCard from '../components/artikel-card'
+import ArtikelCard from '../components/artikel/artikel-card'
 
 export const Route = createFileRoute('/artikel')({ component: Artikel })
 

@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
-import { Link } from '@tanstack/react-router'
-import { ArrowRight } from 'lucide-react'
-import WisataCard from '../components/wisata-card'
-import Pagination from '../components/pagination'
+import WisataCard from '../components/wisata/wisata-card'
+import WisataDetailDialog from '../components/wisata/wisata-detail-dialog'
+import Pagination from '../components/shared/pagination'
 import { SafeImage } from '../components/ui/safe-image'
 import wisataData from '#/lib/wisata.json'
 import { fetchWisataList } from '../lib/api-endpoints'
@@ -32,6 +31,7 @@ function Wisata() {
   const [currentPage, setCurrentPage] = useState(1)
   const ITEMS_PER_PAGE = 6
   const [items, setItems] = useState<WisataItem[]>(wisataData.items as any)
+  const [selectedItem, setSelectedItem] = useState<WisataItem | null>(null)
 
   useEffect(() => {
     fetchWisataList()
@@ -68,9 +68,8 @@ function Wisata() {
 
       {featuredItem && (
         <div className="rise-in mt-8 grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-5" style={{ animationDelay: '100ms' }}>
-          <Link
-            to="/wisata/$slug"
-            params={{ slug: featuredItem.id }}
+          <div
+            onClick={() => setSelectedItem(featuredItem)}
             className="lg:col-span-2 group relative overflow-hidden rounded-3xl min-h-[380px] md:min-h-[440px] flex items-end p-6 md:p-8 cursor-pointer"
           >
             <SafeImage
@@ -93,14 +92,13 @@ function Wisata() {
             <span className="absolute right-3 top-3 rounded-full bg-olive px-2 py-0.5 text-[10px] font-semibold text-white">
               {t('wisata.tersedia', 'Tersedia')}
             </span>
-          </Link>
+          </div>
 
           <div className="flex flex-col gap-4 md:gap-5">
             {highlightItems.map((item) => (
-              <Link
+              <div
                 key={item.id}
-                to="/wisata/$slug"
-                params={{ slug: item.id }}
+                onClick={() => setSelectedItem(item)}
                 className="group relative overflow-hidden rounded-2xl flex-1 min-h-[170px] flex items-end p-5 cursor-pointer"
               >
                 <SafeImage
@@ -120,7 +118,7 @@ function Wisata() {
                 <span className="absolute right-2 top-2 rounded-full bg-olive px-2 py-0.5 text-[10px] font-semibold text-white">
                   {t('wisata.tersedia', 'Tersedia')}
                 </span>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -147,7 +145,7 @@ function Wisata() {
         <>
           <div className="rise-in mt-8 grid grid-cols-1 gap-4 md:gap-5 md:grid-cols-3" style={{ animationDelay: '300ms' }}>
             {paginatedItems.map((item) => (
-              <WisataCard key={item.id} item={item} />
+              <WisataCard key={item.id} item={item} onClick={() => setSelectedItem(item)} />
             ))}
           </div>
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
@@ -159,6 +157,8 @@ function Wisata() {
           </p>
         </div>
       )}
+
+      {selectedItem && <WisataDetailDialog item={selectedItem} onClose={() => setSelectedItem(null)} />}
     </div>
   )
 }

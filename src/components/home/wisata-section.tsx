@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from '#/hooks/use-in-view.ts'
-import { fetchTourCategories, fetchWisataList } from '../lib/api-endpoints'
+import { fetchTourCategories, fetchWisataList } from '../../lib/api-endpoints'
 import wisataData from '#/lib/wisata.json'
-import heroImg from '../../public/hero.png'
+import heroImg from '../../../public/images/hero.png'
+import aktivitasImg from '../../../public/images/aktivitas.png'
+import atraksiImg from '../../../public/images/atraksi.png'
+import destinasiImg from '../../../public/images/destinasi.png'
 
 const categoryImages: Record<string, string> = {
-  destinasi: heroImg,
-  atraksi: heroImg,
-  aktivitas: heroImg,
+  destinasi: destinasiImg || heroImg,
+  atraksi: atraksiImg || heroImg,
+  aktivitas: aktivitasImg || heroImg,
 }
 
 const categoryDescriptions: Record<string, { id: string; en: string }> = {
@@ -81,8 +84,9 @@ export default function WisataSection() {
         {categories.map((cat, index) => (
           <div
             key={cat.slug}
-            className={`group relative aspect-[4/5] md:aspect-[4/4.5] overflow-hidden rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}
+            className={`group relative aspect-[4/5] md:aspect-[4/4.5] overflow-hidden rounded-lg shadow-sm transition-all duration-500 hover:shadow-xl ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'} cursor-pointer`}
             style={{ animationDelay: `${index * 100}ms` }}
+            // onClick={() => window.location.href = `/wisata?category=${cat.slug}`}
           >
             <img
               src={cat.image}
@@ -101,9 +105,9 @@ export default function WisataSection() {
               <p className="mt-2 text-sm leading-relaxed text-brown/80 line-clamp-3">
                 {cat.desc?.[lang] ?? cat.desc?.id}
               </p>
-              <span className="mt-3 inline-block text-xs font-semibold text-terracotta">
+              {/* <span className="mt-3 inline-block text-xs font-semibold text-terracotta">
                 {t('wisata.paketTersedia', { count: cat.count })}
-              </span>
+              </span> */}
             </div>
           </div>
         ))}

@@ -1,7 +1,7 @@
 // umkm-card.tsx
 import { MessageCircle, MapPin, UtensilsCrossed, Package, Wrench } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { SafeImage } from './ui/safe-image'
+import { SafeImage } from '../ui/safe-image'
 
 export interface UMKMItem {
   id: string
@@ -18,6 +18,7 @@ export interface UMKMItem {
 
 interface UMKMCardProps {
   item: UMKMItem
+  onClick?: () => void
 }
 
 const categoryLabel: Record<string, { id: string; en: string }> = {
@@ -36,14 +37,14 @@ function tval(v: string | { id: string; en: string }, lang: string) {
   return typeof v === 'string' ? v : v[lang as 'id' | 'en'] || v.id
 }
 
-export default function UMKMCard({ item }: UMKMCardProps) {
+export default function UMKMCard({ item, onClick }: UMKMCardProps) {
   const { i18n, t } = useTranslation()
   const lang = i18n.language as 'id' | 'en'
-  const cat = categoryLabel[item.category]
-  const CatIcon = categoryIcon[item.category]
+  const cat = categoryLabel[item.category] ?? { id: item.category, en: item.category }
+  const CatIcon = categoryIcon[item.category] ?? UtensilsCrossed
 
   return (
-    <div className="group relative aspect-[4/3] overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer">
+    <div className="group relative aspect-[4/3] overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer" onClick={onClick}>
       <SafeImage
         src={item.image}
         alt={tval(item.title, lang)}
@@ -69,10 +70,10 @@ export default function UMKMCard({ item }: UMKMCardProps) {
           {tval(item.title, lang)}
         </h3>
 
-        {/* Detail tambahan — reveal saat hover */}
-        <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-300 ease-out group-hover:mt-2 group-hover:grid-rows-[1fr] group-hover:opacity-100">
+        {/* Detail tambahan — selalu tampil di mobile, reveal saat hover di desktop */}
+        <div className="mt-2 grid md:grid-rows-[0fr] md:opacity-0 transition-all duration-300 ease-out group-hover:md:mt-2 group-hover:md:grid-rows-[1fr] group-hover:md:opacity-100">
           <div className="overflow-hidden">
-            <p className="text-xs leading-relaxed text-white/80 line-clamp-2">
+            <p className="text-xs leading-relaxed text-white/80 md:line-clamp-2">
               {tval(item.description, lang)}
             </p>
 

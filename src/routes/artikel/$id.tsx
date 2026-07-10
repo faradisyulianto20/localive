@@ -51,8 +51,8 @@ function ArtikelDetail() {
     const imgs = container.querySelectorAll<HTMLImageElement>('img')
     imgs.forEach((img) => {
       img.addEventListener('error', function handler() {
-        if (this.src !== '/placeholder-img-not-found.jpg') {
-          this.src = '/placeholder-img-not-found.jpg'
+        if (this.src !== '/images/placeholder-img-not-found.jpg') {
+          this.src = '/images/placeholder-img-not-found.jpg'
         }
       })
     })
@@ -103,7 +103,7 @@ function ArtikelDetail() {
     } catch { /* ignore */ }
   }
 
-  const articleImage = article.image_url || article.image || null
+  const articleImage = article.image_url || article.image || '/images/placeholder-img-not-found.jpg'
   const articleDate = article.date || article.tanggal || ''
   const articleAuthor = article.author?.name || article.penulis || null
   const categoryName = article.category?.name?.[lang] ?? article.category?.name?.id ?? null
@@ -158,7 +158,7 @@ function ArtikelDetail() {
             </h2>
             <div className="mt-5 space-y-4">
               {related.map((item) => {
-                const image = item.image_url || item.image || null
+                const image = item.image_url || item.image || '/images/placeholder-img-not-found.jpg'
                 const date = item.date || item.tanggal || ''
                 return (
                   <Link

@@ -68,11 +68,11 @@
   "mitra": {
     "heading": { "id": "Mitra Kami", "en": "Our Partners" },
     "items": [
-      { "id": "rs-bethesda", "nama": "RS Bethesda Yogyakarta", "logo": "/ugm.png", "url": null },
-      { "id": "genbi", "nama": "GENBI", "logo": "/ugm.png", "url": null },
-      { "id": "dem-ugm", "nama": "DEM UGM", "logo": "/ugm.png", "url": null },
-      { "id": "bem-feb-ugm", "nama": "BEM FEB UGM", "logo": "/ugm.png", "url": null },
-      { "id": "bengkel-sapi", "nama": "Bengkel Sapi Kalijeruk", "logo": "/ugm.png", "url": null }
+      { "id": "rs-bethesda", "nama": "RS Bethesda Yogyakarta", "logo": "/images/ugm.png", "url": null },
+      { "id": "genbi", "nama": "GENBI", "logo": "/images/ugm.png", "url": null },
+      { "id": "dem-ugm", "nama": "DEM UGM", "logo": "/images/ugm.png", "url": null },
+      { "id": "bem-feb-ugm", "nama": "BEM FEB UGM", "logo": "/images/ugm.png", "url": null },
+      { "id": "bengkel-sapi", "nama": "Bengkel Sapi Kalijeruk", "logo": "/images/ugm.png", "url": null }
     ]
   }
 }

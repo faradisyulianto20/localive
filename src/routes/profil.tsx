@@ -42,7 +42,7 @@ function Profil() {
       {/* Hero */}
       <section className="relative flex items-center justify-center min-h-[50vh] overflow-hidden -mt-20 text-center">
         <img
-          src="/hero.png"
+          src="/images/hero.png"
           alt={data.hero.title[lang] ?? data.hero.title.id}
           className="absolute inset-0 h-full w-full object-cover"
         />

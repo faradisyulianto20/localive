@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Calendar, User } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import { SafeImage } from './ui/safe-image'
+import { SafeImage } from '../ui/safe-image'
 
 export interface ArtikelItem {
   id: string

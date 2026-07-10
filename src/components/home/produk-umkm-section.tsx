@@ -2,16 +2,18 @@ import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useInView } from '#/hooks/use-in-view.ts'
-import UMKMCard from './umkm-card'
-import { fetchUmkmList, fetchUmkmCategories } from '../lib/api-endpoints'
+import UMKMCard from '../umkm/umkm-card'
+import UMKMDetailDialog from '../umkm/umkm-detail-dialog'
+import { fetchUmkmList, fetchUmkmCategories } from '../../lib/api-endpoints'
 import umkmData from '#/lib/umkm.json'
-import type { UMKMItem } from './umkm-card'
+import type { UMKMItem } from '../umkm/umkm-card'
 
 export default function ProdukUMKMSection() {
   const { t } = useTranslation()
   const [items, setItems] = useState<UMKMItem[]>((umkmData.items as UMKMItem[]).slice(0, 6))
   const scrollRef = useRef<HTMLDivElement>(null)
   const { ref, inView } = useInView()
+  const [selectedItem, setSelectedItem] = useState<UMKMItem | null>(null)
 
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
@@ -21,7 +23,7 @@ export default function ProdukUMKMSection() {
       .then((list) => {
         if (list.length > 0) setItems(list.slice(0, 6))
       })
-      .catch(() => {})
+      .catch(() => console.error('Failed to fetch UMKM from API, using fallback data'))
   }, [])
 
   const updateScrollState = () => {
@@ -53,6 +55,7 @@ export default function ProdukUMKMSection() {
   }
 
   return (
+    <>
     <section id="umkm" ref={ref} className={`page-wrap py-12 md:py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-sm font-semibold uppercase tracking-wide text-amber-700">
@@ -84,7 +87,7 @@ export default function ProdukUMKMSection() {
               className={`snap-start shrink-0 w-60 sm:w-75 transition-all duration-500 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}
               style={{ animationDelay: `${index * 80}ms` }}
             >
-              <UMKMCard item={item} />
+              <UMKMCard item={item} onClick={() => setSelectedItem(item)} />
             </div>
           ))}
         </div>
@@ -110,5 +113,8 @@ export default function ProdukUMKMSection() {
         </a>
       </div>
     </section>
+
+    {selectedItem && <UMKMDetailDialog item={selectedItem} onClose={() => setSelectedItem(null)} />}
+    </>
   )
 }

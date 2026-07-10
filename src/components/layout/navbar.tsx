@@ -39,12 +39,12 @@ export default function Navbar() {
 						: "w-full rounded-none rounded-b-3xl shadow-[0_20px_45px_-18px_rgba(0,0,0,0.18)]"
 				}`}
 			>
-				<Link
-					to="/"
-					className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground transition-all duration-300"
-				>
-					Logo
-				</Link>
+			<Link
+				to="/"
+				className="text-xl font-extrabold tracking-tight text-forest transition-all duration-300 hover:text-terracotta"
+			>
+				localive
+			</Link>
 
 				<ul className="hidden items-center gap-9 md:flex">
 					{links.map((link) => {

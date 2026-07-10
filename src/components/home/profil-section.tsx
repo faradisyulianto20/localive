@@ -9,9 +9,9 @@ export default function ProfilSection() {
 	return (
 		<section ref={ref} className={`page-wrap py-12 md:py-16 transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
 			<div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
-				<div className="relative overflow-hidden rounded-lg">
+				<div className="relative overflow-hidden rounded-lg h-full">
 					<img
-						src="/hero.png"
+						src="/images/profil.png"
 						alt={t("section.profil.title", "Desa Tamanan")}
 						className="h-full w-full object-cover"
 					/>

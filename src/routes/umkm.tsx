@@ -1,35 +1,51 @@
 import { useState, useEffect } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
-import { LayoutGrid, UtensilsCrossed, Package, Wrench } from 'lucide-react'
-import UMKMCard from '../components/umkm-card'
-import Pagination from '../components/pagination'
+import UMKMCard from '../components/umkm/umkm-card'
+import UMKMDetailDialog from '../components/umkm/umkm-detail-dialog'
+import Pagination from '../components/shared/pagination'
 import umkmData from '#/lib/umkm.json'
-import { fetchUmkmList } from '../lib/api-endpoints'
+import { fetchUmkmList, fetchUmkmCategories } from '../lib/api-endpoints'
 import type { UMKMItem } from '../lib/api-transformers'
 
 export const Route = createFileRoute('/umkm')({ component: UMKM })
 
-const tabs = [
-  { slug: 'all', labelKey: 'umkm.filter.all', labelEn: 'All', icon: LayoutGrid },
-  { slug: 'makanan', labelKey: 'umkm.filter.makanan', labelEn: 'Food', icon: UtensilsCrossed },
-  { slug: 'produk', labelKey: 'umkm.filter.produk', labelEn: 'Products', icon: Package },
-  { slug: 'jasa', labelKey: 'umkm.filter.jasa', labelEn: 'Services', icon: Wrench },
-]
-
 function UMKM() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const lang = i18n.language as 'id' | 'en'
   const [activeFilter, setActiveFilter] = useState('all')
   const [currentPage, setCurrentPage] = useState(1)
   const ITEMS_PER_PAGE = 8
-  const activeIndex = tabs.findIndex((tab) => tab.slug === activeFilter)
   const [items, setItems] = useState<UMKMItem[]>(umkmData.items as any)
+  const [selectedItem, setSelectedItem] = useState<UMKMItem | null>(null)
+  const [categories, setCategories] = useState<{ slug: string; name: string | { id: string; en: string } }[]>([])
 
   useEffect(() => {
     fetchUmkmList()
       .then(setItems)
+      .catch(() => console.error('Failed to fetch UMKM from API, using fallback data'))
+  }, [])
+
+  useEffect(() => {
+    fetchUmkmCategories()
+      .then((cats) => setCategories(cats))
       .catch(() => {})
   }, [])
+
+  const allTabs = [
+    { slug: 'all', label: t('umkm.filter.all', 'Semua') },
+    ...categories
+      .filter((c) => c && c.slug)
+      .map((c) => {
+        const name = c.name
+        const label = typeof name === 'string'
+          ? name
+          : (name && typeof name === 'object')
+            ? name[lang] || name.id || ''
+            : ''
+        return { slug: c.slug, label }
+      }),
+  ]
 
   const filteredList = activeFilter === 'all'
     ? items
@@ -51,45 +67,28 @@ function UMKM() {
         </h1>
       </div>
 
-      <div className="rise-in mt-8 flex justify-center" style={{ animationDelay: '100ms' }}>
-        <div className="relative grid grid-cols-4 rounded-full bg-cream p-1 gap-1 w-full max-w-xs sm:max-w-sm">
-          <div
-            className="absolute top-1 bottom-1 rounded-full bg-terracotta shadow-sm transition-transform duration-300 ease-out"
-            style={{
-              width: `calc(25% - 4px)`,
-              transform: `translateX(calc(${activeIndex} * 100% + ${activeIndex} * 4px))`,
-              left: '2px',
-            }}
-          />
-          {tabs.map((tab) => {
-            const Icon = tab.icon
-            const isActive = activeFilter === tab.slug
-            return (
-              <button
-                key={tab.slug}
-                type="button"
-                onClick={() => setActiveFilter(tab.slug)}
-                title={t(tab.labelKey, tab.labelEn)}
-                aria-label={t(tab.labelKey, tab.labelEn)}
-                aria-pressed={isActive}
-                className="relative z-10 flex cursor-pointer items-center justify-center rounded-full py-2 transition-all duration-300"
-              >
-                <Icon
-                  className={`h-4 w-4 transition-colors duration-300 ${
-                    isActive ? 'text-white' : 'text-brown'
-                  }`}
-                />
-              </button>
-            )
-          })}
-        </div>
+      <div className="rise-in mt-8 flex flex-wrap justify-center gap-2" style={{ animationDelay: '100ms' }}>
+        {allTabs.map((tab) => (
+          <button
+            key={tab.slug}
+            type="button"
+            onClick={() => setActiveFilter(tab.slug)}
+            className={`cursor-pointer rounded-full px-4 md:px-5 py-1.5 md:py-2 text-sm font-semibold transition-all duration-300 ${
+              activeFilter === tab.slug
+                ? 'bg-terracotta text-white'
+                : 'bg-cream text-brown hover:bg-cream/80'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
       {filteredList.length > 0 ? (
         <>
           <div className="rise-in mt-8 grid grid-cols-1 gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3" style={{ animationDelay: '200ms' }}>
             {paginatedItems.map((item) => (
-              <UMKMCard key={item.id} item={item} />
+              <UMKMCard key={item.id} item={item} onClick={() => setSelectedItem(item)} />
             ))}
           </div>
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
@@ -101,6 +100,8 @@ function UMKM() {
           </p>
         </div>
       )}
+
+      {selectedItem && <UMKMDetailDialog item={selectedItem} onClose={() => setSelectedItem(null)} />}
     </div>
   )
 }

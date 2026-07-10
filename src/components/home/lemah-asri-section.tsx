@@ -16,7 +16,7 @@ export default function LemahAsriSection() {
     <section ref={ref} className={`relative min-h-[420px] overflow-hidden transition-all duration-700 ${inView ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'}`}>
       <div className="absolute inset-0">
         <img
-          src="/hero.png"
+          src="/images/lemah-asri.png"
           alt=""
           className="h-full w-full object-cover"
         />
